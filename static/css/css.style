@@ -1,0 +1,444 @@
+/* =========================================================
+   HireTrack — shared styles
+   Mobile-first. Bootstrap 5 handles grid/utilities/components;
+   this file holds design tokens + HireTrack-specific patterns.
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Brand */
+  --ht-primary: #3b4fa8;
+  --ht-primary-bg: #f0f4ff;
+  --ht-ink: #1a2233;
+  --ht-muted: #6b7280;
+  --ht-line: #e5e9f2;
+  --ht-surface: #ffffff;
+  --ht-app-bg: #f7f8fc;
+
+  /* Status: Saved */
+  --status-saved-bg: #f0f4ff;
+  --status-saved-text: #3b4fa8;
+  --status-saved-border: #c7d2fe;
+
+  /* Status: Applied */
+  --status-applied-bg: #eff6ff;
+  --status-applied-text: #1d4ed8;
+  --status-applied-border: #bfdbfe;
+
+  /* Status: Interview */
+  --status-interview-bg: #fffbeb;
+  --status-interview-text: #92400e;
+  --status-interview-border: #fde68a;
+
+  /* Status: Offer */
+  --status-offer-bg: #f0fdf4;
+  --status-offer-text: #166534;
+  --status-offer-border: #bbf7d0;
+
+  /* Status: Rejected */
+  --status-rejected-bg: #fef2f2;
+  --status-rejected-text: #991b1b;
+  --status-rejected-border: #fecaca;
+
+  /* Stat icon backgrounds */
+  --icon-total-bg: #e8eef7;
+  --icon-total-fg: #1a3557;
+  --icon-applied-bg: #dbeafe;
+  --icon-applied-fg: #1d4ed8;
+  --icon-interview-bg: #fef3c7;
+  --icon-interview-fg: #92400e;
+  --icon-offer-bg: #dcfce7;
+  --icon-offer-fg: #166534;
+  --icon-rejected-bg: #fee2e2;
+  --icon-rejected-fg: #991b1b;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--ht-app-bg);
+  color: var(--ht-ink);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Type scale ---------- */
+h1, .ht-h1 { font-weight: 700; font-size: 1.75rem; line-height: 1.25; letter-spacing: -0.01em; }
+h2, .ht-h2 { font-weight: 700; font-size: 1.375rem; line-height: 1.3; }
+h3, .ht-h3 { font-weight: 600; font-size: 1.125rem; line-height: 1.35; }
+.ht-label { font-weight: 500; font-size: 0.8125rem; color: var(--ht-muted); }
+.ht-body { font-weight: 400; font-size: 0.9375rem; }
+.ht-stat-value { font-weight: 700; font-size: 1.5rem; }
+
+/* ---------- Mobile frame (for viewing wireframes stacked on desktop) ---------- */
+.device {
+  width: 100%;
+  max-width: 390px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: var(--ht-app-bg);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 0 0 1px var(--ht-line);
+}
+
+.screen-label {
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--ht-muted);
+  padding: 10px 0;
+  background: #fff;
+  border-bottom: 1px dashed var(--ht-line);
+}
+
+/* ---------- Top app bar ---------- */
+.ht-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  background: var(--ht-surface);
+  border-bottom: 1px solid var(--ht-line);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.ht-topbar .ht-back {
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 10px;
+  color: var(--ht-ink);
+  background: var(--ht-app-bg);
+}
+.ht-topbar h1 { font-size: 1.0625rem; margin: 0; }
+
+/* ---------- Content area ---------- */
+.ht-content {
+  flex: 1;
+  padding: 20px;
+  padding-bottom: 96px; /* clears bottom nav */
+}
+.ht-content.no-nav-pad { padding-bottom: 32px; }
+
+/* ---------- Buttons ---------- */
+.btn-ht-primary {
+  background: var(--ht-primary);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  padding: 13px 20px;
+  border-radius: 12px;
+}
+.btn-ht-primary:hover, .btn-ht-primary:focus { background: #2f3f8c; color: #fff; }
+
+.btn-ht-secondary {
+  background: var(--ht-surface);
+  border: 1px solid var(--ht-line);
+  color: var(--ht-ink);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  padding: 13px 20px;
+  border-radius: 12px;
+}
+.btn-ht-secondary:hover, .btn-ht-secondary:focus { background: var(--ht-app-bg); color: var(--ht-ink); }
+
+.btn-ht-danger {
+  background: #dc2626;
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  padding: 13px 20px;
+  border-radius: 12px;
+}
+.btn-ht-danger:hover, .btn-ht-danger:focus { background: #b91c1c; color: #fff; }
+
+.btn-ht-ghost {
+  background: transparent;
+  border: none;
+  color: var(--ht-muted);
+  font-weight: 500;
+  font-size: 0.9375rem;
+}
+
+/* Focus visibility (accessibility floor) */
+.btn-ht-primary:focus-visible,
+.btn-ht-secondary:focus-visible,
+.btn-ht-danger:focus-visible,
+.btn-ht-ghost:focus-visible,
+.form-control:focus,
+.nav-item-link:focus-visible {
+  outline: 2px solid var(--ht-primary);
+  outline-offset: 2px;
+}
+
+/* ---------- Forms ---------- */
+.ht-field { margin-bottom: 18px; }
+.ht-field label {
+  display: block;
+  font-weight: 500;
+  font-size: 0.8125rem;
+  color: var(--ht-ink);
+  margin-bottom: 6px;
+}
+.ht-field .form-control,
+.ht-field .form-select {
+  border: 1px solid var(--ht-line);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  background: var(--ht-surface);
+}
+.ht-field .form-control:focus,
+.ht-field .form-select:focus {
+  border-color: var(--ht-primary);
+  box-shadow: 0 0 0 3px rgba(59, 79, 168, 0.12);
+}
+.ht-field .form-text { font-size: 0.75rem; color: var(--ht-muted); margin-top: 4px; }
+
+/* ---------- Status badge ---------- */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 0.75rem;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+.status-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+.status-saved     { background: var(--status-saved-bg);     color: var(--status-saved-text);     border-color: var(--status-saved-border); }
+.status-applied   { background: var(--status-applied-bg);   color: var(--status-applied-text);   border-color: var(--status-applied-border); }
+.status-interview { background: var(--status-interview-bg); color: var(--status-interview-text); border-color: var(--status-interview-border); }
+.status-offer     { background: var(--status-offer-bg);     color: var(--status-offer-text);     border-color: var(--status-offer-border); }
+.status-rejected  { background: var(--status-rejected-bg);  color: var(--status-rejected-text);  border-color: var(--status-rejected-border); }
+
+/* ---------- Cards ---------- */
+.ht-card {
+  background: var(--ht-surface);
+  border: 1px solid var(--ht-line);
+  border-radius: 14px;
+  padding: 16px;
+}
+
+/* Stat card (dashboard) */
+.stat-card {
+  background: var(--ht-surface);
+  border: 1px solid var(--ht-line);
+  border-radius: 14px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+.stat-icon {
+  width: 34px; height: 34px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.stat-icon.total     { background: var(--icon-total-bg);     color: var(--icon-total-fg); }
+.stat-icon.applied   { background: var(--icon-applied-bg);   color: var(--icon-applied-fg); }
+.stat-icon.interview { background: var(--icon-interview-bg); color: var(--icon-interview-fg); }
+.stat-icon.offer     { background: var(--icon-offer-bg);     color: var(--icon-offer-fg); }
+.stat-icon.rejected  { background: var(--icon-rejected-bg);  color: var(--icon-rejected-fg); }
+.stat-card .ht-stat-value.total     { color: var(--icon-total-fg); }
+.stat-card .ht-stat-value.applied   { color: var(--icon-applied-fg); }
+.stat-card .ht-stat-value.interview { color: var(--icon-interview-fg); }
+.stat-card .ht-stat-value.offer     { color: var(--icon-offer-fg); }
+.stat-card .ht-stat-value.rejected  { color: var(--icon-rejected-fg); }
+
+/* Application list row */
+.app-row {
+  background: var(--ht-surface);
+  border: 1px solid var(--ht-line);
+  border-radius: 14px;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+}
+.app-row:hover { border-color: var(--ht-primary); color: inherit; }
+.app-row-logo {
+  width: 42px; height: 42px;
+  border-radius: 10px;
+  background: var(--ht-app-bg);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700;
+  color: var(--ht-primary);
+  flex-shrink: 0;
+}
+.app-row-body { flex: 1; min-width: 0; }
+.app-row-body .role { font-weight: 600; font-size: 0.9375rem; margin: 0; }
+.app-row-body .company { font-weight: 400; font-size: 0.8125rem; color: var(--ht-muted); margin: 0; }
+.app-row-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; flex-shrink: 0; }
+.app-row-date { font-size: 0.75rem; color: var(--ht-muted); font-weight: 400; }
+
+/* ---------- Bottom nav ---------- */
+.ht-bottomnav {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  max-width: 390px;
+  margin: 0 auto;
+  background: var(--ht-surface);
+  border-top: 1px solid var(--ht-line);
+  display: flex;
+  z-index: 20;
+}
+.nav-item-link {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 10px 0 8px;
+  color: var(--ht-muted);
+  text-decoration: none;
+  font-size: 0.6875rem;
+  font-weight: 500;
+}
+.nav-item-link.active { color: var(--ht-primary); }
+.nav-item-link i { font-size: 1.15rem; }
+
+/* FAB */
+.ht-fab {
+  position: fixed;
+  right: 20px;
+  bottom: 84px;
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--ht-primary);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+  box-shadow: 0 8px 20px rgba(59, 79, 168, 0.35);
+  border: none;
+  text-decoration: none;
+}
+.ht-fab:hover { background: #2f3f8c; color: #fff; }
+
+/* ---------- Empty state ---------- */
+.ht-empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 28px;
+  gap: 6px;
+}
+.ht-empty-icon {
+  width: 72px; height: 72px;
+  border-radius: 20px;
+  background: var(--ht-primary-bg);
+  color: var(--ht-primary);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2rem;
+  margin-bottom: 14px;
+}
+
+/* ---------- Auth / landing ---------- */
+.ht-auth-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 32px 24px;
+}
+.ht-logo-mark {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  background: var(--ht-primary);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-bottom: 18px;
+}
+.ht-divider {
+  display: flex; align-items: center; gap: 12px;
+  color: var(--ht-muted); font-size: 0.8125rem;
+  margin: 18px 0;
+}
+.ht-divider::before, .ht-divider::after {
+  content: ""; flex: 1; height: 1px; background: var(--ht-line);
+}
+
+/* ---------- Landing hero ---------- */
+.ht-hero {
+  background: var(--ht-primary-bg);
+  padding: 48px 24px 36px;
+  border-bottom: 1px solid var(--ht-line);
+}
+.ht-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  border: 1px solid var(--status-saved-border);
+  color: var(--ht-primary);
+  font-weight: 500;
+  font-size: 0.75rem;
+  padding: 6px 12px;
+  border-radius: 999px;
+  margin-bottom: 16px;
+}
+.ht-feature-row {
+  display: flex;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--ht-line);
+}
+.ht-feature-row:last-child { border-bottom: none; }
+.ht-feature-icon {
+  width: 38px; height: 38px;
+  border-radius: 10px;
+  background: var(--ht-primary-bg);
+  color: var(--ht-primary);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ---------- Modal / delete confirmation sheet ---------- */
+.ht-sheet-backdrop {
+  flex: 1;
+  background: rgba(26, 34, 51, 0.55);
+  display: flex;
+  align-items: flex-end;
+}
+.ht-sheet {
+  width: 100%;
+  background: var(--ht-surface);
+  border-radius: 20px 20px 0 0;
+  padding: 24px 20px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+}
+.ht-sheet-icon {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--status-rejected-bg);
+  color: var(--status-rejected-text);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+/* Small helpers */
+.w-flex-col { display: flex; flex-direction: column; }
+.gap-10 { gap: 10px; }
+.gap-12 { gap: 12px; }

@@ -89,6 +89,7 @@ Testing focused particularly on:
 | Login with correct credentials | User is logged in |               |           |
 | Login with incorrect password  | Error displayed   |               |           |
 | Login with invalid username    | Error displayed   |               |           |
+| Required username left blank   | Error displayed   |               |           |
 
 ## Logout
 
