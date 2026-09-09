@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HireTrack — Dashboard</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="device">
+  <div class="screen-label">📊 Dashboard</div>
+
+  <div class="ht-topbar">
+    <div>
+      <p class="ht-label mb-0">Welcome back</p>
+      <h1 style="font-size:1.0625rem;">Jordan Smith</h1>
+    </div>
+    <div class="ht-back"><i class="bi bi-person"></i></div>
+  </div>
+
+  <div class="ht-content">
+
+    <div class="row g-2 mb-3">
+      <div class="col-6">
+        <div class="stat-card">
+          <div class="stat-icon total"><i class="bi bi-collection"></i></div>
+          <div>
+            <div class="ht-stat-value total">18</div>
+            <div class="ht-label mb-0">Total</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="stat-card">
+          <div class="stat-icon applied"><i class="bi bi-send"></i></div>
+          <div>
+            <div class="ht-stat-value applied">9</div>
+            <div class="ht-label mb-0">Applied</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="stat-card">
+          <div class="stat-icon interview"><i class="bi bi-people"></i></div>
+          <div>
+            <div class="ht-stat-value interview">4</div>
+            <div class="ht-label mb-0">Interview</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="stat-card">
+          <div class="stat-icon offer"><i class="bi bi-trophy"></i></div>
+          <div>
+            <div class="ht-stat-value offer">2</div>
+            <div class="ht-label mb-0">Offer</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex gap-2 mb-3" style="overflow-x:auto; padding-bottom:2px;">
+      <span class="status-badge status-saved">All</span>
+      <span class="status-badge status-applied">Applied</span>
+      <span class="status-badge status-interview">Interview</span>
+      <span class="status-badge status-offer">Offer</span>
+      <span class="status-badge status-rejected">Rejected</span>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center mb-2">
+      <h2 style="font-size:1rem;">Recent applications</h2>
+      <a href="#" class="ht-label mb-0" style="text-decoration:none;">See all</a>
+    </div>
+
+    <div class="d-flex flex-column gap-12">
+      <a href="application-details.html" class="app-row">
+        <div class="app-row-logo">N</div>
+        <div class="app-row-body">
+          <p class="role">Product Designer</p>
+          <p class="company">Nova Studio</p>
+        </div>
+        <div class="app-row-meta">
+          <span class="status-badge status-interview"><span class="dot"></span>Interview</span>
+          <span class="app-row-date">Sep 4</span>
+        </div>
+      </a>
+
+      <a href="application-details.html" class="app-row">
+        <div class="app-row-logo">A</div>
+        <div class="app-row-body">
+          <p class="role">Frontend Engineer</p>
+          <p class="company">Atlas Labs</p>
+        </div>
+        <div class="app-row-meta">
+          <span class="status-badge status-applied"><span class="dot"></span>Applied</span>
+          <span class="app-row-date">Sep 2</span>
+        </div>
+      </a>
+
+      <a href="application-details.html" class="app-row">
+        <div class="app-row-logo">B</div>
+        <div class="app-row-body">
+          <p class="role">UX Researcher</p>
+          <p class="company">Brightline</p>
+        </div>
+        <div class="app-row-meta">
+          <span class="status-badge status-offer"><span class="dot"></span>Offer</span>
+          <span class="app-row-date">Aug 29</span>
+        </div>
+      </a>
+
+      <a href="application-details.html" class="app-row">
+        <div class="app-row-logo">C</div>
+        <div class="app-row-body">
+          <p class="role">Marketing Lead</p>
+          <p class="company">Coastline Co.</p>
+        </div>
+        <div class="app-row-meta">
+          <span class="status-badge status-rejected"><span class="dot"></span>Rejected</span>
+          <span class="app-row-date">Aug 21</span>
+        </div>
+      </a>
+
+      <a href="application-details.html" class="app-row">
+        <div class="app-row-logo">M</div>
+        <div class="app-row-body">
+          <p class="role">Data Analyst</p>
+          <p class="company">Meridian</p>
+        </div>
+        <div class="app-row-meta">
+          <span class="status-badge status-saved"><span class="dot"></span>Saved</span>
+          <span class="app-row-date">Aug 19</span>
+        </div>
+      </a>
+    </div>
+
+  </div>
+
+  <a href="add-application.html" class="ht-fab" aria-label="Add application"><i class="bi bi-plus-lg"></i></a>
+
+  <nav class="ht-bottomnav">
+    <a href="dashboard.html" class="nav-item-link active"><i class="bi bi-grid-1x2-fill"></i>Dashboard</a>
+    <a href="add-application.html" class="nav-item-link"><i class="bi bi-plus-circle"></i>Add</a>
+    <a href="#" class="nav-item-link"><i class="bi bi-bar-chart"></i>Stats</a>
+    <a href="#" class="nav-item-link"><i class="bi bi-person"></i>Profile</a>
+  </nav>
+</div>
+
+</body>
+</html>
