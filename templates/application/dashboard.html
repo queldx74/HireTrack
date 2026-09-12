@@ -1,3 +1,4 @@
+<!-- {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +7,8 @@
 <title>HireTrack — Dashboard</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-<link rel="stylesheet" href="css/style.css">
+# <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
 
@@ -144,6 +146,139 @@
   <nav class="ht-bottomnav">
     <a href="dashboard.html" class="nav-item-link active"><i class="bi bi-grid-1x2-fill"></i>Dashboard</a>
     <a href="add-application.html" class="nav-item-link"><i class="bi bi-plus-circle"></i>Add</a>
+    <a href="#" class="nav-item-link"><i class="bi bi-bar-chart"></i>Stats</a>
+    <a href="#" class="nav-item-link"><i class="bi bi-person"></i>Profile</a>
+  </nav>
+</div>
+
+</body>
+</html> -->
+
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HireTrack — Dashboard</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<div class="device">
+
+  <div class="ht-topbar">
+    <div>
+      <p class="ht-label mb-0">Welcome back</p>
+      <h1 style="font-size:1.0625rem;">{{ user.first_name|default:user.username }}</h1>
+    </div>
+    <form method="post" action="{% url 'logout' %}">
+      {% csrf_token %}
+      <button type="submit" class="ht-back" style="border:none;" aria-label="Log out">
+        <i class="bi bi-box-arrow-right"></i>
+      </button>
+    </form>
+  </div>
+
+  {% if messages %}
+    <div class="px-3 pt-3">
+      {% for message in messages %}
+        <div class="alert alert-success py-2">{{ message }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if applications %}
+    <div class="ht-content">
+
+      <!-- Stat cards -->
+      <div class="row g-2 mb-3">
+        <div class="col-6">
+          <div class="stat-card">
+            <div class="stat-icon total"><i class="bi bi-collection"></i></div>
+            <div>
+              <div class="ht-stat-value total">{{ total }}</div>
+              <div class="ht-label mb-0">Total</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="stat-card">
+            <div class="stat-icon applied"><i class="bi bi-send"></i></div>
+            <div>
+              <div class="ht-stat-value applied">{{ applied_count }}</div>
+              <div class="ht-label mb-0">Applied</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="stat-card">
+            <div class="stat-icon interview"><i class="bi bi-people"></i></div>
+            <div>
+              <div class="ht-stat-value interview">{{ interview_count }}</div>
+              <div class="ht-label mb-0">Interview</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="stat-card">
+            <div class="stat-icon offer"><i class="bi bi-trophy"></i></div>
+            <div>
+              <div class="ht-stat-value offer">{{ offer_count }}</div>
+              <div class="ht-label mb-0">Offer</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2 style="font-size:1rem;" class="mb-2">Your applications</h2>
+
+      <!-- Application list -->
+      <div class="d-flex flex-column gap-12">
+        {% for application in applications %}
+          <a href="{% url 'application_detail' application.pk %}" class="app-row">
+            <div class="app-row-logo">{{ application.company|first|upper }}</div>
+            <div class="app-row-body">
+              <p class="role">{{ application.job_title }}</p>
+              <p class="company">{{ application.company }}</p>
+            </div>
+            <div class="app-row-meta">
+              <span class="status-{{ application.status }}" style="display:inline-flex; align-items:center; gap:6px; font-weight:600; font-size:0.75rem; padding:5px 12px; border-radius:999px; border:1px solid transparent; white-space:nowrap;">
+                <span class="dot"></span>{{ application.get_status_display }}
+              </span>
+              <span class="app-row-date">{{ application.date_applied|date:"M j" }}</span>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+
+    </div>
+
+    <a href="{% url 'add_application' %}" class="ht-fab" aria-label="Add application"><i class="bi bi-plus-lg"></i></a>
+
+  {% else %}
+
+    <!-- Empty state -->
+    <div class="ht-empty">
+      <div class="ht-empty-icon"><i class="bi bi-inbox"></i></div>
+      <h2 class="mb-1">No applications yet</h2>
+      <p class="ht-body mb-4" style="color: var(--ht-muted); max-width:260px;">
+        Add the first job you've applied to and HireTrack will help you keep track of it from here.
+      </p>
+      <a href="{% url 'add_application' %}" class="btn btn-ht-primary px-4">
+        <i class="bi bi-plus-lg me-1"></i> Add your first application
+      </a>
+    </div>
+
+  {% endif %}
+
+  <nav class="ht-bottomnav">
+    <a href="{% url 'dashboard' %}" class="nav-item-link active"><i class="bi bi-grid-1x2-fill"></i>Dashboard</a>
+    <a href="{% url 'add_application' %}" class="nav-item-link"><i class="bi bi-plus-circle"></i>Add</a>
     <a href="#" class="nav-item-link"><i class="bi bi-bar-chart"></i>Stats</a>
     <a href="#" class="nav-item-link"><i class="bi bi-person"></i>Profile</a>
   </nav>

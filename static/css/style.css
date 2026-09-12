@@ -442,3 +442,10 @@ h3, .ht-h3 { font-weight: 600; font-size: 1.125rem; line-height: 1.35; }
 .w-flex-col { display: flex; flex-direction: column; }
 .gap-10 { gap: 10px; }
 .gap-12 { gap: 12px; }
+input[type="text"], input[type="password"], input[type="email"] {
+  border: 1px solid var(--ht-line);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 0.9375rem;
+  width: 100%;
+}
