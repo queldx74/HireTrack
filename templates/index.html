@@ -48,8 +48,15 @@
     </div>
 
     <div class="d-flex flex-column gap-12 mt-auto">
-      <a href="registration/registration.html" class="btn btn-ht-primary text-center">Create an account</a>
-      <a href="registration/login.html" class="btn btn-ht-secondary text-center">Log in</a>
+<a href="{% url 'register' %}" class="btn btn-ht-primary text-center">
+    Create an account
+</a>
+
+<a href="{% url 'login' %}" class="btn btn-ht-secondary text-center">
+    Log in
+</a>
+
+     
     </div>
 
   </div>

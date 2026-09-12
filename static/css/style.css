@@ -41,6 +41,15 @@
   --status-rejected-text: #991b1b;
   --status-rejected-border: #fecaca;
 
+    --status-rejected-border: #fecaca;
+
+  /* Status: Withdrawn */
+  --status-withdrawn-bg: #f3f4f6;
+  --status-withdrawn-text: #374151;
+  --status-withdrawn-border: #d1d5db;
+
+  /* Stat icon backgrounds */
+
   /* Stat icon backgrounds */
   --icon-total-bg: #e8eef7;
   --icon-total-fg: #1a3557;
@@ -219,6 +228,7 @@ h3, .ht-h3 { font-weight: 600; font-size: 1.125rem; line-height: 1.35; }
 .status-interview { background: var(--status-interview-bg); color: var(--status-interview-text); border-color: var(--status-interview-border); }
 .status-offer     { background: var(--status-offer-bg);     color: var(--status-offer-text);     border-color: var(--status-offer-border); }
 .status-rejected  { background: var(--status-rejected-bg);  color: var(--status-rejected-text);  border-color: var(--status-rejected-border); }
+.status-withdrawn { background: var(--status-withdrawn-bg); color: var(--status-withdrawn-text); border-color: var(--status-withdrawn-border); }
 
 /* ---------- Cards ---------- */
 .ht-card {
