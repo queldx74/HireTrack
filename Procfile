@@ -1,1 +1,1 @@
-web: gunicorn HireTrack.wsgi
+web: gunicorn hiretrack.wsgi
