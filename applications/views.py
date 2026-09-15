@@ -1,72 +1,3 @@
-# from django.shortcuts import render
-
-# # Create your views here.
-# def home(request):
-#     return render(request, "index.html")
-
-# from django.shortcuts import render, redirect
-# from django.contrib.auth.decorators import login_required
-# from .forms import JobApplicationForm
-
-
-# @login_required
-# def add_application(request):
-#     if request.method == "POST":
-#         form = JobApplicationForm(request.POST)
-
-#         if form.is_valid():
-#             application = form.save(commit=False)
-#             application.user = request.user
-#             application.save()
-
-#             return redirect("dashboard")
-#     else:
-#         form = JobApplicationForm()
-
-#     return render(
-#         request,
-#         "applications/add_application.html",
-#         {"form": form},
-#     )
-
-
-
-
-
-# from django.shortcuts import get_object_or_404
-
-
-# @login_required
-# def edit_application(request, application_id):
-
-#     application = get_object_or_404(
-#         JobApplication,
-#         id=application_id,
-#         user=request.user,
-#     )
-
-#     if request.method == "POST":
-#         form = JobApplicationForm(
-#             request.POST,
-#             instance=application,
-#         )
-
-#         if form.is_valid():
-#             form.save()
-#             return redirect("dashboard")
-
-#     else:
-#         form = JobApplicationForm(instance=application)
-
-#     return render(
-#         request,
-#         "applications/edit_application.html",
-#         {
-#             "form": form,
-#             "application": application,
-#         },
-#     )
-
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
@@ -158,3 +89,21 @@ def delete_application(request, pk):
         return redirect("dashboard")
 
     return render(request, "application/delete-confirmation.html", {"application": application})
+
+@login_required
+def statistics(request):
+    applications = JobApplication.objects.filter(user=request.user)
+
+    status_counts = []
+    for status_code, status_label in JobApplication.STATUS_CHOICES:
+        status_counts.append({
+            "code": status_code,
+            "label": status_label,
+            "count": applications.filter(status=status_code).count(),
+        })
+
+    context = {
+        "total": applications.count(),
+        "status_counts": status_counts,
+    }
+    return render(request, "application/statistics.html", context)
