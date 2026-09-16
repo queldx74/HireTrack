@@ -91,23 +91,7 @@ def delete_application(request, pk):
     return render(request, "application/delete-confirmation.html", {"application": application})
 
 @login_required
-def statistics(request):
-    applications = JobApplication.objects.filter(user=request.user)
 
-    status_counts = []
-    for status_code, status_label in JobApplication.STATUS_CHOICES:
-        status_counts.append({
-            "code": status_code,
-            "label": status_label,
-            "count": applications.filter(status=status_code).count(),
-        })
-
-    context = {
-        "total": applications.count(),
-        "status_counts": status_counts,
-    }
-    return render(request, "application/statistics.html", context)
-@login_required
 def statistics(request):
     applications = JobApplication.objects.filter(user=request.user)
 
@@ -137,3 +121,16 @@ def statistics(request):
         "filtered_applications": filtered_applications,
     }
     return render(request, "application/statistics.html", context)
+
+# Custom error handlers
+
+def error_403(request, exception):
+    return render(request, "error/403.html", status=403)
+
+
+def error_404(request, exception):
+    return render(request, "error/404.html", status=404)
+
+
+def error_500(request):
+    return render(request, "error/500.html", status=500)
