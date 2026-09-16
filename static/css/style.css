@@ -41,9 +41,7 @@
   --status-rejected-text: #991b1b;
   --status-rejected-border: #fecaca;
 
-    --status-rejected-border: #fecaca;
-
-  /* Status: Withdrawn */
+      /* Status: Withdrawn */
   --status-withdrawn-bg: #f3f4f6;
   --status-withdrawn-text: #374151;
   --status-withdrawn-border: #d1d5db;
@@ -218,7 +216,7 @@ h3, .ht-h3 { font-weight: 600; font-size: 1.125rem; line-height: 1.35; }
   font-size: 0.75rem;
   padding: 5px 12px;
   border-radius: 999px;
-  border: 1px solid transparent;
+  /* border: 1px solid transparent; */
   white-space: nowrap;
 }
 .status-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
@@ -519,7 +517,8 @@ input[type="text"], input[type="password"], input[type="email"] {
     align-items: center;
     gap: 6px;
     padding: 5px 12px;
-    border: 1px solid transparent;
+    border-width: 1px;
+    border-style: solid;
     border-radius: 999px;
     font-size: 0.75rem;
     font-weight: 600;
@@ -535,4 +534,185 @@ input[type="text"], input[type="password"], input[type="email"] {
 
 .stats-empty-message {
     color: var(--ht-muted);
+}
+
+/* Statistics status filter fixes */
+
+.stats-filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    color: var(--ht-ink);
+    text-decoration: none;
+}
+
+.stats-filter:hover {
+    color: var(--ht-ink);
+    text-decoration: none;
+}
+
+.stats-filter-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--ht-ink);
+    text-decoration: none;
+}
+
+.stats-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.stats-filter .status-saved {
+    background: var(--status-saved-bg);
+    color: var(--status-saved-text);
+    border-color: var(--status-saved-border);
+}
+
+.stats-filter .status-applied {
+    background: var(--status-applied-bg);
+    color: var(--status-applied-text);
+    border-color: var(--status-applied-border);
+}
+
+.stats-filter .status-interview {
+    background: var(--status-interview-bg);
+    color: var(--status-interview-text);
+    border-color: var(--status-interview-border);
+}
+
+.stats-filter .status-offer {
+    background: var(--status-offer-bg);
+    color: var(--status-offer-text);
+    border-color: var(--status-offer-border);
+}
+
+.stats-filter .status-rejected {
+    background: var(--status-rejected-bg);
+    color: var(--status-rejected-text);
+    border-color: var(--status-rejected-border);
+}
+
+.stats-filter .status-withdrawn {
+    background: var(--status-withdrawn-bg);
+    color: var(--status-withdrawn-text);
+    border-color: var(--status-withdrawn-border);
+}
+
+.stats-filter-selected {
+    background: var(--ht-app-bg);
+    margin-left: -16px;
+    margin-right: -16px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.stats-status-selected {
+    box-shadow: 0 0 0 2px var(--ht-primary);
+}
+
+.stats-count {
+    color: var(--ht-ink);
+    text-decoration: none;
+}
+/* Statistics status filter fixes */
+
+.stats-filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    color: var(--ht-ink);
+    text-decoration: none;
+}
+
+.stats-filter:hover {
+    color: var(--ht-ink);
+    text-decoration: none;
+}
+
+.stats-filter-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--ht-ink);
+    text-decoration: none;
+}
+
+.stats-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.stats-filter .status-saved {
+    background: var(--status-saved-bg);
+    color: var(--status-saved-text);
+    border-color: var(--status-saved-border);
+}
+
+.stats-filter .status-applied {
+    background: var(--status-applied-bg);
+    color: var(--status-applied-text);
+    border-color: var(--status-applied-border);
+}
+
+.stats-filter .status-interview {
+    background: var(--status-interview-bg);
+    color: var(--status-interview-text);
+    border-color: var(--status-interview-border);
+}
+
+.stats-filter .status-offer {
+    background: var(--status-offer-bg);
+    color: var(--status-offer-text);
+    border-color: var(--status-offer-border);
+}
+
+.stats-filter .status-rejected {
+    background: var(--status-rejected-bg);
+    color: var(--status-rejected-text);
+    border-color: var(--status-rejected-border);
+}
+
+.stats-filter .status-withdrawn {
+    background: var(--status-withdrawn-bg);
+    color: var(--status-withdrawn-text);
+    border-color: var(--status-withdrawn-border);
+}
+
+.stats-filter-selected {
+    background: var(--ht-app-bg);
+    margin-left: -16px;
+    margin-right: -16px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.stats-status-selected {
+    box-shadow: 0 0 0 2px var(--ht-primary);
+}
+
+.stats-count {
+    color: var(--ht-ink);
+    text-decoration: none;
 }
