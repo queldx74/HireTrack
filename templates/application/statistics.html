@@ -30,19 +30,74 @@
     </div>
 
     <h2 style="font-size:1rem;" class="mb-2">By status</h2>
+    <p class="ht-label mb-2">Select a status to filter the list below.</p>
 
-    <div class="ht-card">
+    <div class="ht-card mb-4">
+
+      <a href="{% url 'statistics' %}"
+         aria-current="{% if selected_status == 'all' %}true{% else %}false{% endif %}"
+         class="d-flex justify-content-between align-items-center py-2 text-decoration-none"
+         style="border-bottom:1px solid var(--ht-line); {% if selected_status == 'all' %}font-weight:700;{% endif %}">
+        <span style="display:inline-flex; align-items:center; gap:6px; color: var(--ht-ink); font-size:0.9375rem; {% if selected_status == 'all' %}font-weight:700;{% endif %}">
+          {% if selected_status == "all" %}<i class="bi bi-check-circle-fill" aria-hidden="true"></i>{% endif %}
+          All
+        </span>
+        <span class="ht-stat-value" style="font-size:1.125rem;">{{ total }}</span>
+      </a>
+
       {% for status in status_counts %}
-        <div class="d-flex justify-content-between align-items-center py-2"
-             style="{% if not forloop.last %}border-bottom:1px solid var(--ht-line);{% endif %}">
+        <a href="{% url 'statistics' %}?status={{ status.code }}"
+           aria-current="{% if selected_status == status.code %}true{% else %}false{% endif %}"
+           class="d-flex justify-content-between align-items-center py-2 text-decoration-none"
+           style="{% if not forloop.last %}border-bottom:1px solid var(--ht-line);{% endif %} {% if selected_status == status.code %}background: var(--ht-app-bg); margin:0 -16px; padding-left:16px; padding-right:16px;{% endif %}">
           <span class="status-{{ status.code }}"
-                style="display:inline-flex; align-items:center; gap:6px; font-weight:600; font-size:0.75rem; padding:5px 12px; border-radius:999px; border:1px solid transparent;">
-            <span class="dot"></span>{{ status.label }}
+                style="display:inline-flex; align-items:center; gap:6px; font-weight:600; font-size:0.75rem; padding:5px 12px; border-radius:999px; border:1px solid transparent; {% if selected_status == status.code %}box-shadow: 0 0 0 2px var(--ht-primary);{% endif %}">
+            {% if selected_status == status.code %}<i class="bi bi-check-circle-fill" aria-hidden="true"></i>{% else %}<span class="dot"></span>{% endif %}
+            {{ status.label }}
           </span>
           <span class="ht-stat-value" style="font-size:1.125rem;">{{ status.count }}</span>
-        </div>
+        </a>
       {% endfor %}
+
     </div>
+
+    <h2 style="font-size:1rem;" class="mb-2">
+      {% if selected_status == "all" %}
+        All applications
+      {% else %}
+        {% for status in status_counts %}{% if status.code == selected_status %}{{ status.label }} applications{% endif %}{% endfor %}
+      {% endif %}
+    </h2>
+
+    {% if filtered_applications %}
+      <div class="d-flex flex-column gap-12">
+        {% for application in filtered_applications %}
+          <a href="{% url 'application_detail' application.pk %}" class="app-row">
+            <div class="app-row-logo">{{ application.company|first|upper }}</div>
+            <div class="app-row-body">
+              <p class="role">{{ application.job_title }}</p>
+              <p class="company">{{ application.company }}</p>
+            </div>
+            <div class="app-row-meta">
+              <span class="status-{{ application.status }}" style="display:inline-flex; align-items:center; gap:6px; font-weight:600; font-size:0.75rem; padding:5px 12px; border-radius:999px; border:1px solid transparent; white-space:nowrap;">
+                <span class="dot"></span>{{ application.get_status_display }}
+              </span>
+              <span class="app-row-date">{{ application.date_applied|date:"M j" }}</span>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="ht-card text-center py-4">
+        <p class="ht-body mb-0" style="color: var(--ht-muted);">
+          {% if selected_status == "all" %}
+            You have no applications yet.
+          {% else %}
+            {% for status in status_counts %}{% if status.code == selected_status %}No {{ status.label|lower }} applications found.{% endif %}{% endfor %}
+          {% endif %}
+        </p>
+      </div>
+    {% endif %}
 
   </div>
 

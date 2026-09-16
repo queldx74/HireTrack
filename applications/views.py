@@ -107,3 +107,33 @@ def statistics(request):
         "status_counts": status_counts,
     }
     return render(request, "application/statistics.html", context)
+@login_required
+def statistics(request):
+    applications = JobApplication.objects.filter(user=request.user)
+
+    status_counts = []
+    for status_code, status_label in JobApplication.STATUS_CHOICES:
+        status_counts.append({
+            "code": status_code,
+            "label": status_label,
+            "count": applications.filter(status=status_code).count(),
+        })
+
+    valid_status_codes = [code for code, label in JobApplication.STATUS_CHOICES]
+    selected_status = request.GET.get("status", "all")
+
+    if selected_status != "all" and selected_status not in valid_status_codes:
+        selected_status = "all"
+
+    if selected_status == "all":
+        filtered_applications = applications.order_by("-date_applied")
+    else:
+        filtered_applications = applications.filter(status=selected_status).order_by("-date_applied")
+
+    context = {
+        "total": applications.count(),
+        "status_counts": status_counts,
+        "selected_status": selected_status,
+        "filtered_applications": filtered_applications,
+    }
+    return render(request, "application/statistics.html", context)

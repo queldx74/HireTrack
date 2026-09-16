@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Error | HireTrack</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <main class="error-page">
+        <section class="error-card">
+            <div class="error-logo">HT</div>
+
+            <p class="error-code">500</p>
+            <h1>Something went wrong</h1>
+
+            <p>
+                HireTrack encountered an unexpected error.
+                Please try again later.
+            </p>
+
+            <a href="{% url 'home' %}" class="btn btn-primary">
+                Return to HireTrack
+            </a>
+        </section>
+    </main>
+</body>
+</html>

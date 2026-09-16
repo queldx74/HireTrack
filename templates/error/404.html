@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found | HireTrack</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <main class="error-page">
+        <section class="error-card">
+            <div class="error-logo">HT</div>
+
+            <p class="error-code">404</p>
+            <h1>Page not found</h1>
+
+            <p>
+                Sorry, the page you're looking for doesn't exist
+                or may have been moved.
+            </p>
+
+            <a href="{% url 'home' %}" class="btn btn-primary">
+                Return to HireTrack
+            </a>
+        </section>
+    </main>
+</body>
+</html>
