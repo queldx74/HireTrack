@@ -41,10 +41,14 @@
   --status-rejected-text: #991b1b;
   --status-rejected-border: #fecaca;
 
+    --status-rejected-border: #fecaca;
+
   /* Status: Withdrawn */
   --status-withdrawn-bg: #f3f4f6;
   --status-withdrawn-text: #374151;
   --status-withdrawn-border: #d1d5db;
+
+  /* Stat icon backgrounds */
 
   /* Stat icon backgrounds */
   --icon-total-bg: #e8eef7;
@@ -75,7 +79,7 @@ h3, .ht-h3 { font-weight: 600; font-size: 1.125rem; line-height: 1.35; }
 .ht-body { font-weight: 400; font-size: 0.9375rem; }
 .ht-stat-value { font-weight: 700; font-size: 1.5rem; }
 
-/* ---------- Mobile frame ---------- */
+/* ---------- Mobile frame (for viewing wireframes stacked on desktop) ---------- */
 .device {
   width: 100%;
   max-width: 390px;
@@ -123,7 +127,7 @@ h3, .ht-h3 { font-weight: 600; font-size: 1.125rem; line-height: 1.35; }
 .ht-content {
   flex: 1;
   padding: 20px;
-  padding-bottom: 96px;
+  padding-bottom: 96px; /* clears bottom nav */
 }
 .ht-content.no-nav-pad { padding-bottom: 32px; }
 
@@ -169,7 +173,7 @@ h3, .ht-h3 { font-weight: 600; font-size: 1.125rem; line-height: 1.35; }
   font-size: 0.9375rem;
 }
 
-/* Focus visibility */
+/* Focus visibility (accessibility floor) */
 .btn-ht-primary:focus-visible,
 .btn-ht-secondary:focus-visible,
 .btn-ht-danger:focus-visible,
@@ -234,7 +238,7 @@ h3, .ht-h3 { font-weight: 600; font-size: 1.125rem; line-height: 1.35; }
   padding: 16px;
 }
 
-/* Stat card */
+/* Stat card (dashboard) */
 .stat-card {
   background: var(--ht-surface);
   border: 1px solid var(--ht-line);
@@ -316,138 +320,142 @@ h3, .ht-h3 { font-weight: 600; font-size: 1.125rem; line-height: 1.35; }
 .nav-item-link.active { color: var(--ht-primary); }
 .nav-item-link i { font-size: 1.15rem; }
 
+/* FAB */
+.ht-fab {
+  position: fixed;
+  right: 20px;
+  bottom: 84px;
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--ht-primary);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+  box-shadow: 0 8px 20px rgba(59, 79, 168, 0.35);
+  border: none;
+  text-decoration: none;
+}
+.ht-fab:hover { background: #2f3f8c; color: #fff; }
+
+/* ---------- Empty state ---------- */
+.ht-empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 28px;
+  gap: 6px;
+}
+.ht-empty-icon {
+  width: 72px; height: 72px;
+  border-radius: 20px;
+  background: var(--ht-primary-bg);
+  color: var(--ht-primary);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2rem;
+  margin-bottom: 14px;
+}
+
+/* ---------- Auth / landing ---------- */
+.ht-auth-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 32px 24px;
+}
+.ht-logo-mark {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  background: var(--ht-primary);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-bottom: 18px;
+}
+.ht-divider {
+  display: flex; align-items: center; gap: 12px;
+  color: var(--ht-muted); font-size: 0.8125rem;
+  margin: 18px 0;
+}
+.ht-divider::before, .ht-divider::after {
+  content: ""; flex: 1; height: 1px; background: var(--ht-line);
+}
+
+/* ---------- Landing hero ---------- */
+.ht-hero {
+  background: var(--ht-primary-bg);
+  padding: 48px 24px 36px;
+  border-bottom: 1px solid var(--ht-line);
+}
+.ht-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  border: 1px solid var(--status-saved-border);
+  color: var(--ht-primary);
+  font-weight: 500;
+  font-size: 0.75rem;
+  padding: 6px 12px;
+  border-radius: 999px;
+  margin-bottom: 16px;
+}
+.ht-feature-row {
+  display: flex;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--ht-line);
+}
+.ht-feature-row:last-child { border-bottom: none; }
+.ht-feature-icon {
+  width: 38px; height: 38px;
+  border-radius: 10px;
+  background: var(--ht-primary-bg);
+  color: var(--ht-primary);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ---------- Modal / delete confirmation sheet ---------- */
+.ht-sheet-backdrop {
+  flex: 1;
+  background: rgba(26, 34, 51, 0.55);
+  display: flex;
+  align-items: flex-end;
+}
+.ht-sheet {
+  width: 100%;
+  background: var(--ht-surface);
+  border-radius: 20px 20px 0 0;
+  padding: 24px 20px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+}
+.ht-sheet-icon {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--status-rejected-bg);
+  color: var(--status-rejected-text);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
 /* Small helpers */
 .w-flex-col { display: flex; flex-direction: column; }
 .gap-10 { gap: 10px; }
 .gap-12 { gap: 12px; }
-
-/* =========================================
-   Statistics page rules (STRICT STACKING)
-   ========================================= */
-
-.ht-topbar-spacer { width: 36px; }
-.stats-heading { font-size: 1rem; }
-
-.stats-filter-list {
-  display: flex !important;
-  flex-direction: column !important;
-  width: 100% !important;
-}
-
-.stats-filter {
-  display: flex !important;
-  flex-direction: row !important;
-  flex-wrap: nowrap !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  width: 100% !important;
-  padding: 10px 0 !important;
-  text-decoration: none !important;
-  color: var(--ht-ink) !important;
-  border-bottom: 1px solid var(--ht-line) !important;
-}
-
-.stats-filter:last-child {
-  border-bottom: none !important;
-}
-
-.stats-filter-selected {
-  background: var(--ht-app-bg) !important;
-  margin-left: -16px !important;
-  margin-right: -16px !important;
-  padding-left: 16px !important;
-  padding-right: 16px !important;
-}
-
-.stats-filter-label {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 6px !important;
-  color: var(--ht-ink) !important;
-}
-
-.stats-count {
-  font-size: 1.125rem !important;
-  font-weight: 700 !important;
-  color: var(--ht-ink) !important;
-}
-
-.stats-status-selected {
-  box-shadow: 0 0 0 2px var(--ht-primary) !important;
-}
-
-/* =========================================
-   FORCED HORIZONTAL LAYOUT FIX
-   ========================================= */
-
-/* Ensure the wrapper enforces a clean vertical stack */
-.stats-filter-list {
-  display: flex !important;
-  flex-direction: column !important;
-  width: 100% !important;
-}
-
-/* Force anchor tags to act as full-width flex rows with no wrapping */
-a.stats-filter,
-.stats-filter {
-  display: flex !important;
-  flex-direction: row !important;
-  flex-wrap: nowrap !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-}
-
-/* Force left-side content to sit inline without collapsing */
-.stats-filter-label,
-.stats-filter .status-badge {
-  display: inline-flex !important;
-  align-items: center !important;
-  white-space: nowrap !important;
-  flex-shrink: 0 !important;
-}
-
-/* Align numeric count properly on the right */
-.stats-count {
-  margin-left: auto !important;
-  white-space: nowrap !important;
-  flex-shrink: 0 !important;
-}
-/* =========================================
-   STRICT VERTICAL LIST LAYOUT
-   ========================================= */
-
-.stats-filter-list {
-  display: block !important;
-  width: 100% !important;
-}
-
-.stats-row-wrapper {
-  display: block !important;
-  width: 100% !important;
-  border-bottom: 1px solid var(--ht-line);
-}
-
-.stats-row-wrapper:last-child {
-  border-bottom: none;
-}
-
-a.stats-filter {
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  width: 100% !important;
-  padding: 12px 0 !important;
-  text-decoration: none !important;
-  box-sizing: border-box !important;
-}
-
-.stats-filter-selected {
-  background: var(--ht-app-bg) !important;
-  margin-left: -16px !important;
-  margin-right: -16px !important;
-  padding-left: 16px !important;
-  padding-right: 16px !important;
+input[type="text"], input[type="password"], input[type="email"] {
+  border: 1px solid var(--ht-line);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 0.9375rem;
+  width: 100%;
 }
