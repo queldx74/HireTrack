@@ -414,3 +414,40 @@ a.stats-filter,
   white-space: nowrap !important;
   flex-shrink: 0 !important;
 }
+/* =========================================
+   STRICT VERTICAL LIST LAYOUT
+   ========================================= */
+
+.stats-filter-list {
+  display: block !important;
+  width: 100% !important;
+}
+
+.stats-row-wrapper {
+  display: block !important;
+  width: 100% !important;
+  border-bottom: 1px solid var(--ht-line);
+}
+
+.stats-row-wrapper:last-child {
+  border-bottom: none;
+}
+
+a.stats-filter {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  padding: 12px 0 !important;
+  text-decoration: none !important;
+  box-sizing: border-box !important;
+}
+
+.stats-filter-selected {
+  background: var(--ht-app-bg) !important;
+  margin-left: -16px !important;
+  margin-right: -16px !important;
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+}
