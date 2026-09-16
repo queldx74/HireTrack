@@ -459,3 +459,80 @@ input[type="text"], input[type="password"], input[type="email"] {
   font-size: 0.9375rem;
   width: 100%;
 }
+/* -----------------------------------------
+   Statistics page
+----------------------------------------- */
+
+.ht-topbar-spacer {
+    width: 36px;
+}
+
+.stats-heading {
+    font-size: 1rem;
+}
+
+.stats-filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    text-decoration: none;
+    color: inherit;
+}
+
+.stats-filter-border {
+    border-bottom: 1px solid var(--ht-line);
+}
+
+.stats-filter-active {
+    border-bottom: 1px solid var(--ht-line);
+    font-weight: 700;
+}
+
+.stats-filter-selected {
+    background: var(--ht-app-bg);
+    margin-left: -16px;
+    margin-right: -16px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.stats-filter-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--ht-ink);
+    font-size: 0.9375rem;
+}
+
+.stats-filter-active .stats-filter-label {
+    font-weight: 700;
+}
+
+.stats-count {
+    font-size: 1.125rem;
+}
+
+.stats-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.stats-status-selected {
+    box-shadow: 0 0 0 2px var(--ht-primary);
+}
+
+.stats-application-status {
+    white-space: nowrap;
+}
+
+.stats-empty-message {
+    color: var(--ht-muted);
+}
