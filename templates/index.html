@@ -1,3 +1,5 @@
+{% comment %}
+<!-- 
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -61,6 +63,126 @@
 
   </div>
 </div>
+
+</body>
+</html>
+-->
+{% endcomment %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HireTrack — Home</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<header class="site-header">
+  <a href="{% url 'home' %}" class="site-logo">
+    <span class="site-logo-mark">HT</span> HireTrack
+  </a>
+  <div class="site-header-actions">
+    <a href="{% url 'login' %}" class="btn-outline-navy">Log in</a>
+    <a href="{% url 'register' %}" class="btn-accent">Register free</a>
+  </div>
+</header>
+
+<section class="landing-hero">
+  <h1 class="ht-h1">Keep every application in one place</h1>
+  <p>HireTrack helps you log, follow up on, and stay on top of every job you apply to — so nothing slips through.</p>
+  <div class="hero-actions">
+    <a href="{% url 'register' %}" class="btn-accent">Create a free account</a>
+    <a href="{% url 'login' %}" class="btn-outline-navy">Log in</a>
+  </div>
+</section>
+
+<section class="landing-section">
+  <h2>Everything you need to stay organised</h2>
+  <p class="section-sub">Simple tools that give you a clear picture of your job search, every day.</p>
+
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="feature-icon"><i class="bi bi-journal-text"></i></div>
+      <h3>Track Every Application</h3>
+      <p>Log jobs the moment you apply. Never lose track of where you stand with each role.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><i class="bi bi-calendar-check"></i></div>
+      <h3>Stay Interview-Ready</h3>
+      <p>Mark interviews, follow-ups, and deadlines so nothing slips through the cracks.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><i class="bi bi-bar-chart"></i></div>
+      <h3>See Your Progress</h3>
+      <p>A clear dashboard shows your applications at a glance — from saved to offer in hand.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><i class="bi bi-check-circle"></i></div>
+      <h3>Manage Offers &amp; Rejections</h3>
+      <p>Record outcomes honestly so you can learn, iterate, and land the right role faster.</p>
+    </div>
+  </div>
+</section>
+
+<section class="steps-band">
+  <h2>Up and running in minutes</h2>
+  <p class="section-sub">No complex setup. Just sign up and start tracking.</p>
+
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-number">1</div>
+      <h3>Create a free account</h3>
+      <p>Sign up in seconds — no credit card needed.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-number">2</div>
+      <h3>Add your applications</h3>
+      <p>Log each job with the company, role, and date applied.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-number">3</div>
+      <h3>Track your progress</h3>
+      <p>Update statuses as you move through interviews to offer.</p>
+    </div>
+  </div>
+</section>
+
+<section class="landing-section">
+  <h2>Job seekers love HireTrack</h2>
+  <div class="testimonial-grid">
+    <div class="testimonial-card">
+      <span class="quote-mark"><i class="bi bi-quote"></i></span>
+      <p class="quote">I used to track everything in a messy spreadsheet. HireTrack made my whole job search feel organised and under control.</p>
+      <p class="author mb-0">Marcus T.</p>
+      <p class="role mb-0">Junior Developer</p>
+    </div>
+    <div class="testimonial-card">
+      <span class="quote-mark"><i class="bi bi-quote"></i></span>
+      <p class="quote">Having all my applications in one place helped me prepare better for each interview. I landed my offer in six weeks.</p>
+      <p class="author mb-0">Priya S.</p>
+      <p class="role mb-0">Graduate Software Engineer</p>
+    </div>
+  </div>
+</section>
+
+<section class="landing-section">
+  <div class="cta-band">
+    <h2>Ready to take control of your job search?</h2>
+    <p>Create your free account and start tracking applications today.</p>
+    <div class="cta-actions">
+      <a href="{% url 'register' %}" class="btn-accent">Register free</a>
+      <a href="{% url 'login' %}" class="btn-outline-light">Log in instead</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  HireTrack — Job Application Tracker
+</footer>
 
 </body>
 </html>
