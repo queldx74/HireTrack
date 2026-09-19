@@ -1,13 +1,17 @@
+/*
 /* =========================================================
    HireTrack — shared styles
    Mobile-first. Bootstrap 5 handles grid/utilities/components;
    this file holds design tokens + HireTrack-specific patterns.
-   ========================================================= */
+   ========================================================= * /
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+* /
+/*
 :root {
-  /* Brand */
+
+  /* Brand * /
+  
   --ht-primary: #3b4fa8;
   --ht-primary-bg: #f0f4ff;
   --ht-ink: #1a2233;
@@ -16,41 +20,41 @@
   --ht-surface: #ffffff;
   --ht-app-bg: #f7f8fc;
 
-  /* Status: Saved */
+  /* Status: Saved * /
   --status-saved-bg: #f0f4ff;
   --status-saved-text: #3b4fa8;
   --status-saved-border: #c7d2fe;
 
-  /* Status: Applied */
+  /* Status: Applied * /
   --status-applied-bg: #eff6ff;
   --status-applied-text: #1d4ed8;
   --status-applied-border: #bfdbfe;
 
-  /* Status: Interview */
+  /* Status: Interview * /
   --status-interview-bg: #fffbeb;
   --status-interview-text: #92400e;
   --status-interview-border: #fde68a;
 
-  /* Status: Offer */
+  /* Status: Offer * /
   --status-offer-bg: #f0fdf4;
   --status-offer-text: #166534;
   --status-offer-border: #bbf7d0;
 
-  /* Status: Rejected */
+  /* Status: Rejected * /
   --status-rejected-bg: #fef2f2;
   --status-rejected-text: #991b1b;
   --status-rejected-border: #fecaca;
 
     --status-rejected-border: #fecaca;
 
-  /* Status: Withdrawn */
+  /* Status: Withdrawn * /
   --status-withdrawn-bg: #f3f4f6;
   --status-withdrawn-text: #374151;
   --status-withdrawn-border: #d1d5db;
 
-  /* Stat icon backgrounds */
+  /* Stat icon backgrounds * /
 
-  /* Stat icon backgrounds */
+  /* Stat icon backgrounds * /
   --icon-total-bg: #e8eef7;
   --icon-total-fg: #1a3557;
   --icon-applied-bg: #dbeafe;
@@ -71,7 +75,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ---------- Type scale ---------- */
+/* ---------- Type scale ---------- * /
 h1, .ht-h1 { font-weight: 700; font-size: 1.75rem; line-height: 1.25; letter-spacing: -0.01em; }
 h2, .ht-h2 { font-weight: 700; font-size: 1.375rem; line-height: 1.3; }
 h3, .ht-h3 { font-weight: 600; font-size: 1.125rem; line-height: 1.35; }
@@ -79,7 +83,7 @@ h3, .ht-h3 { font-weight: 600; font-size: 1.125rem; line-height: 1.35; }
 .ht-body { font-weight: 400; font-size: 0.9375rem; }
 .ht-stat-value { font-weight: 700; font-size: 1.5rem; }
 
-/* ---------- Mobile frame (for viewing wireframes stacked on desktop) ---------- */
+/* ---------- Mobile frame (for viewing wireframes stacked on desktop) ---------- * /
 .device {
   width: 100%;
   max-width: 390px;
@@ -102,7 +106,7 @@ h3, .ht-h3 { font-weight: 600; font-size: 1.125rem; line-height: 1.35; }
   border-bottom: 1px dashed var(--ht-line);
 }
 
-/* ---------- Top app bar ---------- */
+/* ---------- Top app bar ---------- * /
 .ht-topbar {
   display: flex;
   align-items: center;
@@ -123,15 +127,15 @@ h3, .ht-h3 { font-weight: 600; font-size: 1.125rem; line-height: 1.35; }
 }
 .ht-topbar h1 { font-size: 1.0625rem; margin: 0; }
 
-/* ---------- Content area ---------- */
+/* ---------- Content area ---------- * /
 .ht-content {
   flex: 1;
   padding: 20px;
-  padding-bottom: 96px; /* clears bottom nav */
+  padding-bottom: 96px; /* clears bottom nav * /
 }
 .ht-content.no-nav-pad { padding-bottom: 32px; }
 
-/* ---------- Buttons ---------- */
+/* ---------- Buttons ---------- * /
 .btn-ht-primary {
   background: var(--ht-primary);
   border: none;
@@ -173,7 +177,7 @@ h3, .ht-h3 { font-weight: 600; font-size: 1.125rem; line-height: 1.35; }
   font-size: 0.9375rem;
 }
 
-/* Focus visibility (accessibility floor) */
+/* Focus visibility (accessibility floor) * /
 .btn-ht-primary:focus-visible,
 .btn-ht-secondary:focus-visible,
 .btn-ht-danger:focus-visible,
@@ -184,7 +188,7 @@ h3, .ht-h3 { font-weight: 600; font-size: 1.125rem; line-height: 1.35; }
   outline-offset: 2px;
 }
 
-/* ---------- Forms ---------- */
+/* ---------- Forms ---------- * /
 .ht-field { margin-bottom: 18px; }
 .ht-field label {
   display: block;
@@ -209,7 +213,7 @@ h3, .ht-h3 { font-weight: 600; font-size: 1.125rem; line-height: 1.35; }
 }
 .ht-field .form-text { font-size: 0.75rem; color: var(--ht-muted); margin-top: 4px; }
 
-/* ---------- Status badge ---------- */
+/* ---------- Status badge ---------- * /
 .status-badge {
   display: inline-flex;
   align-items: center;
@@ -230,7 +234,7 @@ h3, .ht-h3 { font-weight: 600; font-size: 1.125rem; line-height: 1.35; }
 .status-rejected  { background: var(--status-rejected-bg);  color: var(--status-rejected-text);  border-color: var(--status-rejected-border); }
 .status-withdrawn { background: var(--status-withdrawn-bg); color: var(--status-withdrawn-text); border-color: var(--status-withdrawn-border); }
 
-/* ---------- Cards ---------- */
+/* ---------- Cards ---------- * /
 .ht-card {
   background: var(--ht-surface);
   border: 1px solid var(--ht-line);
@@ -238,7 +242,7 @@ h3, .ht-h3 { font-weight: 600; font-size: 1.125rem; line-height: 1.35; }
   padding: 16px;
 }
 
-/* Stat card (dashboard) */
+/* Stat card (dashboard) * /
 .stat-card {
   background: var(--ht-surface);
   border: 1px solid var(--ht-line);
@@ -266,7 +270,7 @@ h3, .ht-h3 { font-weight: 600; font-size: 1.125rem; line-height: 1.35; }
 .stat-card .ht-stat-value.offer     { color: var(--icon-offer-fg); }
 .stat-card .ht-stat-value.rejected  { color: var(--icon-rejected-fg); }
 
-/* Application list row */
+/* Application list row * /
 .app-row {
   background: var(--ht-surface);
   border: 1px solid var(--ht-line);
@@ -294,7 +298,7 @@ h3, .ht-h3 { font-weight: 600; font-size: 1.125rem; line-height: 1.35; }
 .app-row-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; flex-shrink: 0; }
 .app-row-date { font-size: 0.75rem; color: var(--ht-muted); font-weight: 400; }
 
-/* ---------- Bottom nav ---------- */
+/* ---------- Bottom nav ---------- * /
 .ht-bottomnav {
   position: fixed;
   bottom: 0; left: 0; right: 0;
@@ -320,7 +324,7 @@ h3, .ht-h3 { font-weight: 600; font-size: 1.125rem; line-height: 1.35; }
 .nav-item-link.active { color: var(--ht-primary); }
 .nav-item-link i { font-size: 1.15rem; }
 
-/* FAB */
+/* FAB * /
 .ht-fab {
   position: fixed;
   right: 20px;
@@ -337,7 +341,7 @@ h3, .ht-h3 { font-weight: 600; font-size: 1.125rem; line-height: 1.35; }
 }
 .ht-fab:hover { background: #2f3f8c; color: #fff; }
 
-/* ---------- Empty state ---------- */
+/* ---------- Empty state ---------- * /
 .ht-empty {
   flex: 1;
   display: flex;
@@ -358,7 +362,7 @@ h3, .ht-h3 { font-weight: 600; font-size: 1.125rem; line-height: 1.35; }
   margin-bottom: 14px;
 }
 
-/* ---------- Auth / landing ---------- */
+/* ---------- Auth / landing ---------- * /
 .ht-auth-wrap {
   flex: 1;
   display: flex;
@@ -385,7 +389,7 @@ h3, .ht-h3 { font-weight: 600; font-size: 1.125rem; line-height: 1.35; }
   content: ""; flex: 1; height: 1px; background: var(--ht-line);
 }
 
-/* ---------- Landing hero ---------- */
+/* ---------- Landing hero ---------- * /
 .ht-hero {
   background: var(--ht-primary-bg);
   padding: 48px 24px 36px;
@@ -420,7 +424,7 @@ h3, .ht-h3 { font-weight: 600; font-size: 1.125rem; line-height: 1.35; }
   flex-shrink: 0;
 }
 
-/* ---------- Modal / delete confirmation sheet ---------- */
+/* ---------- Modal / delete confirmation sheet ---------- * /
 .ht-sheet-backdrop {
   flex: 1;
   background: rgba(26, 34, 51, 0.55);
@@ -448,7 +452,7 @@ h3, .ht-h3 { font-weight: 600; font-size: 1.125rem; line-height: 1.35; }
   margin-bottom: 8px;
 }
 
-/* Small helpers */
+/* Small helpers * /
 .w-flex-col { display: flex; flex-direction: column; }
 .gap-10 { gap: 10px; }
 .gap-12 { gap: 12px; }
@@ -461,12 +465,12 @@ input[type="text"], input[type="password"], input[type="email"] {
 }
 /* =========================================================
    Landing / marketing page (full-width, not the mobile .device frame)
-   ========================================================= */
+   ========================================================= * /
 
 :root {
   --ht-accent: #16a34a;
   --ht-accent-hover: #15803d;
-  --ht-navy: var(--icon-total-fg); /* reuses your existing #1a3557 token */
+  --ht-navy: var(--icon-total-fg); /* reuses your existing #1a3557 token * /
 }
 
 .site-header {
@@ -564,4 +568,259 @@ input[type="text"], input[type="password"], input[type="email"] {
 .site-footer {
   text-align: center; padding: 24px; color: var(--ht-muted); font-size: 0.8125rem;
   border-top: 1px solid var(--ht-line);
+}
+* /
+
+*/
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Font Family */
+  --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Theme Brand Colors */
+  --navy-dark: #1a2a40;
+  --navy-darker: #132032;
+  --brand-green: #22c55e;
+  --brand-green-hover: #16a34a;
+
+  /* Application Status Colors */
+  --bg-saved: #f0f4ff;       --text-saved: #3b4fa8;       --border-saved: #c7d2fe;
+  --bg-applied: #eff6ff;     --text-applied: #1d4ed8;     --border-applied: #bfdbfe;
+  --bg-interview: #fffbeb;   --text-interview: #92400e;   --border-interview: #fde68a;
+  --bg-offer: #f0fdf4;       --text-offer: #166534;       --border-offer: #bbf7d0;
+  --bg-rejected: #fef2f2;    --text-rejected: #991b1b;    --border-rejected: #fecaca;
+  --bg-withdrawn: #f3f4f6;   --text-withdrawn: #4b5563;   --border-withdrawn: #e5e7eb;
+
+  /* Statistic Icon Background & Text Colors */
+  --stat-total-bg: #e8eef7;     --stat-total-text: #1a3557;
+  --stat-applied-bg: #dbeafe;   --stat-applied-text: #1d4ed8;
+  --stat-interview-bg: #fef3c7; --stat-interview-text: #92400e;
+  --stat-offer-bg: #dcfce7;     --stat-offer-text: #166534;
+  --stat-rejected-bg: #fee2e2;  --stat-rejected-text: #991b1b;
+}
+
+body {
+  font-family: var(--font-inter);
+  background-color: #f8fafc;
+  color: #1e293b;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Typography Helpers */
+.fw-regular { font-weight: 400; }
+.fw-medium { font-weight: 500; }
+.fw-semibold { font-weight: 600; }
+.fw-bold { font-weight: 700; }
+
+/* Navigation Styling */
+.navbar-custom {
+  background-color: var(--navy-dark);
+  padding-top: 0.85rem;
+  padding-bottom: 0.85rem;
+}
+
+.navbar-custom .navbar-brand {
+  font-weight: 700;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar-custom .navbar-brand span.logo-square {
+  background-color: var(--brand-green);
+  color: #ffffff;
+  font-size: 0.85rem;
+  padding: 0.2rem 0.45rem;
+  border-radius: 4px;
+}
+
+.navbar-custom .nav-link {
+  color: #94a3b8;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.navbar-custom .nav-link:hover,
+.navbar-custom .nav-link.active {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.user-avatar-badge {
+  background-color: var(--brand-green);
+  color: #ffffff;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.8rem;
+  margin-right: 0.4rem;
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0.85rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  line-height: 1.2;
+}
+
+.status-saved     { background-color: var(--bg-saved); color: var(--text-saved); border-color: var(--border-saved); }
+.status-applied   { background-color: var(--bg-applied); color: var(--text-applied); border-color: var(--border-applied); }
+.status-interview { background-color: var(--bg-interview); color: var(--text-interview); border-color: var(--border-interview); }
+.status-offer     { background-color: var(--bg-offer); color: var(--text-offer); border-color: var(--border-offer); }
+.status-rejected  { background-color: var(--bg-rejected); color: var(--text-rejected); border-color: var(--border-rejected); }
+.status-withdrawn { background-color: var(--bg-withdrawn); color: var(--text-withdrawn); border-color: var(--border-withdrawn); }
+
+/* Custom Buttons */
+.btn-green {
+  background-color: var(--brand-green);
+  color: #ffffff;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1.25rem;
+  transition: background-color 0.2s ease;
+}
+.btn-green:hover {
+  background-color: var(--brand-green-hover);
+  color: #ffffff;
+}
+
+.btn-navy-action {
+  background-color: var(--navy-dark);
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 0.85rem;
+  border: none;
+  border-radius: 6px;
+  padding: 0.3rem 0.85rem;
+}
+.btn-navy-action:hover {
+  background-color: var(--navy-darker);
+  color: #ffffff;
+}
+
+/* Statistic Cards */
+.stat-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  padding: 1.25rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+}
+
+.stat-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.stat-icon.total     { background-color: var(--stat-total-bg); color: var(--stat-total-text); }
+.stat-icon.applied   { background-color: var(--stat-applied-bg); color: var(--stat-applied-text); }
+.stat-icon.interview { background-color: var(--stat-interview-bg); color: var(--stat-interview-text); }
+.stat-icon.offer     { background-color: var(--stat-offer-bg); color: var(--stat-offer-text); }
+
+/* Dashboard Filter Pills */
+.filter-pill {
+  border-radius: 9999px;
+  padding: 0.35rem 1.1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #64748b;
+  border: 1px solid #e2e8f0;
+  text-decoration: none;
+  background-color: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.filter-pill:hover {
+  color: var(--navy-dark);
+  border-color: #cbd5e1;
+}
+
+.filter-pill.active {
+  background-color: var(--navy-dark);
+  color: #ffffff;
+  border-color: var(--navy-dark);
+}
+
+/* Applications Container & Responsive Views */
+.applications-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.applications-table th {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #64748b;
+  letter-spacing: 0.05em;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.applications-table td {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+  .desktop-table-container {
+    display: none;
+  }
+  .mobile-cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-cards-container {
+    display: none;
+  }
+}
+
+/* Landing Page Sections */
+.hero-navy-bg {
+  background-color: var(--navy-dark);
+  color: #ffffff;
+}
+
+.step-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--brand-green);
+  color: #ffffff;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
 }

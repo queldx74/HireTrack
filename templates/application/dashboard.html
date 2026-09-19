@@ -1,3 +1,8 @@
+
+{% comment %}
+  This is the dashboard page for the HireTrack application.
+  It displays a summary of the user's job applications and their statuses.
+
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -128,3 +133,154 @@
 
 </body>
 </html>
+{% endcomment %}
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Dashboard — HireTrack{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  
+  <!-- Welcome & Add Header -->
+  <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3 mb-4">
+    <div>
+      <h1 class="h3 fw-bold mb-1">Welcome back, {{ request.user.username }}</h1>
+      <p class="text-muted small mb-0">Here's an overview of your job search.</p>
+    </div>
+    <div>
+      <a href="{% url 'add_application' %}" class="btn btn-green d-inline-flex align-items-center gap-2">
+        <span>+</span> Add Application
+      </a>
+    </div>
+  </div>
+
+  <!-- Real Dynamic Statistics Grid -->
+  <div class="row g-3 mb-4">
+    <div class="col-6 col-md-3">
+      <div class="stat-card d-flex justify-content-between align-items-start">
+        <div>
+          <div class="text-uppercase text-muted fw-semibold" style="font-size: 0.7rem; letter-spacing: 0.05em;">Total Applications</div>
+          <div class="h2 fw-bold mt-2 mb-0" style="color: var(--stat-total-text);">{{ total }}</div>
+        </div>
+        <div class="stat-icon total">📋</div>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-3">
+      <div class="stat-card d-flex justify-content-between align-items-start">
+        <div>
+          <div class="text-uppercase text-muted fw-semibold" style="font-size: 0.7rem; letter-spacing: 0.05em;">Applied</div>
+          <div class="h2 fw-bold mt-2 mb-0" style="color: var(--stat-applied-text);">{{ applied_count }}</div>
+        </div>
+        <div class="stat-icon applied">📬</div>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-3">
+      <div class="stat-card d-flex justify-content-between align-items-start">
+        <div>
+          <div class="text-uppercase text-muted fw-semibold" style="font-size: 0.7rem; letter-spacing: 0.05em;">Interviews</div>
+          <div class="h2 fw-bold mt-2 mb-0" style="color: var(--stat-interview-text);">{{ interview_count }}</div>
+        </div>
+        <div class="stat-icon interview">🗓️</div>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-3">
+      <div class="stat-card d-flex justify-content-between align-items-start">
+        <div>
+          <div class="text-uppercase text-muted fw-semibold" style="font-size: 0.7rem; letter-spacing: 0.05em;">Offers</div>
+          <div class="h2 fw-bold mt-2 mb-0" style="color: var(--stat-offer-text);">{{ offer_count }}</div>
+        </div>
+        <div class="stat-icon offer">✅</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Applications Card Block -->
+  <div class="applications-card p-4">
+    <h2 class="h5 fw-bold mb-3">My Applications</h2>
+
+    <!-- Filter Pills (Uses status query parameter while staying on dashboard) -->
+    <div class="d-flex flex-wrap gap-2 mb-4">
+      <a href="{% url 'dashboard' %}" class="filter-pill {% if not request.GET.status %}active{% endif %}">All</a>
+      <a href="{% url 'dashboard' %}?status=saved" class="filter-pill {% if request.GET.status == 'saved' %}active{% endif %}">Saved</a>
+      <a href="{% url 'dashboard' %}?status=applied" class="filter-pill {% if request.GET.status == 'applied' %}active{% endif %}">Applied</a>
+      <a href="{% url 'dashboard' %}?status=interview" class="filter-pill {% if request.GET.status == 'interview' %}active{% endif %}">Interview</a>
+      <a href="{% url 'dashboard' %}?status=offer" class="filter-pill {% if request.GET.status == 'offer' %}active{% endif %}">Offer</a>
+      <a href="{% url 'dashboard' %}?status=rejected" class="filter-pill {% if request.GET.status == 'rejected' %}active{% endif %}">Rejected</a>
+      <a href="{% url 'dashboard' %}?status=withdrawn" class="filter-pill {% if request.GET.status == 'withdrawn' %}active{% endif %}">Withdrawn</a>
+    </div>
+
+    <!-- Desktop Table View -->
+    <div class="desktop-table-container table-responsive">
+      <table class="table align-middle applications-table mb-0">
+        <thead>
+          <tr>
+            <th scope="col">JOB TITLE</th>
+            <th scope="col">COMPANY</th>
+            <th scope="col">DATE APPLIED</th>
+            <th scope="col">STATUS</th>
+            <th scope="col" class="text-end">ACTIONS</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for application in applications %}
+            <tr>
+              <td class="fw-semibold text-dark">{{ application.job_title }}</td>
+              <td class="text-secondary">{{ application.company }}</td>
+              <td class="text-secondary">{{ application.date_applied|date:"d M Y" }}</td>
+              <td>
+                <span class="status-badge status-{{ application.status|lower }}">
+                  {{ application.get_status_display }}
+                </span>
+              </td>
+              <td class="text-end">
+                <a href="{% url 'application_detail' application.pk %}" class="btn btn-sm btn-outline-secondary me-1">View</a>
+                <a href="{% url 'edit_application' application.pk %}" class="btn btn-sm btn-navy-action">Edit</a>
+              </td>
+            </tr>
+          {% empty %}
+            <tr>
+              <td colspan="5" class="text-center py-5 text-muted">
+                No job applications found.
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Mobile Card View -->
+    <div class="mobile-cards-container">
+      {% for application in applications %}
+        <div class="border rounded-3 p-3 bg-white">
+          <div class="d-flex justify-content-between align-items-start mb-2">
+            <div>
+              <h3 class="h6 fw-bold mb-0">{{ application.job_title }}</h3>
+              <span class="text-muted small">{{ application.company }}</span>
+            </div>
+            <span class="status-badge status-{{ application.status|lower }}">
+              {{ application.get_status_display }}
+            </span>
+          </div>
+          <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
+            <span class="text-muted small">{{ application.date_applied|date:"d M Y" }}</span>
+            <div>
+              <a href="{% url 'application_detail' application.pk %}" class="btn btn-sm btn-outline-secondary me-1">View</a>
+              <a href="{% url 'edit_application' application.pk %}" class="btn btn-sm btn-navy-action">Edit</a>
+            </div>
+          </div>
+        </div>
+      {% empty %}
+        <div class="text-center py-4 text-muted">
+          No job applications found.
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</div>
+{% endblock %}

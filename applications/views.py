@@ -7,7 +7,7 @@ from .models import JobApplication
 
 
 def home(request):
-    return render(request, "index.html")
+    return render(request, "application/home.html")
 
 
 def register(request):
@@ -134,3 +134,25 @@ def error_404(request, exception):
 
 def error_500(request):
     return render(request, "error/500.html", status=500)
+
+
+@login_required
+def dashboard(request):
+    status_filter = request.GET.get('status')
+    
+    # Keep your existing user-ownership security
+    applications = JobApplication.objects.filter(user=request.user)
+    
+    # Filter by status if query parameter is present in URL
+    if status_filter:
+        applications = applications.filter(status__iexact=status_filter)
+        
+    context = {
+        'applications': applications,
+        'total': JobApplication.objects.filter(user=request.user).count(),
+        'applied_count': JobApplication.objects.filter(user=request.user, status__iexact='applied').count(),
+        'interview_count': JobApplication.objects.filter(user=request.user, status__iexact='interview').count(),
+        'offer_count': JobApplication.objects.filter(user=request.user, status__iexact='offer').count(),
+    }
+    
+    return render(request, 'application/dashboard.html', context)

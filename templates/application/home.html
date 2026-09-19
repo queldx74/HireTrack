@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}HireTrack — Job Application Tracker{% endblock %}
+
+{% block content %}
+<!-- Top Feature Section -->
+<section class="py-5 text-center">
+  <div class="container py-3">
+    <h1 class="fw-bold h2 mb-2" style="color: var(--navy-dark);">Everything you need to stay organised</h1>
+    <p class="text-muted mx-auto mb-5" style="max-width: 580px;">
+      Simple tools that give you a clear picture of your job search, every day.
+    </p>
+
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-3">
+        <div class="stat-card h-100 text-start">
+          <div class="stat-icon mb-3" style="background-color: var(--stat-total-bg);">📋</div>
+          <h2 class="h6 fw-bold">Track Every Application</h2>
+          <p class="text-muted small mb-0">Log jobs the moment you apply. Never lose track of where you stand with each role.</p>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="stat-card h-100 text-start">
+          <div class="stat-icon mb-3" style="background-color: var(--stat-interview-bg);">🗓️</div>
+          <h2 class="h6 fw-bold">Stay Interview-Ready</h2>
+          <p class="text-muted small mb-0">Mark interviews, follow-ups, and deadlines so nothing slips through the cracks.</p>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="stat-card h-100 text-start">
+          <div class="stat-icon mb-3" style="background-color: #f1f5f9;">📊</div>
+          <h2 class="h6 fw-bold">See Your Progress</h2>
+          <p class="text-muted small mb-0">A clear dashboard shows your applications at a glance — from saved to offer in hand.</p>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="stat-card h-100 text-start">
+          <div class="stat-icon mb-3" style="background-color: var(--stat-offer-bg);">✅</div>
+          <h2 class="h6 fw-bold">Manage Offers & Rejections</h2>
+          <p class="text-muted small mb-0">Record outcomes honestly so you can learn, iterate, and land the right role faster.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works Section -->
+<section class="hero-navy-bg py-5 text-center">
+  <div class="container py-4">
+    <h2 class="h3 fw-bold mb-2">Up and running in minutes</h2>
+    <p class="text-light opacity-75 mb-5">No complex setup. Just sign up and start tracking.</p>
+
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-3">
+        <div class="border border-secondary border-opacity-50 rounded-3 p-4 h-100 text-start" style="background-color: rgba(255,255,255,0.03);">
+          <div class="step-circle">1</div>
+          <h3 class="h6 fw-bold text-white mb-2">Create a free account</h3>
+          <p class="text-light opacity-75 small mb-0">Sign up in seconds — no credit card needed.</p>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="border border-secondary border-opacity-50 rounded-3 p-4 h-100 text-start" style="background-color: rgba(255,255,255,0.03);">
+          <div class="step-circle">2</div>
+          <h3 class="h6 fw-bold text-white mb-2">Add your applications</h3>
+          <p class="text-light opacity-75 small mb-0">Log each job with the company, role, and date applied.</p>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="border border-secondary border-opacity-50 rounded-3 p-4 h-100 text-start" style="background-color: rgba(255,255,255,0.03);">
+          <div class="step-circle">3</div>
+          <h3 class="h6 fw-bold text-white mb-2">Track your progress</h3>
+          <p class="text-light opacity-75 small mb-0">Update statuses as you move through interviews to offer.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Bottom CTA Box -->
+<section class="py-5">
+  <div class="container">
+    <div class="hero-navy-bg rounded-4 p-5 text-center mx-auto" style="max-width: 800px;">
+      <h2 class="h3 fw-bold mb-3">Ready to take control of your job search?</h2>
+      <p class="text-light opacity-75 mb-4">Create your free account and start tracking applications today.</p>
+      <div class="d-flex justify-content-center gap-3">
+        <a href="{% url 'register' %}" class="btn btn-green px-4 py-2">Register free</a>
+        <a href="{% url 'login' %}" class="btn btn-outline-light px-4 py-2">Log in instead</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
