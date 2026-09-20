@@ -7,6 +7,8 @@ from .models import JobApplication
 
 
 def home(request):
+    if request.user.is_authenticated:
+        return redirect("dashboard")
     return render(request, "application/home.html")
 
 
@@ -28,15 +30,21 @@ def register(request):
 
 @login_required
 def dashboard(request):
-    applications = JobApplication.objects.filter(user=request.user).order_by("-date_applied")
+    user_apps = JobApplication.objects.filter(user=request.user)
+    
+    status_filter = request.GET.get("status")
+    if status_filter and status_filter.lower() != "all":
+        applications = user_apps.filter(status__iexact=status_filter).order_by("-date_applied")
+    else:
+        applications = user_apps.order_by("-date_applied")
 
     context = {
         "applications": applications,
-        "total": applications.count(),
-        "applied_count": applications.filter(status="applied").count(),
-        "interview_count": applications.filter(status="interview").count(),
-        "offer_count": applications.filter(status="offer").count(),
-        "rejected_count": applications.filter(status="rejected").count(),
+        "total": user_apps.count(),
+        "applied_count": user_apps.filter(status__iexact="applied").count(),
+        "interview_count": user_apps.filter(status__iexact="interview").count(),
+        "offer_count": user_apps.filter(status__iexact="offer").count(),
+        "rejected_count": user_apps.filter(status__iexact="rejected").count(),
     }
     return render(request, "application/dashboard.html", context)
 
@@ -90,8 +98,8 @@ def delete_application(request, pk):
 
     return render(request, "application/delete-confirmation.html", {"application": application})
 
-@login_required
 
+@login_required
 def statistics(request):
     applications = JobApplication.objects.filter(user=request.user)
 
@@ -122,6 +130,7 @@ def statistics(request):
     }
     return render(request, "application/statistics.html", context)
 
+
 # Custom error handlers
 
 def error_403(request, exception):
@@ -134,25 +143,3 @@ def error_404(request, exception):
 
 def error_500(request):
     return render(request, "error/500.html", status=500)
-
-
-@login_required
-def dashboard(request):
-    status_filter = request.GET.get('status')
-    
-    # Keep your existing user-ownership security
-    applications = JobApplication.objects.filter(user=request.user)
-    
-    # Filter by status if query parameter is present in URL
-    if status_filter:
-        applications = applications.filter(status__iexact=status_filter)
-        
-    context = {
-        'applications': applications,
-        'total': JobApplication.objects.filter(user=request.user).count(),
-        'applied_count': JobApplication.objects.filter(user=request.user, status__iexact='applied').count(),
-        'interview_count': JobApplication.objects.filter(user=request.user, status__iexact='interview').count(),
-        'offer_count': JobApplication.objects.filter(user=request.user, status__iexact='offer').count(),
-    }
-    
-    return render(request, 'application/dashboard.html', context)
