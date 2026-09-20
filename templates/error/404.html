@@ -1,30 +1,75 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Not Found | HireTrack</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
+{% extends 'application/base.html' %}
 
-<body>
-    <main class="error-page">
-        <section class="error-card">
-            <div class="error-logo">HT</div>
+{% block title %}404 Page Not Found — HireTrack{% endblock %}
 
-            <p class="error-code">404</p>
-            <h1>Page not found</h1>
+{% block content %}
 
-            <p>
-                Sorry, the page you're looking for doesn't exist
-                or may have been moved.
+<main class="error-page">
+    <div class="container">
+
+        <div class="error-content">
+
+            <div class="error-code">404</div>
+
+            <h1 class="error-title">Page Not Found</h1>
+
+            <p class="error-message">
+                Sorry, we couldn't find the page you're looking for.<br>
+                It may have been moved, deleted, or the address may be incorrect.
             </p>
 
-            <a href="{% url 'home' %}" class="btn btn-primary">
-                Return to HireTrack
-            </a>
-        </section>
-    </main>
-</body>
-</html>
+            <!-- Illustration -->
+            <div class="error-illustration error-404-illustration" aria-hidden="true">
+
+    <div class="error-404-icon">
+        <i class="bi bi-file-earmark"></i>
+
+        <div class="error-404-search">
+            <i class="bi bi-search"></i>
+        </div>
+    </div>
+
+</div>
+
+            <!-- Actions -->
+            <div class="error-actions">
+
+                <a href="{% url 'home' %}"
+                   class="btn btn-green error-btn">
+                    <i class="bi bi-house-door me-2"></i>
+                    Go back home
+                </a>
+
+                <button type="button"
+                        class="btn btn-outline-secondary error-btn"
+                        onclick="history.back();">
+                    <i class="bi bi-arrow-left me-2"></i>
+                    Go back
+                </button>
+
+            </div>
+
+            <!-- Help -->
+            <div class="error-help">
+
+                <div class="error-help-icon">
+                    <i class="bi bi-info-circle"></i>
+                </div>
+
+                <div>
+                    <h2>Looking for something?</h2>
+
+                    <p>
+                        Return to HireTrack and continue managing your
+                        job applications.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</main>
+
+{% endblock %}

@@ -824,3 +824,227 @@ body {
   justify-content: center;
   margin-bottom: 1rem;
 }
+
+/* =========================================================
+   500 SERVER ERROR PAGE
+   ========================================================= */
+
+.error-page {
+    flex: 1;
+    min-height: calc(100vh - 72px);
+    display: flex;
+    align-items: center;
+    padding: 3rem 1rem;
+    background-color: #f8fafc;
+}
+
+.error-content {
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* 500 */
+
+.error-code {
+    color: var(--navy-dark);
+    font-size: clamp(5rem, 11vw, 8rem);
+    font-weight: 700;
+    line-height: 0.9;
+    letter-spacing: -0.05em;
+    margin-bottom: 1rem;
+}
+
+.error-title {
+    color: var(--navy-dark);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.error-message {
+    color: #64748b;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 1.75rem;
+}
+
+
+/* Illustration */
+
+.error-illustration {
+    position: relative;
+    width: 280px;
+    height: 210px;
+    margin: 0 auto 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.error-illustration::before {
+    content: "";
+    position: absolute;
+    width: 260px;
+    height: 170px;
+    background: #eef6f5;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.error-cloud {
+    position: relative;
+    z-index: 2;
+    height: 85px;
+}
+
+.error-cloud > .bi-cloud {
+    display: block;
+    color: var(--navy-dark);
+    font-size: 5rem;
+    line-height: 1;
+}
+
+.error-lightning {
+    position: absolute;
+    color: var(--brand-green);
+    font-size: 2.5rem;
+    left: 50%;
+    top: 43px;
+    transform: translateX(-50%);
+}
+
+.error-laptop {
+    position: relative;
+    z-index: 1;
+    color: var(--navy-dark);
+    font-size: 7.5rem;
+    line-height: 1;
+}
+
+.error-face {
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.15rem;
+    color: var(--navy-dark);
+}
+
+
+/* Buttons */
+
+.error-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.error-btn {
+    min-width: 190px;
+    padding: 0.7rem 1.25rem;
+    font-weight: 600;
+    border-radius: 8px;
+}
+
+
+/* Help section */
+
+.error-help {
+    max-width: 520px;
+    margin: 0 auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e2e8f0;
+
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+
+    text-align: left;
+}
+
+.error-help-icon {
+    color: var(--brand-green);
+    font-size: 1.75rem;
+    flex-shrink: 0;
+}
+
+.error-help h2 {
+    color: var(--navy-dark);
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.error-help p {
+    color: #64748b;
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+
+
+/* Mobile */
+
+@media (max-width: 576px) {
+
+    .error-page {
+        align-items: flex-start;
+        padding-top: 2.5rem;
+    }
+
+    .error-code {
+        font-size: 5rem;
+    }
+
+    .error-title {
+        font-size: 1.6rem;
+    }
+
+    .error-message {
+        font-size: 0.95rem;
+    }
+
+    .error-illustration {
+        width: 230px;
+        height: 190px;
+    }
+
+    .error-illustration::before {
+        width: 220px;
+        height: 150px;
+    }
+
+    .error-laptop {
+        font-size: 6.5rem;
+    }
+
+    .error-actions {
+        flex-direction: column;
+    }
+
+    .error-btn {
+        width: 100%;
+    }
+}
+/* 403 / 404 illustration icons */
+
+.error-cloud > .bi-search,
+.error-cloud > .bi-shield-lock {
+    display: block;
+    color: var(--navy-dark);
+    font-size: 4.5rem;
+    line-height: 1;
+}
+
+.error-cloud > .bi-shield-lock {
+    color: var(--brand-green);
+}
+
+.error-face .bi-lock-fill {
+    font-size: 1rem;
+}
+

@@ -1,30 +1,76 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Server Error | HireTrack</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
+{% extends 'application/base.html' %}
 
-<body>
-    <main class="error-page">
-        <section class="error-card">
-            <div class="error-logo">HT</div>
+{% block title %}500 Server Error — HireTrack{% endblock %}
 
-            <p class="error-code">500</p>
-            <h1>Something went wrong</h1>
+{% block content %}
 
-            <p>
-                HireTrack encountered an unexpected error.
-                Please try again later.
+<main class="error-page">
+    <div class="container">
+
+        <div class="error-content">
+
+            <div class="error-code">500</div>
+
+            <h1 class="error-title">Server Error</h1>
+
+            <p class="error-message">
+                Something went wrong on our end.<br>
+                Please try again in a moment.
             </p>
 
-            <a href="{% url 'home' %}" class="btn btn-primary">
-                Return to HireTrack
-            </a>
-        </section>
-    </main>
-</body>
-</html>
+            <!-- Illustration -->
+            <div class="error-illustration" aria-hidden="true">
+
+                <div class="error-cloud">
+                    <i class="bi bi-cloud"></i>
+                    <i class="bi bi-lightning-fill error-lightning"></i>
+                </div>
+
+                <div class="error-laptop">
+                    <i class="bi bi-laptop"></i>
+                    <span class="error-face">:(</span>
+                </div>
+
+            </div>
+
+            <!-- Actions -->
+            <div class="error-actions">
+
+                <button type="button"
+                        class="btn btn-green error-btn"
+                        onclick="window.location.reload();">
+                    <i class="bi bi-arrow-clockwise me-2"></i>
+                    Try again
+                </button>
+
+                <a href="{% url 'home' %}"
+                   class="btn btn-outline-secondary error-btn">
+                    <i class="bi bi-house-door me-2"></i>
+                    Go back home
+                </a>
+
+            </div>
+
+            <!-- Help -->
+            <div class="error-help">
+
+                <div class="error-help-icon">
+                    <i class="bi bi-info-circle"></i>
+                </div>
+
+                <div>
+                    <h2>Need help?</h2>
+
+                    <p>
+                        If the problem keeps happening, please try again later.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</main>
+
+{% endblock %}

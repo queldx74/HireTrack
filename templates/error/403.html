@@ -1,29 +1,78 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Access Denied | HireTrack</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
+{% extends 'application/base.html' %}
 
-<body>
-    <main class="error-page">
-        <section class="error-card">
-            <div class="error-logo">HT</div>
+{% block title %}403 Access Denied — HireTrack{% endblock %}
 
-            <p class="error-code">403</p>
-            <h1>Access denied</h1>
+{% block content %}
 
-            <p>
-                You don't have permission to access this page.
+<main class="error-page">
+    <div class="container">
+
+        <div class="error-content">
+
+            <div class="error-code">403</div>
+
+            <h1 class="error-title">Access Denied</h1>
+
+            <p class="error-message">
+                You don't have permission to access this page.<br>
+                Please return to a page you have access to.
             </p>
 
-            <a href="{% url 'home' %}" class="btn btn-primary">
-                Return to HireTrack
-            </a>
-        </section>
-    </main>
-</body>
-</html>
+            <!-- Illustration -->
+            <div class="error-illustration" aria-hidden="true">
+
+                <div class="error-cloud">
+                    <i class="bi bi-shield-lock"></i>
+                </div>
+
+                <div class="error-laptop">
+                    <i class="bi bi-laptop"></i>
+                    <span class="error-face">
+                        <i class="bi bi-lock-fill"></i>
+                    </span>
+                </div>
+
+            </div>
+
+            <!-- Actions -->
+            <div class="error-actions">
+
+                <a href="{% url 'home' %}"
+                   class="btn btn-green error-btn">
+                    <i class="bi bi-house-door me-2"></i>
+                    Go back home
+                </a>
+
+                <button type="button"
+                        class="btn btn-outline-secondary error-btn"
+                        onclick="history.back();">
+                    <i class="bi bi-arrow-left me-2"></i>
+                    Go back
+                </button>
+
+            </div>
+
+            <!-- Help -->
+            <div class="error-help">
+
+                <div class="error-help-icon">
+                    <i class="bi bi-info-circle"></i>
+                </div>
+
+                <div>
+                    <h2>Why am I seeing this?</h2>
+
+                    <p>
+                        This page is protected and your account does not
+                        have permission to view it.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</main>
+
+{% endblock %}
