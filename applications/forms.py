@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import JobApplication
-
+from django.contrib.auth import password_validation
 
 class JobApplicationForm(forms.ModelForm):
     class Meta:
@@ -80,3 +80,137 @@ class CustomUserCreationForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+class EmailUpdateForm(forms.Form):
+    email = forms.EmailField(
+        label="Email address",
+        widget=forms.EmailInput(
+            attrs={
+                "class": "form-control",
+                "autocomplete": "email",
+            }
+        ),
+    )
+
+    def __init__(self, *args, user=None, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.user = user
+
+        if user and not self.is_bound:
+            self.fields["email"].initial = user.email
+
+    def clean_email(self):
+        email = self.cleaned_data["email"].strip()
+
+        # Prevent another account from already using this email.
+        if self.user:
+            UserModel = self.user.__class__
+
+            if (
+                UserModel.objects
+                .exclude(pk=self.user.pk)
+                .filter(email__iexact=email)
+                .exists()
+            ):
+                raise forms.ValidationError(
+                    "An account with this email address already exists."
+                )
+
+        return email
+
+
+class AccountPasswordChangeForm(forms.Form):
+    current_password = forms.CharField(
+        label="Current password",
+        strip=False,
+        widget=forms.PasswordInput(
+            attrs={
+                "class": "form-control",
+                "autocomplete": "current-password",
+            }
+        ),
+    )
+
+    new_password1 = forms.CharField(
+        label="New password",
+        strip=False,
+        widget=forms.PasswordInput(
+            attrs={
+                "class": "form-control",
+                "autocomplete": "new-password",
+            }
+        ),
+    )
+
+    new_password2 = forms.CharField(
+        label="Confirm new password",
+        strip=False,
+        widget=forms.PasswordInput(
+            attrs={
+                "class": "form-control",
+                "autocomplete": "new-password",
+            }
+        ),
+    )
+
+    def __init__(self, *args, user=None, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.user = user
+
+    def clean_current_password(self):
+        password = self.cleaned_data["current_password"]
+
+        if not self.user or not self.user.check_password(password):
+            raise forms.ValidationError("Your current password is incorrect.")
+
+        return password
+
+    def clean(self):
+        cleaned_data = super().clean()
+
+        new_password1 = cleaned_data.get("new_password1")
+        new_password2 = cleaned_data.get("new_password2")
+
+        if new_password1 and new_password2:
+            if new_password1 != new_password2:
+                self.add_error(
+                    "new_password2",
+                    "The new passwords do not match.",
+                )
+            else:
+                try:
+                    password_validation.validate_password(
+                        new_password1,
+                        self.user,
+                    )
+                except forms.ValidationError as error:
+                    self.add_error("new_password1", error)
+
+        return cleaned_data
+
+
+class DeleteAccountForm(forms.Form):
+    current_password = forms.CharField(
+        label="Current password",
+        strip=False,
+        widget=forms.PasswordInput(
+            attrs={
+                "class": "form-control",
+                "autocomplete": "current-password",
+            }
+        ),
+    )
+
+    def __init__(self, *args, user=None, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.user = user
+
+    def clean_current_password(self):
+        password = self.cleaned_data["current_password"]
+
+        if not self.user or not self.user.check_password(password):
+            raise forms.ValidationError("Your current password is incorrect.")
+
+        return password
+
+    

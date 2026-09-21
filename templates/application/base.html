@@ -35,16 +35,69 @@
             <li class="nav-item">
               <a class="nav-link {% if request.resolver_match.url_name == 'add_application' %}active{% endif %}" href="{% url 'add_application' %}">Add Application</a>
             </li>
-            <li class="nav-item d-flex align-items-center ms-md-2 my-2 my-md-0 me-md-2">
-              <span class="user-avatar-badge">{{ user.username|first|upper }}</span>
-              <span class="text-light fw-medium small">{{ user.username }}</span>
-            </li>
-            <li class="nav-item">
-              <form method="post" action="{% url 'logout' %}" class="d-inline">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-link nav-link border-0 text-decoration-none">Logout</button>
-              </form>
-            </li>
+            <li class="nav-item dropdown ms-md-2 my-2 my-md-0">
+  <button
+    class="btn btn-link nav-link dropdown-toggle d-flex align-items-center gap-2
+           border-0 text-decoration-none"
+    type="button"
+    id="accountDropdown"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+  >
+    <span class="user-avatar-badge">
+      {{ user.username|first|upper }}
+    </span>
+
+    <span class="text-light fw-medium small">
+      {{ user.username }}
+    </span>
+  </button>
+
+  <ul
+    class="dropdown-menu dropdown-menu-end shadow-sm"
+    aria-labelledby="accountDropdown"
+  >
+    <li>
+      <a
+        class="dropdown-item"
+        href="{% url 'account_settings' %}"
+      >
+        Account Settings
+      </a>
+    </li>
+
+    <li>
+      <hr class="dropdown-divider">
+    </li>
+
+    <li>
+      <form
+        method="post"
+        action="{% url 'logout' %}"
+        class="m-0"
+      >
+        {% csrf_token %}
+
+        <button
+          type="submit"
+          class="dropdown-item"
+        >
+          Logout
+        </button>
+      </form>
+    </li>
+
+    <li>
+      <button
+        type="button"
+        class="dropdown-item text-muted"
+        data-bs-toggle="dropdown"
+      >
+        Cancel
+      </button>
+    </li>
+  </ul>
+</li>
           {% else %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'login' %}">Log In</a>

@@ -1,8 +1,15 @@
+from django.http import request
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth import login
+from django.contrib.auth import login, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import CustomUserCreationForm, JobApplicationForm
+from .forms import (
+    CustomUserCreationForm,
+    JobApplicationForm,
+    EmailUpdateForm,
+    AccountPasswordChangeForm,
+    DeleteAccountForm,
+)
 from .models import JobApplication
 
 
@@ -47,6 +54,102 @@ def dashboard(request):
         "rejected_count": user_apps.filter(status__iexact="rejected").count(),
     }
     return render(request, "application/dashboard.html", context)
+
+@login_required
+def account_settings(request):
+    email_form = EmailUpdateForm(user=request.user)
+    password_form = AccountPasswordChangeForm(user=request.user)
+    delete_form = DeleteAccountForm(user=request.user)
+    if request.method == "POST":
+        action = request.POST.get("action")
+
+        if action == "update_email":
+            email_form = EmailUpdateForm(
+                request.POST,
+                user=request.user,
+            )
+
+            if email_form.is_valid():
+                request.user.email = email_form.cleaned_data["email"]
+                request.user.save(update_fields=["email"])
+
+                messages.success(
+                    request,
+                    "Your email address has been updated.",
+                )
+                return redirect("account_settings")
+
+        elif action == "change_password":
+            password_form = AccountPasswordChangeForm(
+                request.POST,
+                user=request.user,
+            )
+
+            if password_form.is_valid():
+                request.user.set_password(
+                    password_form.cleaned_data["new_password1"]
+                )
+                request.user.save()
+
+                # Keep the user logged in after changing their password.
+                update_session_auth_hash(request, request.user)
+
+                messages.success(
+                    request,
+                    "Your password has been changed successfully.",
+                )
+                return redirect("account_settings")
+
+    context = {
+    "email_form": email_form,
+    "password_form": password_form,
+    "delete_form": delete_form,
+}
+
+    return render(
+        request,
+        "application/account-settings.html",
+        context,
+    )
+
+
+@login_required
+def delete_account(request):
+    # Account deletion must never happen through GET.
+    if request.method != "POST":
+        return redirect("account_settings")
+
+    form = DeleteAccountForm(
+        request.POST,
+        user=request.user,
+    )
+
+    if not form.is_valid():
+        email_form = EmailUpdateForm(user=request.user)
+        password_form = AccountPasswordChangeForm(user=request.user)
+
+        return render(
+            request,
+            "application/account-settings.html",
+            {
+                "email_form": email_form,
+                "password_form": password_form,
+                "delete_form": form,
+            },
+        )
+
+    user = request.user
+
+    # JobApplications associated with this user will also be deleted
+    # because your JobApplication.user relationship uses CASCADE.
+    user.delete()
+
+    messages.success(
+        request,
+        "Your HireTrack account has been permanently deleted.",
+    )
+
+    return redirect("home")
 
 
 @login_required
