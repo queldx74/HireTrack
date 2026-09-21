@@ -88,8 +88,9 @@ HireTrack{% endblock %} {% block content %}
                 Current password
               </label>
 
-              {{ password_form.current_password }} {% if
-              password_form.current_password.errors %}
+              {{ password_form.current_password }} 
+              
+              {% if password_form.current_password.errors %}
               <div class="text-danger small mt-1">
                 {{ password_form.current_password.errors|striptags }}
               </div>
@@ -105,8 +106,9 @@ HireTrack{% endblock %} {% block content %}
                 New password
               </label>
 
-              {{ password_form.new_password1 }} {% if
-              password_form.new_password1.errors %}
+              {{ password_form.new_password1 }} 
+              
+              {% if password_form.new_password1.errors %}
               <div class="text-danger small mt-1">
                 {{ password_form.new_password1.errors|striptags }}
               </div>
@@ -122,8 +124,9 @@ HireTrack{% endblock %} {% block content %}
                 Confirm new password
               </label>
 
-              {{ password_form.new_password2 }} {% if
-              password_form.new_password2.errors %}
+              {{ password_form.new_password2 }} 
+              
+              {% if password_form.new_password2.errors %}
               <div class="text-danger small mt-1">
                 {{ password_form.new_password2.errors|striptags }}
               </div>
@@ -164,8 +167,9 @@ HireTrack{% endblock %} {% block content %}
                 Current password
               </label>
 
-              {{ delete_form.current_password }} {% if
-              delete_form.current_password.errors %}
+              {{ delete_form.current_password }} 
+              
+              {% if delete_form.current_password.errors %}
               <div class="text-danger small mt-1">
                 {{ delete_form.current_password.errors|striptags }}
               </div>

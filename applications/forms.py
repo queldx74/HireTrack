@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import JobApplication
 from django.contrib.auth import password_validation
+from django.core.exceptions import ValidationError
 
 class JobApplicationForm(forms.ModelForm):
     class Meta:
@@ -183,7 +184,7 @@ class AccountPasswordChangeForm(forms.Form):
                         new_password1,
                         self.user,
                     )
-                except forms.ValidationError as error:
+                except ValidationError as error:
                     self.add_error("new_password1", error)
 
         return cleaned_data
