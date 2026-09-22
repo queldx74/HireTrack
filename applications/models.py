@@ -14,9 +14,9 @@ class JobApplication(models.Model):
 	]
 
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
-	job_title = models.CharField(max_length=200)
-	company = models.CharField(max_length=200)
-	location = models.CharField(max_length=200, blank=True)
+	job_title = models.CharField(max_length=15)
+	company = models.CharField(max_length=15)
+	location = models.CharField(max_length=30, blank=True)
 	date_applied = models.DateField()
 	status = models.CharField(
 		max_length=20,
@@ -24,7 +24,7 @@ class JobApplication(models.Model):
 		default="saved"
 	)
 	job_url = models.URLField(blank=True)
-	salary = models.CharField(max_length=100, blank=True)
+	salary = models.CharField(max_length=20, blank=True)
 	notes = models.TextField(blank=True)
 
 	def __str__(self):
