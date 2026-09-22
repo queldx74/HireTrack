@@ -54,12 +54,13 @@ class JobApplicationForm(forms.ModelForm):
 
 class CustomUserCreationForm(UserCreationForm):
     first_name = forms.CharField(
-        max_length=150,
+        max_length=15,
         required=True,
         label="Full name",
         widget=forms.TextInput(attrs={"class": "form-control", "placeholder": "Jordan Smith"})
     )
     email = forms.EmailField(
+        max_length=30,
         required=True,
         widget=forms.EmailInput(attrs={"class": "form-control", "placeholder": "jordan@email.com"})
     )
@@ -70,7 +71,8 @@ class CustomUserCreationForm(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields["username"].widget.attrs.update({"class": "form-control", "placeholder": "jordansmith"})
+        self.fields["username"].max_length = 15
+        self.fields["username"].widget.attrs.update({"class": "form-control", "placeholder": "jordansmith", "maxlength": "15"})
         self.fields["password1"].widget.attrs.update({"class": "form-control", "placeholder": "At least 8 characters"})
         self.fields["password2"].widget.attrs.update({"class": "form-control", "placeholder": "Re-enter your password"})
 
