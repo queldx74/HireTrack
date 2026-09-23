@@ -123,15 +123,18 @@
     <div class="mobile-cards-container">
       {% for application in applications %}
         <div class="border rounded-3 p-3 bg-white">
-          <div class="d-flex justify-content-between align-items-start mb-2">
-            <div>
-              <h3 class="h6 fw-bold mb-0">{{ application.job_title }}</h3>
-              <span class="text-muted small">{{ application.company }}</span>
-            </div>
-            <span class="status-badge status-{{ application.status|lower }}">
-              {{ application.get_status_display }}
-            </span>
-          </div>
+          <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+
+    <div class="application-mobile-info">
+        <h3 class="h6 fw-bold mb-0">{{ application.job_title }}</h3>
+        <span class="text-muted small">{{ application.company }}</span>
+    </div>
+
+    <span class="status-badge status-{{ application.status|lower }}">
+        {{ application.get_status_display }}
+    </span>
+
+</div>
           <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
             <span class="text-muted small">{{ application.date_applied|date:"d M Y" }}</span>
             <div>

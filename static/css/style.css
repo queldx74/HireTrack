@@ -104,6 +104,7 @@ body {
   border-radius: 9999px;
   border: 1px solid transparent;
   line-height: 1.2;
+   flex-shrink: 0;
 }
 
 .status-saved     { background-color: var(--bg-saved); color: var(--text-saved); border-color: var(--border-saved); }
@@ -472,3 +473,8 @@ body {
     font-size: 1rem;
 }
 
+.application-mobile-info {
+    flex: 1;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}

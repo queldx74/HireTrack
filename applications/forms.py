@@ -54,14 +54,16 @@ class JobApplicationForm(forms.ModelForm):
 
 class CustomUserCreationForm(UserCreationForm):
     first_name = forms.CharField(
-        max_length=15,
+        max_length=50,
         required=True,
         label="Full name",
-        widget=forms.TextInput(attrs={"class": "form-control", "placeholder": "Jordan Smith"})
+        help_text="Enter your first and last name. Maximum 50 characters.",
+        widget=forms.TextInput(attrs={"class": "form-control", "placeholder": "Jordan Smith", "maxlength": "50"})
     )
     email = forms.EmailField(
-        max_length=30,
+        max_length=254,
         required=True,
+        help_text="Enter your email address.",
         widget=forms.EmailInput(attrs={"class": "form-control", "placeholder": "jordan@email.com"})
     )
 
@@ -71,8 +73,8 @@ class CustomUserCreationForm(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields["username"].max_length = 15
-        self.fields["username"].widget.attrs.update({"class": "form-control", "placeholder": "jordansmith", "maxlength": "15"})
+        self.fields["username"].max_length = 50
+        self.fields["username"].widget.attrs.update({"class": "form-control", "placeholder": "jordansmith", "maxlength": "50"})
         self.fields["password1"].widget.attrs.update({"class": "form-control", "placeholder": "At least 8 characters"})
         self.fields["password2"].widget.attrs.update({"class": "form-control", "placeholder": "Re-enter your password"})
 
