@@ -22,6 +22,23 @@ urlpatterns = [
     path("account/", views.account_settings, name="account_settings"),
     path("account/delete/", views.delete_account, name="delete_account"),
 
+        # Custom HireTrack Admin Dashboard
+    path(
+        "admin-dashboard/",
+        views.admin_dashboard,
+        name="admin_dashboard",
+    ),
+    path(
+        "admin-dashboard/users/<int:user_id>/",
+        views.admin_user_detail,
+        name="admin_user_detail",
+    ),
+    path(
+        "admin-dashboard/users/<int:user_id>/delete/",
+        views.admin_delete_user,
+        name="admin_delete_user",
+    ),
+
     path("applications/add/", views.add_application, name="add_application"),
     path(
         "applications/<int:pk>/",

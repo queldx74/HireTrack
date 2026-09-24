@@ -20,6 +20,11 @@ from django.urls import include, path
 from django.views.generic import RedirectView
 from django.conf import settings
 
+# Only superusers can access Django's built-in admin.
+# HireTrack staff admins use the custom Admin Dashboard instead.
+admin.site.has_permission = lambda request: (
+    request.user.is_active and request.user.is_superuser
+)
 
 handler403 = "applications.views.error_403"
 handler404 = "applications.views.error_404"

@@ -1,0 +1,94 @@
+{% extends "application/base.html" %}
+
+{% block title %}Account Details — HireTrack{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+
+  <div class="row justify-content-center">
+    <div class="col-lg-7">
+
+      <div class="mb-4">
+        <a
+          href="{% url 'admin_dashboard' %}"
+          class="text-decoration-none"
+        >
+          &larr; Back to Admin Dashboard
+        </a>
+      </div>
+
+      <div class="card border-0 shadow-sm">
+        <div class="card-body p-4 p-md-5">
+
+          <h1 class="h3 fw-bold mb-1">
+            Account Details
+          </h1>
+
+          <p class="text-muted mb-4">
+            Read-only account information.
+          </p>
+
+          <dl class="row mb-0">
+
+            <dt class="col-sm-4 py-2">
+              Username
+            </dt>
+            <dd class="col-sm-8 py-2">
+              {{ account.username }}
+            </dd>
+
+            <dt class="col-sm-4 py-2">
+              Name
+            </dt>
+            <dd class="col-sm-8 py-2">
+              {% if account.get_full_name %}
+                {{ account.get_full_name }}
+              {% else %}
+                —
+              {% endif %}
+            </dd>
+
+            <dt class="col-sm-4 py-2">
+              Email
+            </dt>
+            <dd class="col-sm-8 py-2">
+              {{ account.email|default:"—" }}
+            </dd>
+
+            <dt class="col-sm-4 py-2">
+              Role
+            </dt>
+            <dd class="col-sm-8 py-2">
+              {% if account.is_superuser %}
+                Superuser
+              {% elif account.is_staff %}
+                Admin
+              {% else %}
+                User
+              {% endif %}
+            </dd>
+
+            <dt class="col-sm-4 py-2">
+              Date joined
+            </dt>
+            <dd class="col-sm-8 py-2">
+              {{ account.date_joined|date:"d M Y" }}
+            </dd>
+
+            <dt class="col-sm-4 py-2">
+              Job applications
+            </dt>
+            <dd class="col-sm-8 py-2">
+              {{ application_count }}
+            </dd>
+
+          </dl>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+{% endblock %}

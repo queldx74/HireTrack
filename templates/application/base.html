@@ -101,6 +101,28 @@
         Cancel
       </button>
     </li>
+<li>
+  <hr class="dropdown-divider">
+</li>
+
+<li>
+  {% if user.is_staff and not user.is_superuser %}
+    <a
+      class="dropdown-item"
+      href="{% url 'admin_dashboard' %}"
+    >
+      Admin Dashboard
+    </a>
+  {% else %}
+    <span
+      class="dropdown-item disabled text-muted"
+      aria-disabled="true"
+    >
+      Admin Dashboard
+    </span>
+  {% endif %}
+</li>
+    
   </ul>
 </li>
           {% else %}

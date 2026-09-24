@@ -1,0 +1,88 @@
+{% extends "application/base.html" %}
+
+{% block title %}Delete User — HireTrack{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+
+      <div class="card border-danger shadow-sm">
+
+        <div class="card-body p-4 p-md-5">
+
+          <h1 class="h3 fw-bold text-danger mb-3">
+            Delete User?
+          </h1>
+
+          <p>
+            You are about to permanently delete:
+          </p>
+
+          <div class="bg-light rounded p-3 mb-4">
+
+            <strong>
+              {{ account.username }}
+            </strong>
+
+            {% if account.email %}
+              <br>
+              <span class="text-muted">
+                {{ account.email }}
+              </span>
+            {% endif %}
+
+          </div>
+
+          <div class="alert alert-warning">
+
+            This will also permanently delete
+
+            <strong>
+              {{ application_count }}
+            </strong>
+
+            job application{{ application_count|pluralize }}
+            belonging to this user.
+
+          </div>
+
+          <p class="text-muted">
+            This action cannot be undone.
+          </p>
+
+          <div class="d-flex gap-2 justify-content-end mt-4">
+
+            <a
+              href="{% url 'admin_dashboard' %}"
+              class="btn btn-outline-secondary"
+            >
+              Cancel
+            </a>
+
+            <form method="post">
+
+              {% csrf_token %}
+
+              <button
+                type="submit"
+                class="btn btn-danger"
+              >
+                Delete User
+              </button>
+
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+{% endblock %}

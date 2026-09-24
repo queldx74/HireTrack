@@ -1,3 +1,5 @@
+from django.contrib.auth.models import User
+from django.core.exceptions import PermissionDenied
 from django.http import request
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, update_session_auth_hash
@@ -233,7 +235,128 @@ def statistics(request):
     }
     return render(request, "application/statistics.html", context)
 
+# ---------------------------------------------------------
+# HIRETRACK ADMIN DASHBOARD
+# ---------------------------------------------------------
 
+
+def hiretrack_admin_required(user):
+    """
+    Returns True only for HireTrack admins.
+
+    HireTrack admins:
+    is_staff = True
+    is_superuser = False
+
+    Superusers are reserved for Django Admin.
+    """
+    return user.is_authenticated and user.is_staff and not user.is_superuser
+
+
+@login_required
+def admin_dashboard(request):
+    """
+    Custom dashboard for HireTrack admins.
+
+    Superusers are deliberately excluded because they use
+    Django's built-in admin instead.
+    """
+    if not hiretrack_admin_required(request.user):
+        raise PermissionDenied
+
+    # Superusers never appear in the custom dashboard.
+    users = User.objects.filter(
+        is_superuser=False
+    ).order_by("username")
+
+    return render(
+        request,
+        "application/admin-dashboard.html",
+        {
+            "users": users,
+        },
+    )
+
+
+@login_required
+def admin_user_detail(request, user_id):
+    """
+    HireTrack admins can view normal user accounts only.
+    They cannot view another admin's account details.
+    """
+    if not hiretrack_admin_required(request.user):
+        raise PermissionDenied
+
+    account = get_object_or_404(
+        User,
+        pk=user_id,
+        is_superuser=False,
+    )
+
+    # Admins cannot view other admin account details.
+    if account.is_staff:
+        raise PermissionDenied
+
+    application_count = JobApplication.objects.filter(
+        user=account
+    ).count()
+
+    return render(
+        request,
+        "application/admin-user-detail.html",
+        {
+            "account": account,
+            "application_count": application_count,
+        },
+    )
+
+
+@login_required
+def admin_delete_user(request, user_id):
+    """
+    HireTrack admins can delete normal users only.
+
+    Admin and superuser accounts cannot be deleted through
+    the custom HireTrack Admin Dashboard.
+    """
+    if not hiretrack_admin_required(request.user):
+        raise PermissionDenied
+
+    account = get_object_or_404(
+        User,
+        pk=user_id,
+        is_superuser=False,
+    )
+
+    # HireTrack admins cannot delete other admins.
+    if account.is_staff:
+        raise PermissionDenied
+
+    application_count = JobApplication.objects.filter(
+        user=account
+    ).count()
+
+    if request.method == "POST":
+        username = account.username
+
+        # Associated JobApplications are deleted by CASCADE.
+        account.delete()
+
+        messages.success(
+            request,
+            f'The account "{username}" has been permanently deleted.',
+        )
+
+        return redirect("admin_dashboard")
+
+    return render(
+        request,
+        "application/admin-delete-user.html",
+        {
+            "account": account,
+            "application_count": application_count,
+        },
+    )
 # Custom error handlers
 
 def error_403(request, exception):
