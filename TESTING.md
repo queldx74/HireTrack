@@ -339,7 +339,36 @@ HTML was tested using [insert validator/tool].
 
 If an error was discovered, explain how it was corrected.
 
----
+
+
+## HTML Validation
+
+HTML validation was carried out using the W3C Markup Validation Service. As the project uses Django templates, each page was rendered in the browser and the generated HTML source was copied into the validator using Direct Input.
+
+## HTML Validation
+
+HTML validation was carried out using the W3C Markup Validation Service. As the project uses Django templates, each page was rendered in the browser and the generated HTML source was copied into the validator using Direct Input.
+
+| Page | Template | Result |
+| --- | --- | --- |
+| Home | `application/home.html` | ✅ Pass / ❌ Failure |
+| Dashboard | `application/dashboard.html` | ✅ Pass / ❌ Failure |
+| Empty Dashboard | `application/empty-dashboard.html` | ✅ Pass / ❌ Failure |
+| Add Application | `application/add-application.html` | ✅ Pass / ❌ Failure |
+| Application Details | `application/application-details.html` | ✅ Pass / ❌ Failure |
+| Edit Application | `application/edit-application.html` | ✅ Pass / ❌ Failure |
+| Delete Application | `application/delete-confirmation.html` | ✅ Pass / ❌ Failure |
+| Statistics | `application/statistics.html` | ✅ Pass / ❌ Failure |
+| Account Settings | `application/account-settings.html` | ✅ Pass / ❌ Failure |
+| Admin Dashboard | `application/admin-dashboard.html` | ✅ Pass / ❌ Failure |
+| Admin User Details | `application/admin-user-detail.html` | ✅ Pass / ❌ Failure |
+| Admin Delete User | `application/admin-delete-user.html` | ✅ Pass / ❌ Failure |
+| Login | `registration/login.html` | ✅ Pass / ❌ Failure |
+| Registration | `registration/registration.html` | ✅ Pass / ❌ Failure |
+| 403 Error | `error/403.html` | ✅ Pass / ❌ Failure |
+| 404 Error | `error/404.html` | ✅ Pass / ❌ Failure |
+| 500 Error | `error/500.html` | ✅ Pass / ❌ Failure |
+|
 
 # CSS Validation
 
