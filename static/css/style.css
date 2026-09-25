@@ -478,3 +478,135 @@ body {
     min-width: 0;
     overflow-wrap: anywhere;
 }
+
+/* =========================================================
+   ADMIN DASHBOARD
+   ========================================================= */
+
+/* Desktop / tablet table truncation */
+.admin-table-name,
+.admin-table-email {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.admin-table-name {
+    max-width: 180px;
+}
+
+.admin-table-email {
+    max-width: 240px;
+}
+
+
+/* Mobile cards hidden by default */
+.admin-users-mobile {
+    display: none;
+}
+
+/* =========================================================
+   ADMIN DASHBOARD - TABLET
+   ========================================================= */
+
+@media (min-width: 576px) and (max-width: 991.98px) {
+
+    /* Hide Role column on tablet */
+    .admin-users-table-container th:nth-child(4),
+    .admin-users-table-container td:nth-child(4) {
+        display: none;
+    }
+
+    /* Reduce horizontal spacing */
+    .admin-users-table-container th,
+    .admin-users-table-container td {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+
+    /* Keep a little more space at the outside edges */
+    .admin-users-table-container th:first-child,
+    .admin-users-table-container td:first-child {
+        padding-left: 1rem !important;
+    }
+
+    .admin-users-table-container th:last-child,
+    .admin-users-table-container td:last-child {
+        padding-right: 1rem !important;
+    }
+
+    /* Truncate Name earlier on tablet */
+    .admin-table-name {
+        max-width: 140px;
+    }
+
+    /* Truncate Email earlier on tablet */
+    .admin-table-email {
+        max-width: 190px;
+    }
+
+    /* Prevent the Actions button from being squeezed */
+    .admin-users-table-container .dropdown {
+        white-space: nowrap;
+    }
+}
+
+
+/* =========================================================
+   ADMIN DASHBOARD - MOBILE
+   ========================================================= */
+
+@media (max-width: 575.98px) {
+
+    /* Replace table with cards */
+    .admin-users-table-container {
+        display: none;
+    }
+
+    .admin-users-mobile {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .admin-user-card .card-body {
+        padding: 1rem;
+    }
+
+    /*
+     * This area takes all remaining space after the
+     * Actions dropdown.
+     */
+    .admin-user-card-info {
+        flex: 1;
+        min-width: 0;
+    }
+
+    /*
+     * Responsive font size:
+     * gets smaller as the phone gets narrower,
+     * but never becomes excessively small.
+     */
+    .admin-mobile-username {
+        font-size: clamp(0.85rem, 3.8vw, 1rem);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .admin-mobile-detail {
+        font-size: clamp(0.75rem, 3.3vw, 0.875rem);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-top: 0.2rem;
+    }
+
+    /*
+     * Don't allow Actions to be crushed by long
+     * usernames, names or email addresses.
+     */
+    .admin-mobile-actions {
+        flex-shrink: 0;
+    }
+}
