@@ -610,3 +610,15 @@ body {
         flex-shrink: 0;
     }
 }
+/* =========================================================
+   MOBILE ACCOUNT DROPDOWN
+   ========================================================= */
+
+@media (max-width: 575.98px) {
+
+    #accountDropdown + .dropdown-menu {
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%) !important;
+    }
+}
