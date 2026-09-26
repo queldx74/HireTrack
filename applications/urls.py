@@ -55,4 +55,5 @@ urlpatterns = [
         views.delete_application,
         name="delete_application",
     ),
+    path("test-500/", views.test_500, name="test_500"),
 ]

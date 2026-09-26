@@ -369,3 +369,7 @@ def error_404(request, exception):
 
 def error_500(request):
     return render(request, "error/500.html", status=500)
+
+
+def test_500(request):
+    raise Exception("Testing custom 500 page")
