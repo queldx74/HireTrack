@@ -5,6 +5,7 @@ from .models import JobApplication
 from django.contrib.auth import password_validation
 from django.core.exceptions import ValidationError
 
+
 class JobApplicationForm(forms.ModelForm):
     class Meta:
         model = JobApplication
@@ -19,31 +20,41 @@ class JobApplicationForm(forms.ModelForm):
             "notes",
         ]
         widgets = {
-            "job_title": forms.TextInput(attrs={
-                "class": "form-control", "placeholder": "e.g. Product Designer"
-            }),
-            "company": forms.TextInput(attrs={
-                "class": "form-control", "placeholder": "e.g. Nova Studio"
-            }),
-            "location": forms.TextInput(attrs={
-                "class": "form-control", "placeholder": "e.g. Remote, Edinburgh"
-            }),
-            "date_applied": forms.DateInput(attrs={
-                "class": "form-control", "type": "date"
-            }),
-            "status": forms.Select(attrs={
-                "class": "form-select"
-            }),
-            "job_url": forms.URLInput(attrs={
-                "class": "form-control", "placeholder": "https://"
-            }),
-            "salary": forms.TextInput(attrs={
-                "class": "form-control", "placeholder": "e.g. £45,000"
-            }),
-            "notes": forms.Textarea(attrs={
-                "class": "form-control", "rows": 4,
-                "placeholder": "Contacts, interview prep, follow-up reminders…"
-            }),
+            "job_title": forms.TextInput(
+                attrs={
+                    "class": "form-control",
+                    "placeholder": "e.g. Product Designer",
+                }
+            ),
+            "company": forms.TextInput(
+                attrs={
+                    "class": "form-control",
+                    "placeholder": "e.g. Nova Studio",
+                }
+            ),
+            "location": forms.TextInput(
+                attrs={
+                    "class": "form-control",
+                    "placeholder": "e.g. Remote, Edinburgh",
+                }
+            ),
+            "date_applied": forms.DateInput(
+                attrs={"class": "form-control", "type": "date"}
+            ),
+            "status": forms.Select(attrs={"class": "form-select"}),
+            "job_url": forms.URLInput(
+                attrs={"class": "form-control", "placeholder": "https://"}
+            ),
+            "salary": forms.TextInput(
+                attrs={"class": "form-control", "placeholder": "e.g. £45,000"}
+            ),
+            "notes": forms.Textarea(
+                attrs={
+                    "class": "form-control",
+                    "rows": 4,
+                    "placeholder": "Contacts, follow-up reminders…",
+                }
+            ),
         }
         labels = {
             "job_title": "Job title",
@@ -58,13 +69,21 @@ class CustomUserCreationForm(UserCreationForm):
         required=True,
         label="Full name",
         help_text="Enter your first and last name. Maximum 50 characters.",
-        widget=forms.TextInput(attrs={"class": "form-control", "placeholder": "Jordan Smith", "maxlength": "50"})
+        widget=forms.TextInput(
+            attrs={
+                "class": "form-control",
+                "placeholder": "Jordan Smith",
+                "maxlength": "50",
+            }
+        ),
     )
     email = forms.EmailField(
         max_length=254,
         required=True,
         help_text="Enter your email address.",
-        widget=forms.EmailInput(attrs={"class": "form-control", "placeholder": "jordan@email.com"})
+        widget=forms.EmailInput(
+            attrs={"class": "form-control", "placeholder": "jordan@email.com"}
+        ),
     )
 
     class Meta:
@@ -74,9 +93,19 @@ class CustomUserCreationForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields["username"].max_length = 50
-        self.fields["username"].widget.attrs.update({"class": "form-control", "placeholder": "jordansmith", "maxlength": "50"})
-        self.fields["password1"].widget.attrs.update({"class": "form-control", "placeholder": "At least 8 characters"})
-        self.fields["password2"].widget.attrs.update({"class": "form-control", "placeholder": "Re-enter your password"})
+        self.fields["username"].widget.attrs.update(
+            {
+                "class": "form-control",
+                "placeholder": "jordansmith",
+                "maxlength": "50",
+            }
+        )
+        self.fields["password1"].widget.attrs.update(
+            {"class": "form-control", "placeholder": "At least 8 characters"}
+        )
+        self.fields["password2"].widget.attrs.update(
+            {"class": "form-control", "placeholder": "Re-enter your password"}
+        )
 
     def save(self, commit=True):
         user = super().save(commit=False)
@@ -85,6 +114,7 @@ class CustomUserCreationForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
 
 class EmailUpdateForm(forms.Form):
     email = forms.EmailField(
@@ -112,8 +142,7 @@ class EmailUpdateForm(forms.Form):
             UserModel = self.user.__class__
 
             if (
-                UserModel.objects
-                .exclude(pk=self.user.pk)
+                UserModel.objects.exclude(pk=self.user.pk)
                 .filter(email__iexact=email)
                 .exists()
             ):
@@ -218,5 +247,3 @@ class DeleteAccountForm(forms.Form):
             raise forms.ValidationError("Your current password is incorrect.")
 
         return password
-
-    
