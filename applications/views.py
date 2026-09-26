@@ -1,6 +1,5 @@
 from django.contrib.auth.models import User
 from django.core.exceptions import PermissionDenied
-from django.http import request
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
@@ -40,10 +39,12 @@ def register(request):
 @login_required
 def dashboard(request):
     user_apps = JobApplication.objects.filter(user=request.user)
-    
+
     status_filter = request.GET.get("status")
     if status_filter and status_filter.lower() != "all":
-        applications = user_apps.filter(status__iexact=status_filter).order_by("-date_applied")
+        applications = user_apps.filter(status__iexact=status_filter).order_by(
+            "-date_applied"
+        )
     else:
         applications = user_apps.order_by("-date_applied")
 
@@ -51,11 +52,14 @@ def dashboard(request):
         "applications": applications,
         "total": user_apps.count(),
         "applied_count": user_apps.filter(status__iexact="applied").count(),
-        "interview_count": user_apps.filter(status__iexact="interview").count(),
+        "interview_count": user_apps.filter(
+            status__iexact="interview"
+        ).count(),
         "offer_count": user_apps.filter(status__iexact="offer").count(),
         "rejected_count": user_apps.filter(status__iexact="rejected").count(),
     }
     return render(request, "application/dashboard.html", context)
+
 
 @login_required
 def account_settings(request):
@@ -103,10 +107,10 @@ def account_settings(request):
                 return redirect("account_settings")
 
     context = {
-    "email_form": email_form,
-    "password_form": password_form,
-    "delete_form": delete_form,
-}
+        "email_form": email_form,
+        "password_form": password_form,
+        "delete_form": delete_form,
+    }
 
     return render(
         request,
@@ -173,7 +177,11 @@ def add_application(request):
 @login_required
 def application_detail(request, pk):
     application = get_object_or_404(JobApplication, pk=pk, user=request.user)
-    return render(request, "application/application-details.html", {"application": application})
+    return render(
+        request,
+        "application/application-details.html",
+        {"application": application},
+    )
 
 
 @login_required
@@ -189,7 +197,11 @@ def edit_application(request, pk):
     else:
         form = JobApplicationForm(instance=application)
 
-    return render(request, "application/edit-application.html", {"form": form, "application": application})
+    return render(
+        request,
+        "application/edit-application.html",
+        {"form": form, "application": application},
+    )
 
 
 @login_required
@@ -201,7 +213,11 @@ def delete_application(request, pk):
         messages.success(request, "Application deleted.")
         return redirect("dashboard")
 
-    return render(request, "application/delete-confirmation.html", {"application": application})
+    return render(
+        request,
+        "application/delete-confirmation.html",
+        {"application": application},
+    )
 
 
 @login_required
@@ -210,13 +226,17 @@ def statistics(request):
 
     status_counts = []
     for status_code, status_label in JobApplication.STATUS_CHOICES:
-        status_counts.append({
-            "code": status_code,
-            "label": status_label,
-            "count": applications.filter(status=status_code).count(),
-        })
+        status_counts.append(
+            {
+                "code": status_code,
+                "label": status_label,
+                "count": applications.filter(status=status_code).count(),
+            }
+        )
 
-    valid_status_codes = [code for code, label in JobApplication.STATUS_CHOICES]
+    valid_status_codes = [
+        code for code, label in JobApplication.STATUS_CHOICES
+    ]
     selected_status = request.GET.get("status", "all")
 
     if selected_status != "all" and selected_status not in valid_status_codes:
@@ -225,7 +245,9 @@ def statistics(request):
     if selected_status == "all":
         filtered_applications = applications.order_by("-date_applied")
     else:
-        filtered_applications = applications.filter(status=selected_status).order_by("-date_applied")
+        filtered_applications = applications.filter(
+            status=selected_status
+        ).order_by("-date_applied")
 
     context = {
         "total": applications.count(),
@@ -234,6 +256,7 @@ def statistics(request):
         "filtered_applications": filtered_applications,
     }
     return render(request, "application/statistics.html", context)
+
 
 # ---------------------------------------------------------
 # HIRETRACK ADMIN DASHBOARD
@@ -265,9 +288,7 @@ def admin_dashboard(request):
         raise PermissionDenied
 
     # Superusers never appear in the custom dashboard.
-    users = User.objects.filter(
-        is_superuser=False
-    ).order_by("username")
+    users = User.objects.filter(is_superuser=False).order_by("username")
 
     return render(
         request,
@@ -297,9 +318,7 @@ def admin_user_detail(request, user_id):
     if account.is_staff:
         raise PermissionDenied
 
-    application_count = JobApplication.objects.filter(
-        user=account
-    ).count()
+    application_count = JobApplication.objects.filter(user=account).count()
 
     return render(
         request,
@@ -332,9 +351,7 @@ def admin_delete_user(request, user_id):
     if account.is_staff:
         raise PermissionDenied
 
-    application_count = JobApplication.objects.filter(
-        user=account
-    ).count()
+    application_count = JobApplication.objects.filter(user=account).count()
 
     if request.method == "POST":
         username = account.username
@@ -357,7 +374,10 @@ def admin_delete_user(request, user_id):
             "application_count": application_count,
         },
     )
+
+
 # Custom error handlers
+
 
 def error_403(request, exception):
     return render(request, "error/403.html", status=403)
@@ -369,5 +389,3 @@ def error_404(request, exception):
 
 def error_500(request):
     return render(request, "error/500.html", status=500)
-
-
