@@ -351,24 +351,41 @@ HTML validation was carried out using the W3C Markup Validation Service. As the 
 
 | Page | Template | Result |
 | --- | --- | --- |
-| Home | `application/home.html` | ✅ Pass / ❌ Failure |
-| Dashboard | `application/dashboard.html` | ✅ Pass / ❌ Failure |
-| Empty Dashboard | `application/empty-dashboard.html` | ✅ Pass / ❌ Failure |
-| Add Application | `application/add-application.html` | ✅ Pass / ❌ Failure |
-| Application Details | `application/application-details.html` | ✅ Pass / ❌ Failure |
-| Edit Application | `application/edit-application.html` | ✅ Pass / ❌ Failure |
-| Delete Application | `application/delete-confirmation.html` | ✅ Pass / ❌ Failure |
-| Statistics | `application/statistics.html` | ✅ Pass / ❌ Failure |
-| Account Settings | `application/account-settings.html` | ✅ Pass / ❌ Failure |
-| Admin Dashboard | `application/admin-dashboard.html` | ✅ Pass / ❌ Failure |
-| Admin User Details | `application/admin-user-detail.html` | ✅ Pass / ❌ Failure |
-| Admin Delete User | `application/admin-delete-user.html` | ✅ Pass / ❌ Failure |
-| Login | `registration/login.html` | ✅ Pass / ❌ Failure |
-| Registration | `registration/registration.html` | ✅ Pass / ❌ Failure |
-| 403 Error | `error/403.html` | ✅ Pass / ❌ Failure |
-| 404 Error | `error/404.html` | ✅ Pass / ❌ Failure |
-| 500 Error | `error/500.html` | ✅ Pass / ❌ Failure |
+| Home | `application/home.html` | ✅ Pass / |
+| Dashboard | `application/dashboard.html` | ✅ Pass / 
+| Empty Dashboard | `application/empty-dashboard.html` | ✅ Pass /  
+| Add Application | `application/add-application.html` | ✅ Pass / 
+| Application Details | `application/application-details.html` | ✅ Pass /
+| Edit Application | `application/edit-application.html` | ✅ Pass / 
+| Delete Application | `application/delete-confirmation.html` | ✅ Pass |
+| Statistics | `application/statistics.html` | ✅ Pass /
+| Account Settings | `application/account-settings.html` | ✅ Pass  |
+| Admin Dashboard | `application/admin-dashboard.html` | ✅ Pass |
+| Admin User Details | `application/admin-user-detail.html` | ✅ Pass  |
+| Admin Delete User | `application/admin-delete-user.html` | ✅ Pass  |
+| Login | `registration/login.html` | ✅ Pass  |
+| Registration | `registration/registration.html` | ✅ Pass  |
+| 403 Error | `error/403.html` | ✅ Pass |
+| 404 Error | `error/404.html` | ✅ Pass |
+| 500 Error | `error/500.html` | ✅ Pass  |
 |
+### HTML Validation Evidence
+The screenshots below show examples of successful HTML validation using the W3C Markup Validation Service. Each Django template was rendered in the browser and the generated HTML was tested using the validator's Direct Input option.
+
+#### homepage
+![W3C HTML validation result for the Homepage](docs/html-check-screenshots/base-html.png)
+
+#### Dashboard
+![W3C HTML validation result for the Dashboard](docs/html-check-screenshots/dashboard-html.png)
+
+#### Registration
+![W3C HTML validation result for the Registration page](docs/html-check-screenshots/registration-html.png)       
+
+#### Admin Dashboard
+![W3C HTML validation result for the Admin Dashboard](docs/html-check-screenshots/admin-dashboard-html.png)
+
+#### 404 Error Page
+![W3C HTML validation result for the 404 error page](docs/html-check-screenshots/error-404-html.png)
 
 # CSS Validation
 
