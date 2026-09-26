@@ -132,6 +132,7 @@ class AccountPasswordChangeForm(forms.Form):
             attrs={
                 "class": "form-control",
                 "autocomplete": "current-password",
+                "id": "id_delete_current_password",
             }
         ),
     )

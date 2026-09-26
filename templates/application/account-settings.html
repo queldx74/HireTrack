@@ -33,7 +33,7 @@ HireTrack{% endblock %} {% block content %}
               class="form-control"
               value="{{ request.user.username }}"
               disabled
-            />
+            >
 
             <div class="form-text">Your username cannot be changed.</div>
           </div>
@@ -41,7 +41,7 @@ HireTrack{% endblock %} {% block content %}
           <form method="post" novalidate>
             {% csrf_token %}
 
-            <input type="hidden" name="action" value="update_email" />
+            <input type="hidden" name="action" value="update_email" >
 
             <div class="mb-3">
               <label
@@ -77,7 +77,7 @@ HireTrack{% endblock %} {% block content %}
           <form method="post" novalidate>
             {% csrf_token %}
 
-            <input type="hidden" name="action" value="change_password" />
+            <input type="hidden" name="action" value="change_password" >
 
             <!-- Current password -->
             <div class="mb-3">
