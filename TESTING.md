@@ -389,13 +389,16 @@ The screenshots below show examples of successful HTML validation using the W3C 
 
 # CSS Validation
 
-CSS was validated using [insert validator/tool].
+CSS was validated using [W3C CSS Validator](https://jigsaw.w3.org/css-validator/validator).
+
 
 | File      | Result | Errors | Resolution |
 | --------- | ------ | ------ | ---------- |
-| style.css |        |        |            |
+| style.css |    Pass  None   |       |
 
 ---
+### CSS Validation Evidence
+![W3C CSS validation result for style.css](docs/css-check-screenshots/style-css.png)
 
 # Python Validation
 
