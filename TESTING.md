@@ -402,37 +402,108 @@ CSS was validated using [W3C CSS Validator](https://jigsaw.w3.org/css-validator/
 
 # Python Validation
 
-Python code was checked for PEP 8 compliance using [insert tool].
+Python code was checked for PEP 8 compliance using:
+* [flake8](https://flake8.pycqa.org/en/latest/)
+* black (for formatting)
+* https://pep8ci.herokuapp.com/
 
-Example:
+Python code quality was checked using a combination of **Flake8**, **Black**, and the **Code Institute Python Linter**. These tools were used to identify formatting and PEP8 issues and to keep the Python code consistent and readable.
+
+### Flake8
+
+Flake8 was used locally during development to check the Python files for PEP8 style issues and common coding errors.
+
+Flake8 was installed inside the project's virtual environment using:
 
 ```bash
-flake8
+pip install flake8
+
+Individual files were then checked from the project root. For example:
+flake8 applications/views.py
+flake8 applications/forms.py
+flake8 applications/models.py
+flake8 applications/tests.py
+flake8 applications/urls.py
+
+Flake8 was useful because it provided the exact file, line number and type of issue detected. This made it easier to correct problems such as:
+- E501 - lines longer than the permitted length.
+- E302 - incorrect number of blank lines between functions.
+- W291 - trailing whitespace.
+- W293 - whitespace on otherwise blank lines.
+- Unused imports and other common Python issues.
+Black
+Black was used as an additional formatting tool to help maintain consistent Python formatting.
+It was installed in the virtual environment using:
+pip install black
+
+Because the project was being checked against a 79-character line length, Black was run with the following option where appropriate:
+black --line-length 79 applications/views.py
+
+After using Black, Flake8 was run again to check for any remaining issues.
+Black was used carefully because it automatically reformats files. Changes were reviewed and the application was tested afterwards to ensure that formatting changes had not affected the application's functionality.
+Code Institute Python Linter
+The Code Institute Python Linter was used as the final validation check for the project's Python files.
+The Python code was copied into the linter and any reported issues were reviewed and corrected. Files were checked again after corrections until the relevant validation issues had been resolved.
+Using the Code Institute Python Linter alongside Flake8 provided an additional final check that the submitted Python code followed the expected formatting standards.
+Why Multiple Tools Were Used
+Each tool served a slightly different purpose during testing:
+- Flake8 provided fast local feedback and identified specific PEP8 and code-quality issues while working in VS Code.
+- Black helped automatically produce consistent formatting and reduce manual formatting work.
+- Code Institute Python Linter provided the final validation check against the standards expected for the project submission.
+Using these tools together helped improve the consistency, readability and maintainability of the Python code while allowing validation issues to be identified before deployment.
 ```
 
 or another tool used during the project.
 
 | File      | Result | Issues Corrected |
 | --------- | ------ | ---------------- |
-| models.py |        |                  |
-| views.py  |        |                  |
-| forms.py  |        |                  |
-| urls.py   |        |                  |
-| tests.py  |        |                  |
+| models.py |  Pass  |                  |
+| views.py  |  Pass  |                  |
+| forms.py  |  Pass  |                  |
+| urls.py   |  Pass  |                  |
+| tests.py  |  Pass  |                  |
+| admin.py  |  Pass  |                  |
+| urls.py  |  Pass  |                  |
 
----
+The only issues found were related to line length, and indentation and were resolved using Black and Flake8.
 
-# JavaScript Testing
+# Python Validation Evidence
+[models.py](docs/python-check-screenshots/models-py.png)
+[views.py](docs/python-check-screenshots/views-py.png)
+[forms.py](docs/python-check-screenshots/forms-py.png)
+[urls.py](docs/python-check-screenshots/urls-py.png)
+[tests.py](docs/python-check-screenshots/tests-py.png)
+[admin.py](docs/python-check-screenshots/admin-py.png)
 
-If HireTrack uses JavaScript, document testing here.
+## Automated Testing
 
-| Feature | Expected Result | Actual Result | Pass/Fail |
-| ------- | --------------- | ------------- | --------- |
-|         |                 |               |           |
+Automated testing was carried out using Django's built-in testing framework.
 
-If JavaScript is not used:
+The tests are contained in:
 
-> JavaScript-specific testing was not applicable because no custom JavaScript was implemented.
+`applications/tests.py`
+
+The automated tests were designed to check important parts of the HireTrack application, including model behaviour, views, authentication, access control and application functionality.
+
+### Running the Tests
+
+The project's virtual environment was activated before running the test suite.
+
+The tests can be run from the project root using:
+
+```bash
+python manage.py test
+
+# Automated Testing Evidence
+[tests.py](docs/automated-tests/automated-tests-validation.png)
+
+
+## JavaScript Validation
+
+No custom JavaScript was written for this project. Interactive components, such as the responsive navigation and dropdown menus, use Bootstrap's JavaScript bundle.
+
+As no project-specific JavaScript files were created, JavaScript validation was not required.
+
 
 ---
 

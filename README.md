@@ -114,7 +114,43 @@ Users should be able to:
 # Design
 
 ## Wireframes  
-*(Insert images here)*  
+[Balsamiq desktop wireframes](docs/wireframes/desktop-wireframe.png)
+[Balsamiq tablet wireframes](docs/wireframes/tablet-wireframe.png)
+[Balsamiq mobile wireframes](docs/wireframes/mobile-wireframe.png)
+
+## Wireframes
+
+The initial wireframes for HireTrack were created in Balsamiq during the
+planning stage of the project. Their purpose was to establish the basic
+structure, navigation and user journey before development began.
+
+The final application differs from these original wireframes. During
+development, the interface and functionality evolved as the project was
+tested across different screen sizes and additional requirements were
+implemented.
+
+Some of the main changes from the original wireframes include:
+
+- The original mobile-style bottom navigation was replaced with a responsive
+  Bootstrap navigation bar that works across desktop, tablet and mobile
+  devices.
+- The original Dashboard and Applications concepts were developed into the
+  final application dashboard, which provides application information,
+  status summaries and filtering in one area.
+- The original Profile concept evolved into Account Settings, focusing on
+  account information, email and password management, and account deletion.
+- The Add Application form was expanded as the data model developed to
+  capture more useful information about each job application.
+- Statistics functionality was introduced during development to give users
+  an overview of their application progress.
+- Role-based administration was added to support the HireTrack Admin
+  functionality and was not part of the initial wireframes.
+
+These differences demonstrate the development of the project from the
+initial design concept to the final implementation. The wireframes were
+used as a starting point rather than as a fixed specification.
+
+
 - Desktop wireframes  
 - Tablet wireframes  
 - Mobile wireframes  

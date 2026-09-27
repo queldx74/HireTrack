@@ -21,47 +21,60 @@ class JobApplicationModelTest(TestCase):
         )
 
     def test_application_created(self):
-        self.assertEqual(
-            self.application.company,
-            "Test Company"
-        )
+        self.assertEqual(self.application.company, "Test Company")
 
     def test_application_belongs_to_user(self):
-        self.assertEqual(
-            self.application.user,
-            self.user
-        )
+        self.assertEqual(self.application.user, self.user)
 
 
 class StatisticsViewTests(TestCase):
 
     def setUp(self):
         # Two separate users, so we can test data isolation between them
-        self.user_a = User.objects.create_user(username="usera", password="testpass123")
-        self.user_b = User.objects.create_user(username="userb", password="testpass123")
+        self.user_a = User.objects.create_user(
+            username="usera", password="testpass123"
+        )
+        self.user_b = User.objects.create_user(
+            username="userb", password="testpass123"
+        )
 
         # User A: 2 saved, 1 applied, 1 interview, 0 of everything else
         JobApplication.objects.create(
-            user=self.user_a, job_title="Designer", company="Nova",
-            date_applied="2026-01-01", status="saved"
+            user=self.user_a,
+            job_title="Designer",
+            company="Nova",
+            date_applied="2026-01-01",
+            status="saved",
         )
         JobApplication.objects.create(
-            user=self.user_a, job_title="Engineer", company="Atlas",
-            date_applied="2026-01-02", status="saved"
+            user=self.user_a,
+            job_title="Engineer",
+            company="Atlas",
+            date_applied="2026-01-02",
+            status="saved",
         )
         JobApplication.objects.create(
-            user=self.user_a, job_title="Analyst", company="Brightline",
-            date_applied="2026-01-03", status="applied"
+            user=self.user_a,
+            job_title="Analyst",
+            company="Brightline",
+            date_applied="2026-01-03",
+            status="applied",
         )
         JobApplication.objects.create(
-            user=self.user_a, job_title="Manager", company="Coastline",
-            date_applied="2026-01-04", status="interview"
+            user=self.user_a,
+            job_title="Manager",
+            company="Coastline",
+            date_applied="2026-01-04",
+            status="interview",
         )
 
         # User B: 1 interview application — used to test cross-user privacy
         JobApplication.objects.create(
-            user=self.user_b, job_title="Consultant", company="Meridian",
-            date_applied="2026-01-05", status="interview"
+            user=self.user_b,
+            job_title="Consultant",
+            company="Meridian",
+            date_applied="2026-01-05",
+            status="interview",
         )
 
         self.stats_url = reverse("statistics")
@@ -69,7 +82,8 @@ class StatisticsViewTests(TestCase):
     # ---------- Access control ----------
 
     def test_statistics_requires_login(self):
-        """An anonymous user should be redirected to login, not shown the page."""
+        """An anonymous user should be redirected to login, 
+        not shown the page."""
         response = self.client.get(self.stats_url)
         self.assertEqual(response.status_code, 302)
         self.assertIn("/login/", response.url)
@@ -79,7 +93,7 @@ class StatisticsViewTests(TestCase):
         response = self.client.get(self.stats_url)
         self.assertEqual(response.status_code, 200)
 
-    # ---------- Counts (must reflect all of the user's applications) ----------
+    #  Counts (must reflect all of the user's applications)
 
     def test_total_and_status_counts_are_correct(self):
         self.client.login(username="usera", password="testpass123")
@@ -87,7 +101,10 @@ class StatisticsViewTests(TestCase):
 
         self.assertEqual(response.context["total"], 4)
 
-        counts = {item["code"]: item["count"] for item in response.context["status_counts"]}
+        counts = {
+            item["code"]: item["count"]
+            for item in response.context["status_counts"]
+        }
         self.assertEqual(counts["saved"], 2)
         self.assertEqual(counts["applied"], 1)
         self.assertEqual(counts["interview"], 1)
@@ -102,7 +119,9 @@ class StatisticsViewTests(TestCase):
         unfiltered = self.client.get(self.stats_url)
         filtered = self.client.get(self.stats_url, {"status": "interview"})
 
-        self.assertEqual(unfiltered.context["total"], filtered.context["total"])
+        self.assertEqual(
+            unfiltered.context["total"], filtered.context["total"]
+        )
         self.assertEqual(
             unfiltered.context["status_counts"],
             filtered.context["status_counts"],
@@ -158,7 +177,7 @@ class StatisticsViewTests(TestCase):
 
         self.assertEqual(response.context["selected_status"], "all")
 
-    # ---------- Privacy: the most important test in this file ----------
+    # Privacy: the most important test in this file 
 
     def test_statistics_only_includes_own_applications(self):
         """User A's stats/list must never include User B's data, filtered or not."""
@@ -171,15 +190,19 @@ class StatisticsViewTests(TestCase):
 
     def test_filter_cannot_leak_another_users_applications(self):
         """
-        Both users have an 'interview' application. Filtering by ?status=interview
-        as User A must return only User A's interview application, never User B's.
+        Both users have an 'interview' application. 
+        Filtering by ?status=interview
+        as User A must return only User A's interview 
+        application, never User B's.
         """
         self.client.login(username="usera", password="testpass123")
         response = self.client.get(self.stats_url, {"status": "interview"})
 
         results = response.context["filtered_applications"]
         self.assertEqual(results.count(), 1)
-        self.assertEqual(results.first().company, "Coastline")  # User A's, not Meridian (User B's)
+        self.assertEqual(
+            results.first().company, "Coastline"
+        )  # User A's, not Meridian (User B's)
 
         for app in results:
             self.assertEqual(app.user, self.user_a)
@@ -190,4 +213,7 @@ class StatisticsViewTests(TestCase):
 
         self.assertEqual(response.context["total"], 1)
         self.assertEqual(response.context["filtered_applications"].count(), 1)
-        self.assertEqual(response.context["filtered_applications"].first().company, "Meridian")
+        self.assertEqual(
+            response.context["filtered_applications"].first().company,
+            "Meridian",
+        )
