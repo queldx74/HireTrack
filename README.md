@@ -151,22 +151,82 @@ initial design concept to the final implementation. The wireframes were
 used as a starting point rather than as a fixed specification.
 
 
-- Desktop wireframes  
-- Tablet wireframes  
-- Mobile wireframes  
 
 ## Mockups  
+### Refined Design Mockups
 
+Following the initial wireframing stage, more detailed mockups were created
+in Figma to develop the visual direction of HireTrack.
+
+The Figma designs introduced the colour scheme, typography, navigation,
+cards, application tables and other interface elements that are much closer
+to the final implementation, while retaining the core user
+journey established during the initial planning stage.
+
+#### Home Page Mockup
+
+The refined home page mockup established the public-facing design, including
+the HireTrack branding, feature overview, registration call-to-action and
+step-by-step introduction to the application.
+ Home page
+![HireTrack home page mockup](docs/mockup/mockup-homepage.png)    
+
+#### Dashboard Mockup
+
+The refined dashboard mockup introduced the application summary cards,
+status filtering, application table and primary application management
+actions used in the final interface.
+
+![HireTrack dashboard mockup](docs/mockup/mockup-dashboard.png)
 - Dashboard mockup  
-![HireTrack dashboard](docs/mockup/mockup.png)
-- Home page
-![HireTrack landing page](docs/mockup.png)
 
+#### Design Changes During Development
 
-- Application list mockup  
-- Forms mockup  
+The final dashboard remained close to the refined mockup, with some changes
+made during implementation to improve the presentation of information.
 
-## Design Rationale
+One change was the removal of the **Rejected** summary card from the top
+section of the dashboard. The final design keeps the three progress-focused
+cards — **Applied, Interviews and Offers** — alongside the **Total
+Applications** summary.
+
+Rejected applications are still fully supported and can be viewed and
+filtered within the application list. Removing the Rejected card from the
+summary area allowed the top of the dashboard to focus on positive progress
+through the job application process while keeping rejection information
+available when required.
+
+### Design Rationale
+
+HireTrack was designed to provide a clear and straightforward way for users
+to manage their job applications without overwhelming them with information.
+
+A dark navy and green colour scheme was chosen to give the application a
+professional appearance while providing clear contrast for navigation,
+buttons and important actions. Bootstrap components and a consistent card
+layout were used throughout the application to maintain a familiar and
+cohesive interface.
+
+The dashboard was designed as the main focus for authenticated users. It
+provides an immediate overview of application progress before presenting
+the individual applications below. Status filtering allows users to quickly
+find applications at different stages of their job search.
+
+The final dashboard was refined from the Figma mockup. The Rejected summary
+card was removed so that the three cards beside Total Applications focus on
+progress through the application process: Applied, Interviews and Offers.
+Rejected applications remain available through the application list and
+status filters.
+
+Responsive design was also an important consideration. Layouts were adapted
+for desktop, tablet and mobile devices so that application information and
+actions remain accessible at different screen sizes.
+
+The design developed from initial low-fidelity Balsamiq wireframes into
+higher-fidelity Figma mockups and finally the implemented Django
+application. Changes made during development were based on usability,
+responsive behaviour and the functionality introduced as the project
+developed.
 
 ### Typography
 HireTrack uses **Inter** for readability and professional appearance.
@@ -196,10 +256,13 @@ Clear navigation with active page highlighting.
 ## Responsive Design
 HireTrack adapts across desktop, tablet, and mobile using Flexbox, Grid, and media queries.
 
-*(Insert responsive screenshots here)*
+[desktop-hompepage](docs/screenshots-desktop/desktop-homepage.png)
+[tablet-dashboard](docs/screenshots-tablet/ipadpro13-dashboard.png)
+[mobile-applications](docs/screenshots-mobile/iphone-se-dashboard.png)
+
 
 ## Accessibility
-HireTrack follows WCAG guidelines:
+HireTrack was developed with accessibility and WCAG best practices in mind.
 
 - Semantic HTML  
 - Logical heading hierarchy  
@@ -216,34 +279,130 @@ Accessibility testing is documented in TESTING.md.
 
 # Agile Development
 
-HireTrack was developed using Agile methodology with GitHub Projects.
+HireTrack was developed using Agile methodology, with GitHub Projects used
+to organise and track the development of the application.
 
-### GitHub Project Board  
-*(Insert screenshot here)*  
-Link: https://github.com/queldx74/HireTrack/projects
+The project began with five core user stories covering registration, login,
+authorisation, adding job applications and tracking job applications. As
+development progressed, additional requirements and functionality were
+identified and incorporated into the project.
 
-### Workflow
-- To Do  
-- In Progress  
-- Testing  
-- Done  
+## GitHub Project Board
 
-### MoSCoW Prioritisation
-**Must Have:**  
-Registration, Login, CRUD, User-specific data, Responsive design  
+The GitHub Project board was used to track user stories and development
+tasks throughout the project.
 
-**Should Have:**  
-Statuses, Filtering, Dashboard statistics  
+![HireTrack GitHub Project Board](docs/images/project-board-screenshot.png)
 
-**Could Have:**  
-Search, Additional analytics  
+[View the HireTrack GitHub Project Board](https://github.com/users/queldx74/projects/10)
 
-**Won’t Have:**  
-Social features, Chat, Push notifications  
+## Workflow
+
+Project items were tracked through the following stages:
+
+- **To-do** - Work ready to be started.
+- **In Progress** - Functionality currently being developed.
+- **Done** - Completed functionality.
+- **Backlog** - Requirements or ideas not currently being worked on.
+
+## MoSCoW Prioritisation
+
+MoSCoW prioritisation was used to classify requirements according to their
+importance to the current release of HireTrack.
+
+### Must Have
+
+- User registration
+- Login and logout
+- User authorisation
+- User-specific application data
+- Create job applications
+- View job applications
+- Edit job applications
+- Delete job applications
+- Responsive interface
+
+### Should Have
+
+- Application status tracking
+- Filtering applications by status
+- Application statistics
+- Account settings
+- Password management
+
+### Could Have
+
+- HireTrack Admin Dashboard
+- Admin user management
+- Additional application analytics
+- Application search
+
+### Won't Have (This Release)
+
+The following features were identified as possible future developments but
+were outside the scope of the current release:
+
+- Email reminders and notifications
+- CV/document uploads
+- Job board/API integration
+- More advanced analytics
 
 ---
 
 # Features
+
+## User Registration
+[Register](docs/feature-images/register.png)
+User registration allows new users to create an account by providing a username, email address, and password. The registration form includes validation to ensure that all required fields are completed and that the email address is in a valid format. Upon successful registration, users are redirected to the login page to access their new account.
+
+
+## Login and Logout
+[Login](docs/feature-images/login.png)
+[Logout](docs/feature-images/logout.png)
+Login functionality allows registered users to securely access their accounts using their email and password. The login form includes validation to ensure that the provided credentials are correct. Upon successful login, users are redirected to their dashboard, where they can manage their job applications. Logout functionality is in the dropdown menu of the user profile, allowing users to securely end their session and return to the public-facing home page.
+
+## Dashboard
+[Dashboard](docs/feature-images/dashboard.png)
+Dashboard functionality provides users with an overview of their job applications, including summary cards for total applications, applications in progress, interviews, and offers. The dashboard also includes a table listing all job applications, with options to view, edit, or delete each application. Users can filter applications by status to quickly find specific records.
+
+## Create Application
+[Create Application](docs/feature-images/create-application.png)
+Creating a new job application allows users to input relevant details such as job title, company, location, date applied, status, job URL, salary, and notes. The form includes validation to ensure that all required fields are completed and that the data is in the correct format. Upon successful submission, the new application is added to the user's list of applications and a confirmation message is displayed.
+
+
+## Applications Details
+[View Applications](docs/feature-images/view-application.png)
+All job applications are displayed in a table format, allowing users to quickly scan through their records. Each application entry includes key details such as job title, company, location, date applied, and status. Users can click on an individual application to view more detailed information.
+
+## Edit Application
+[Edit Application](docs/feature-images/edit-application.png)
+Users can edit existing job applications by clicking the edit button next to each application in the table. The edit form allows users to update any of the application details, including job title, company, location, date applied, status, job URL, salary, and notes. The form includes validation to ensure that all required fields are completed and that the data is in the correct format. Upon successful submission, the updated application is saved and a confirmation message is displayed.
+
+
+## Delete Application
+[Delete Application](docs/feature-images/delete-application.png)
+Users can delete existing job applications by clicking the delete button next to each application in the table. A confirmation dialog will appear to ensure that the user wants to proceed with the deletion. Upon successful deletion, the application is removed from the user's list of applications and a confirmation message is displayed.
+
+## Status Filtering
+[Status Filtering](docs/feature-images/status-filtering.png)
+Users can filter their job applications by status using a dropdown menu on the dashboard. This allows users to quickly view applications that are in progress, have been interviewed, received offers, or have been rejected. The filtered results are displayed in the application table, making it easy for users to manage their job search effectively.
+
+
+## Account Settings
+[Account Settings](docs/feature-images/account-settings.png)
+Account settings allow users to manage their account information, including updating their email address and password. Users can also delete their account if they wish to do so. The account settings page includes validation to ensure that all required fields are completed and that the data is in the correct format. Upon successful submission, the updated account information is saved and a confirmation message is displayed.
+
+## HireTrack Admin Dashboard
+[Admin Dashboard](docs/feature-images/admin-dashboard.png)
+The HireTrack Admin Dashboard provides administrative users with an overview of all registered users and their job applications. Admin users can view, edit, and delete user accounts and applications, as well as manage user permissions. The admin dashboard includes summary cards for total users, total applications, and other relevant statistics. Access to the admin dashboard is restricted to users with administrative privileges.
+
+
+## User Feedback
+
+Django messages provide users with confirmation and feedback following
+important actions.
+
+*(Insert screenshot if required)*
 
 *(Insert screenshots for each feature)*
 
