@@ -716,6 +716,44 @@ responsive layouts.
 
 Any future issues discovered after deployment will be documented and
 addressed in subsequent development.
+
+
+
+
+
+
+### Duplicate Form Field ID
+
+**Issue:**  
+During W3C HTML validation of the Account Settings page, a duplicate
+`id_current_password` error was identified.
+
+The page contains two separate forms that request the user's current
+password:
+
+- Change Password
+- Delete Account
+
+Django initially generated `id="id_current_password"` for both fields,
+resulting in duplicate HTML IDs on the same page.
+
+**Fix:**  
+A unique widget ID was assigned to the current password field in the
+`DeleteAccountForm`:
+
+```python
+"id": "id_delete_current_password"
+
+The delete-account password field therefore renders with a unique ID,
+while the Change Password form retains the original id_current_password.
+The associated label uses Django's id_for_label, ensuring that it
+continues to reference the correct input.
+Result:
+The duplicate ID was removed and the rendered Account Settings page was
+revalidated successfully.
+Status: ✅ Fixed
+
+
 ---
 
 # Final Testing Summary
