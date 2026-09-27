@@ -1171,3 +1171,57 @@ To run HireTrack locally, a developer must therefore:
 
 Production credentials, including the original HireTrack `SECRET_KEY` and
 Neon database credentials, are intentionally excluded from the repository.
+
+
+# Credits
+
+## Code and Technologies
+
+- [Django](https://www.djangoproject.com/) - used as the main web framework for the HireTrack application.
+- [Bootstrap](https://getbootstrap.com/) - used for responsive layouts, styling and interface components.
+- [Bootstrap Icons](https://icons.getbootstrap.com/) - used for icons throughout the application.
+- [WhiteNoise](https://whitenoise.readthedocs.io/) - used to serve static files in the deployed application.
+- [Gunicorn](https://gunicorn.org/) - used as the production WSGI server.
+- [Neon](https://neon.tech/) - used to host the PostgreSQL database.
+- [Heroku](https://www.heroku.com/) - used to deploy and host the production application.
+- [GitHub](https://github.com/) - used for version control, repository hosting and project management.
+
+## Design
+
+- [Balsamiq](https://balsamiq.com/) - used to create the initial low-fidelity wireframes.
+- [Figma](https://www.figma.com/) - used to create refined high-fidelity interface mockups.
+- [dbdiagram.io](https://dbdiagram.io/) - used to create the Entity Relationship Diagram (ERD).
+
+## Testing and Validation
+
+- [W3C Markup Validation Service](https://validator.w3.org/) - used to validate rendered HTML.
+- [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/) - used to validate the project's custom CSS.
+- [Flake8](https://flake8.pycqa.org/) - used for Python code quality and PEP8 checking.
+- [Black](https://black.readthedocs.io/) - used to format Python code consistently.
+- Code Institute Python Linter - used as an additional Python validation tool.
+- Google Chrome DevTools - used for responsive design and browser testing.
+- Google Lighthouse - used to test performance, accessibility, best practices and SEO.
+
+## Learning Resources
+
+- [Django Documentation](https://docs.djangoproject.com/) - consulted for Django models, forms, authentication, views, database functionality and deployment configuration.
+- [Bootstrap Documentation](https://getbootstrap.com/docs/) - consulted for responsive layouts and Bootstrap components.
+- [MDN Web Docs](https://developer.mozilla.org/) - used as a reference for HTML and CSS development.
+
+## AI Assistance
+
+AI tools were used during the development of HireTrack as a supporting resource for debugging, code review, documentation, testing guidance and explaining development concepts.
+
+AI-generated suggestions were reviewed and adapted before being incorporated into the project. The final implementation, testing and project decisions remained the responsibility of the developer.
+
+Further details about the use of AI during the project are documented in the project's AI reflection/testing section.
+
+# Acknowledgements
+
+I would like to thank:
+
+- **Code Institute** for the course material, project guidance and resources that supported the development of this project.
+- **Tutor Marko** for guidance, feedback and support throughout the development process.
+- **Mentor Timor** for providing valuable feedback, advice and encouragement during the project.
+- **Sarah** for career advice.
+- The developers and maintainers of the open-source technologies and documentation used throughout HireTrack.

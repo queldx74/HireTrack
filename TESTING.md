@@ -281,6 +281,124 @@ Test:
 * Text wrapping
 * Horizontal overflow
 
+# Responsive Testing
+
+HireTrack was manually tested across desktop, tablet and mobile screen
+sizes using Google Chrome DevTools and by resizing the browser window.
+
+| Screen Size | Width | Result |
+| --- | ---: | --- |
+| Desktop | 1440px | ✅ Pass |
+| Tablet | 768px | ✅ Pass |
+| Mobile | 375px | ✅ Pass |
+
+### Pages Tested
+
+Responsive testing included:
+
+- Home
+- Login and Registration
+- Dashboard
+- Application Details
+- Add and Edit Application
+- Statistics
+- Account Settings
+- HireTrack Admin Dashboard
+
+### Elements Tested
+
+The following were checked at each screen size:
+
+- Navigation and account dropdown
+- Dashboard cards
+- Application tables and mobile cards
+- Forms and form controls
+- Buttons and action menus
+- Status badges
+- Footer positioning
+- Text wrapping
+- Spacing and alignment
+- Horizontal overflow
+
+All tested pages remained usable and readable at the selected screen sizes.
+Responsive components adapted appropriately between desktop, tablet and
+mobile layouts, with no unwanted horizontal scrolling identified during
+final testing.
+
+
+
+# Responsive Testing
+
+HireTrack was tested for responsive behaviour across desktop, tablet and
+mobile screen sizes.
+
+## Manual Responsive Testing
+
+Manual responsive testing was carried out using Google Chrome DevTools and
+by resizing the browser window.
+
+| Screen Size | Width | Result |
+| --- | ---: | --- |
+| Desktop | 1440px | ✅ Pass |
+| Tablet | 768px | ✅ Pass |
+| Mobile | 375px | ✅ Pass |
+
+The following areas were checked:
+
+- Navigation and account dropdown
+- Dashboard cards
+- Application tables and mobile cards
+- Forms and form controls
+- Buttons and action menus
+- Status badges
+- Footer positioning
+- Text wrapping
+- Spacing and alignment
+- Horizontal overflow
+
+## Am I Responsive Testing
+
+The deployed HireTrack application was also tested using **Am I Responsive**
+to provide a visual check of the website across multiple device sizes.
+
+Because the deployed application prevents being displayed inside an iframe
+by default, the **Ignore X-Frame headers** Chrome extension was temporarily
+used in the local testing browser.
+
+With the extension enabled, the deployed HireTrack website could be loaded
+successfully within Am I Responsive without the previous X-Frame error.
+
+The extension was used only within the tester's browser to allow the
+responsive preview to be displayed. No production security settings were
+removed or changed in the HireTrack application for this test.
+
+The responsive preview confirmed that the deployed application could be
+displayed across the desktop, laptop, tablet and mobile device previews.
+
+### Am I Responsive Evidence
+
+![HireTrack Am I Responsive testing](docs/images/responsive/ami-responsive.png)
+
+### Responsive Testing Evidence
+
+![Responsive testing evidence](docs/images/amiresponsive.png)
+
+## Lighthouse Testing
+
+Google Lighthouse was used separately to assess the deployed application
+for:
+
+- Performance
+- Accessibility
+- Best Practices
+- SEO
+
+Lighthouse results are documented in the Lighthouse Testing section below.
+### Lighthouse Responsive Testing
+
+
+
+
 ---
 
 # Browser Testing
@@ -323,6 +441,37 @@ Possible checks include:
 
 Add screenshots where useful.
 
+## Lighthouse Testing
+
+Google Lighthouse was used to assess the deployed HireTrack application
+for Performance, Accessibility, Best Practices and SEO.
+
+Testing was carried out on the deployed application using Google Chrome
+DevTools.
+
+| Page | Performance | Accessibility | Best Practices | SEO |
+| --- | ---: | ---: | ---: | ---: |
+| Home | XX | XX | XX | XX |
+| Login | XX | XX | XX | XX |
+| Registration | XX | XX | XX | XX |
+| Dashboard | XX | XX | XX | XX |
+| Statistics | XX | XX | XX | XX |
+
+### Lighthouse Testing Evidence
+
+#### Home Page
+
+![Home page Lighthouse results](images/lighthouse/home.png)
+
+#### Dashboard
+
+![Dashboard Lighthouse results](images/lighthouse/dashboard.png)
+
+#### Registration
+
+![Registration Lighthouse results](images/lighthouse/registration.png)
+
+
 ---
 
 # HTML Validation
@@ -341,9 +490,7 @@ If an error was discovered, explain how it was corrected.
 
 
 
-## HTML Validation
 
-HTML validation was carried out using the W3C Markup Validation Service. As the project uses Django templates, each page was rendered in the browser and the generated HTML source was copied into the validator using Direct Input.
 
 ## HTML Validation
 
@@ -389,7 +536,7 @@ The screenshots below show examples of successful HTML validation using the W3C 
 
 # CSS Validation
 
-CSS was validated using [W3C CSS Validator](https://jigsaw.w3.org/css-validator/validator).
+CSS was validated using![W3C CSS Validator](https://jigsaw.w3.org/css-validator/validator).
 
 
 | File      | Result | Errors | Resolution |
@@ -468,12 +615,12 @@ or another tool used during the project.
 The only issues found were related to line length, and indentation and were resolved using Black and Flake8.
 
 # Python Validation Evidence
-[models.py](docs/python-check-screenshots/models-py.png)
-[views.py](docs/python-check-screenshots/views-py.png)
-[forms.py](docs/python-check-screenshots/forms-py.png)
-[urls.py](docs/python-check-screenshots/urls-py.png)
-[tests.py](docs/python-check-screenshots/tests-py.png)
-[admin.py](docs/python-check-screenshots/admin-py.png)
+![](docs/python-check-screenshots/models-py.png)
+![](docs/python-check-screenshots/views-py.png)
+![](docs/python-check-screenshots/forms-py.png)
+![](docs/python-check-screenshots/urls-py.png)
+![](docs/python-check-screenshots/tests-py.png)
+![](docs/python-check-screenshots/admin-py.png)
 
 ## Automated Testing
 
@@ -495,7 +642,7 @@ The tests can be run from the project root using:
 python manage.py test
 
 # Automated Testing Evidence
-[tests.py](docs/automated-tests/automated-tests-validation.png)
+![Automated Tests](docstomated-tests/automated-tests-validation.png)
 
 
 ## JavaScript Validation
@@ -530,16 +677,45 @@ Example structure:
 **Solution:**
 [Explain how it was fixed.]
 
+| Bug / Issue | Fix |
+| --- | --- |
+| Nested `<main>` elements caused HTML validation errors | Kept the single `<main>` in `base.html` and changed child templates to use `<div>` |
+| Login page had an unclosed `<div>` | Corrected the HTML structure and revalidated the rendered page |
+| Duplicate `id_current_password` on Account Settings | Gave the delete-account password field its own unique ID |
+| Admin Dashboard overflow/layout issues on tablet | Added tablet-specific responsive styling and adjusted table columns/spacing |
+| Long content overflowed mobile application cards | Added wrapping and flex constraints so long text remained inside the card |
+| Account dropdown positioning was poor on small mobile screens | Added a mobile-specific dropdown positioning rule |
+| Error pages produced unnecessary vertical scrolling | Removed the extra viewport-based `min-height` from `.error-page` |
+| Empty/wrong warning icon appeared on delete confirmation | Removed/corrected the unnecessary icon |
+| HireTrack Admin permissions needed tightening | Restricted the custom dashboard to staff non-superusers and prevented admins from viewing/deleting other admin accounts |
+| Django Admin access needed stricter role separation | Restricted Django's built-in Admin interface to superusers |
+| Python validation reported Flake8 issues | Removed an unnecessary import and corrected formatting/line-length/whitespace issues; Black was also used |
+| Django tests passed but PostgreSQL test database cleanup failed | Identified it as a Neon/PostgreSQL connection teardown issue after all 15 tests had passed; `--keepdb` was used for subsequent testing |
+| Static CSS changes did not immediately appear with `DEBUG=False` | Ran `collectstatic` so the updated source CSS was copied to the collected static files |
+
+
+
+
 ---
 
 ## Known Bugs
 
-Document any unresolved issues honestly.
+## Known Bugs
 
-If none remain:
+At the time of final testing, no known unresolved bugs were identified in
+the HireTrack application.
 
-> No known bugs remain at the time of final submission.
+Issues discovered during development were addressed and retested before
+the final deployment. These included HTML validation issues, responsive
+layout problems, form field ID conflicts, static file updates and
+role-based access restrictions.
 
+All 15 automated Django tests passed during final testing. Manual testing
+was also carried out across the application's main functionality and
+responsive layouts.
+
+Any future issues discovered after deployment will be documented and
+addressed in subsequent development.
 ---
 
 # Final Testing Summary
