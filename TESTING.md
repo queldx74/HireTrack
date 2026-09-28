@@ -410,7 +410,11 @@ Lighthouse results are documented in the Lighthouse Testing section below.
 | Edge    | Desktop                    |        |           |
 | Safari  | Mobile/tablet if available |        |           |
 
-Only list browsers you genuinely tested.
+# Browser Testing Evidence
+
+![Chrome Desktop](docs/browser-screenshots/chrome-browser.png)
+![Firefox Desktop](docs/browser-screenshots/firefox-browser.png)
+![Edge Desktop](docs/browser-screenshots/edge-browser.png)
 
 ---
 
@@ -564,7 +568,7 @@ Flake8 was installed inside the project's virtual environment using:
 
 ```bash
 pip install flake8
-
+``` 
 Individual files were then checked from the project root. For example:
 flake8 applications/views.py
 flake8 applications/forms.py
@@ -640,9 +644,9 @@ The tests can be run from the project root using:
 
 ```bash
 python manage.py test
-
+```
 # Automated Testing Evidence
-![Automated Tests](docstomated-tests/automated-tests-validation.png)
+![Automated Tests](docs/automated-tests/automated-tests-validation.png)
 
 
 ## JavaScript Validation
@@ -775,4 +779,5 @@ At the completion of development:
 
 **Known critical issues:** [None / describe]
 
-For information about the application, design process, deployment, and development methodology, see the main [README.md](README.md).
+For information about the application, design process, deployment, and development methodology, 
+see the main [README.md](README.md).

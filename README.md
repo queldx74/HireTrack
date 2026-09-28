@@ -118,7 +118,7 @@ Users should be able to:
 ![Tablet Wireframe](docs/wireframes/tablet-wireframe.png)
 ![Mobile Wireframe](docs/wireframes/mobile-wireframe.png)
 
-## Wireframes
+
 
 The initial wireframes for HireTrack were created in Balsamiq during the
 planning stage of the project. Their purpose was to establish the basic
@@ -229,36 +229,89 @@ responsive behaviour and the functionality introduced as the project
 developed.
 
 ### Typography
-HireTrack uses **Inter** for readability and professional appearance.
+
+HireTrack uses **Inter** as its primary typeface, with system fonts used as
+fallbacks. Inter was selected for its clear, modern appearance and
+readability across desktop, tablet and mobile screen sizes.
+
+The application uses font weights ranging from 400 to 700 to provide a
+clear visual hierarchy between body text, labels, navigation elements and
+headings.
 
 ### Colour Palette
-- Navy `#1a3557` — navigation, headings, buttons  
-- Dark navy `#15294a` — borders  
-- Green `#2e9e62` — primary CTA  
-- Background `#f5f7fa`  
-- White `#ffffff`
+
+HireTrack uses a dark navy and green colour palette to create a professional,
+consistent interface. Neutral background colours are used to provide
+contrast and keep application data easy to read.
+
+1. ![HireTrack Colour Palette](docs/images/hiretrack-colour-scheme.png)
+
+
+| Colour | Hex | Usage |
+| --- | --- | --- |
+| Navy | `#1a2a40` | Navigation, primary interface elements and actions |
+| Dark Navy | `#132032` | Hover states and darker interface elements |
+| Brand Green | `#15803d` | Primary calls to action, logo and accent elements |
+| Green Hover | `#16a34a` | Hover state for green actions |
+| Page Background | `#f8fafc` | Main application background |
+| Primary Text | `#1e293b` | Main body text |
+| White | `#ffffff` | Cards, buttons and contrasting text |
+
+The original green used during development was lighter. It was changed to
+the darker `#15803d` to provide stronger contrast when used with white text
+and improve accessibility.
 
 ### Status Colours
-| Status     | Background | Text | Border |
-|------------|------------|------|--------|
-| Saved      | #f0f4ff    | #3b4fa8 | #c7d2fe |
-| Applied    | #eff6ff    | #1d4ed8 | #bfdbfe |
-| Interview  | #fffbeb    | #92400e | #fde68a |
-| Offer      | #f0fdf4    | #166534 | #bbf7d0 |
-| Rejected   | #fef2f2    | #991b1b | #fecaca |
+
+Job application statuses use distinct background, text and border colours
+to make different stages easy to identify. Status information is also
+displayed as text so that meaning does not rely on colour alone.
+
+| Status | Background | Text | Border |
+| --- | --- | --- | --- |
+| Saved | `#f0f4ff` | `#3b4fa8` | `#c7d2fe` |
+| Applied | `#eff6ff` | `#1d4ed8` | `#bfdbfe` |
+| Interview | `#fffbeb` | `#92400e` | `#fde68a` |
+| Offer | `#f0fdf4` | `#166534` | `#bbf7d0` |
+| Rejected | `#fef2f2` | `#991b1b` | `#fecaca` |
+| Withdrawn | `#f3f4f6` | `#4b5563` | `#e5e7eb` |
 
 ### Spacing & Layout
-Generous whitespace, consistent spacing, and card-based grouping improve readability.
+
+HireTrack uses a consistent card-based layout to separate related content
+and make information easier to scan. Spacing is kept consistent between
+headings, forms, application details and dashboard components to avoid
+overcrowding.
+
+On larger screens, available space is used to present information such as
+application tables and dashboard summaries efficiently. On smaller screens,
+content stacks vertically and application information is presented in
+mobile-friendly cards to maintain readability without horizontal scrolling.
 
 ### Navigation
-Clear navigation with active page highlighting.
+
+The navigation was designed to provide quick access to the main areas of
+HireTrack while adapting to the user's authentication state.
+
+Logged-out users are provided with access to public pages and authentication
+options, while logged-in users can navigate directly to their dashboard,
+statistics and account functionality.
+
+On smaller screens, the navigation collapses into a responsive Bootstrap
+menu to preserve space and keep links accessible. Account-related actions
+are grouped within a dropdown menu to prevent the main navigation from
+becoming overcrowded.
+
+Administrative navigation is role-based. The custom Admin Dashboard is
+available only to authorised HireTrack Admin users.
 
 ## Responsive Design
 HireTrack adapts across desktop, tablet, and mobile using Flexbox, Grid, and media queries.
 
 ![Desktop Homepage](docs/screenshots-desktop/desktop-homepage.png)
 ![Tablet Dashboard](docs/screenshots-tablet/ipadpro13-dashboard.png)
-![Mobile Applications](docs/screenshots-mobile/iphone-se-dashboard.png)
+![Mobile Applications](docs/screenshots-obile/iphone-se-dashboard.png)
+![Mobile Homepage](docs/screenshots-mobile/iphone-se-homepage.png) 
 
 
 ## Accessibility
@@ -273,7 +326,7 @@ HireTrack was developed with accessibility and WCAG best practices in mind.
 - Alt text  
 - Status communicated via colour + text  
 
-Accessibility testing is documented in TESTING.md.
+Accessibility testing is documented in TESTING.md(TESTING.md)
 
 ---
 
@@ -292,9 +345,8 @@ identified and incorporated into the project.
 The GitHub Project board was used to track user stories and development
 tasks throughout the project.
 
-![HireTrack GitHub Project Board](docs/images/project-board-screenshot.png)
-
-![View the HireTrack GitHub Project Board](https://github.com/users/queldx74/projects/10)
+![HireTrack GitHub Project Board](docs/images/update-projectboard-image.png)
+[View the HireTrack GitHub Project Board](https://github.com/users/queldx74/projects/10/views/1)
 
 ## Workflow
 
@@ -366,7 +418,7 @@ Login functionality allows registered users to securely access their accounts us
 Dashboard functionality provides users with an overview of their job applications, including summary cards for total applications, applications in progress, interviews, and offers. The dashboard also includes a table listing all job applications, with options to view, edit, or delete each application. Users can filter applications by status to quickly find specific records.
 
 ## Create Application
-![Create Application](docs/feature-images/create-application.png)
+![Create Application](docs/feature-images/add-application.png)
 Creating a new job application allows users to input relevant details such as job title, company, location, date applied, status, job URL, salary, and notes. The form includes validation to ensure that all required fields are completed and that the data is in the correct format. Upon successful submission, the new application is added to the user's list of applications and a confirmation message is displayed.
 
 
@@ -398,7 +450,7 @@ The HireTrack Admin Dashboard provides administrative users with an overview of 
 
 
 ## User Feedback
-![User Feedback](docs/feature-images/feedback-messages.png)  
+![User Feedback](docs/feature-images/feedback-message.png)  
 Django messages provide users with confirmation and feedback following
 important actions.
 
