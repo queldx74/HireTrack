@@ -278,7 +278,7 @@ HireTrack adapts across desktop, tablet, and mobile using Flexbox, Grid, and med
 
 ![Desktop Homepage](docs/screenshots-desktop/desktop-homepage.png)
 ![Tablet Dashboard](docs/screenshots-tablet/ipadpro13-dashboard.png)
-![Mobile Applications](docs/screenshots-obile/iphone-se-dashboard.png)
+![Mobile Applications](docs/screenshots-mobile/iphone-se-dashboard.png)
 ![Mobile Homepage](docs/screenshots-mobile/iphone-se-homepage.png) 
 
 
@@ -386,9 +386,10 @@ Login functionality allows registered users to securely access their accounts us
 Dashboard functionality provides users with an overview of their job applications, including summary cards for total applications, applications in progress, interviews, and offers. The dashboard also includes a table listing all job applications, with options to view, edit, or delete each application. Users can filter applications by status to quickly find specific records.
 
 ## Create Application
-![Create Application](docs/feature-images/add-application.png)
-Creating a new job application allows users to input relevant details such as job title, company, location, date applied, status, job URL, salary, and notes. The form includes validation to ensure that all required fields are completed and that the data is in the correct format. Upon successful submission, the new application is added to the user's list of applications and a confirmation message is displayed.
 
+![Create Application](docs/feature-images/add-application.png)
+Creating a new job application allows users to input relevant details such as job title, company, location, date applied, status, job URL, salary, and notes. The form includes validation to ensure that all required fields are completed and that the data is in the correct format.
+Upon successful submission, the new application is added to the user's list of applications and a confirmation message is displayed.
 
 ## Applications Details
 ![View Applications](docs/feature-images/view-application.png)
@@ -840,10 +841,8 @@ To clone HireTrack:
 6. Run:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/queldx74/HireTrack.git
 ```
-
-For a forked repository, use the URL of your own fork instead.
 
 Once cloning has completed, navigate into the project directory:
 
@@ -1189,7 +1188,7 @@ Neon database credentials, are intentionally excluded from the repository.
 HireTrack was tested through manual testing, automated Django tests,
 responsive testing, accessibility testing and code validation.
 Full testing documentation and evidence can be found in:
-[View TESTING.md](TESTING.md)
+[**TESTING.md**](TESTING.md)
 
 ## Learning Resources
 

@@ -466,9 +466,12 @@ Using these tools together helped improve the consistency, readability and maint
 # Python Validation Evidence
 
 ![Screenshot views.py](docs/python-check-screenshots/views-py.png)
+
 ![Screenshot forms.py](docs/python-check-screenshots/forms-py.png)
-![Screenshot urls.py](docs/python-check-screenshots/applications-urls-py.png)
-![Screenshot admin.py](docs/python-check-screenshots/hiretrack-urls-py.png)
+
+![Screenshot applications/urls.py](docs/python-check-screenshots/applications-urls-py.png)
+
+![Screenshot hiretrack/urls.py](docs/python-check-screenshots/hiretrack-urls-py.png)
 
 ## Automated Testing
 
@@ -478,7 +481,9 @@ The tests are contained in:
 
 `applications/tests.py`
 
-The automated tests were designed to check important parts of the HireTrack application, including model behaviour, views, authentication, access control and application functionality.
+The automated tests were designed to check important parts of the HireTrack
+application, including model behaviour, views, authentication, access control
+and application functionality.
 
 ### Running the Tests
 
@@ -594,25 +599,5 @@ Status: ✅ Fixed
 
 
 ---
-
-# Final Testing Summary
-
-At the completion of development:
-
-* Core user stories were manually tested.
-* CRUD functionality was verified.
-* Authentication and authorization were tested.
-* User-specific data access was tested.
-* Form validation was tested.
-* Responsive behaviour was tested.
-* Accessibility testing was completed.
-* HTML and CSS were validated.
-* Python code was checked for code quality.
-* Automated Django tests were executed.
-
-**Final automated test result:** [Add result]
-
-**Known critical issues:** [None / describe]
-
 For information about the application, design process, deployment, and development methodology, 
-see the main (README.md) file.
+see the main [README.md](README.md) file.
