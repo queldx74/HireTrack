@@ -460,7 +460,7 @@ Each tool served a slightly different purpose during testing:
 - Black helped automatically produce consistent formatting and reduce manual formatting work.
 - Code Institute Python Linter provided the final validation check against the standards expected for the project submission.
 Using these tools together helped improve the consistency, readability and maintainability of the Python code while allowing validation issues to be identified before deployment.
-```
+
 
 Using these tools together helped improve the consistency, readability and
 maintainability of the Python code while allowing validation issues to be
@@ -476,28 +476,6 @@ identified before deployment.
 
 ![Screenshot hiretrack/urls.py](docs/python-check-screenshots/hiretrack-urls-py.png)
 
-## Automated Testing
-
-Automated testing was carried out using Django's built-in testing framework.
-
-The tests are contained in:
-
-`applications/tests.py`
-
-The automated tests were designed to check important parts of the HireTrack
-application, including model behaviour, views, authentication, access control
-and application functionality.
-
-### Running the Tests
-
-The project's virtual environment was activated before running the test suite.
-
-The tests can be run from the project root using:
-
-```bash
-python manage.py test
-```
-
 ## Automated Testing Evidence
 
 ![Automated Tests](docs/automated-tests/automated-tests-validation.png)
@@ -507,7 +485,6 @@ python manage.py test
 No custom JavaScript was written for this project. Interactive components, such as the responsive navigation and dropdown menus, use Bootstrap's JavaScript bundle.
 
 As no project-specific JavaScript files were created, JavaScript validation was not required.
-
 
 ---
 
