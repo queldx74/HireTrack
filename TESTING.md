@@ -17,28 +17,6 @@ Testing was carried out throughout development to evaluate:
 
 ---
 
-## Table of Contents
-
-* [Testing Strategy](#testing-strategy)
-* [Manual Functional Testing](#manual-functional-testing)
-* [Authentication Testing](#authentication-testing)
-* [CRUD Testing](#crud-testing)
-* [Permission and Security Testing](#permission-and-security-testing)
-* [Form Validation Testing](#form-validation-testing)
-* [User Story Testing](#user-story-testing)
-* [Automated Testing](#automated-testing)
-* [Responsive Testing](#responsive-testing)
-* [Browser Testing](#browser-testing)
-* [Accessibility Testing](#accessibility-testing)
-* [HTML Validation](#html-validation)
-* [CSS Validation](#css-validation)
-* [Python Validation](#python-validation)
-* [JavaScript Testing](#javascript-testing)
-* [Bugs](#bugs)
-* [Final Testing Summary](#final-testing-summary)
-
----
-
 # Testing Strategy
 
 HireTrack was tested using a combination of manual and automated testing.
@@ -63,11 +41,11 @@ Testing focused particularly on:
 
 | Test                  | Expected Result          | Actual Result | Pass/Fail |
 | --------------------- | ------------------------ | ------------- | --------- |
-| Open homepage         | Homepage loads correctly |               |           |
-| Click Dashboard       | Dashboard loads          |               |           |
-| Click Applications    | Application list loads   |               |           |
-| Click Add Application | Form loads               |               |           |
-| Click Logout          | User is logged out       |               |           |
+| Open homepage         | Homepage loads correctly |  as expected  |  ✅      |
+| Click Dashboard       | Dashboard loads          |  as expected  |  ✅      |
+| Click Applications    | Application list loads   |  as expected  |  ✅      |
+| Click Add Application | Form loads               |  as expected  |  ✅      |
+| Click Logout          | User is logged out       |  as expected  |  ✅      |
 
 ---
 
@@ -77,26 +55,30 @@ Testing focused particularly on:
 
 | Test                                 | Expected Result            | Actual Result | Pass/Fail |
 | ------------------------------------ | -------------------------- | ------------- | --------- |
-| Register with valid information      | Account is created         |               |           |
-| Register with missing required field | Validation error displayed |               |           |
-| Register with duplicate username     | Validation error displayed |               |           |
-| Enter mismatched passwords           | Validation error displayed |               |           |
+| Register with valid information      | Account is created         |  as expected  | ✅        |
+| Register with valid information      | Account is created         |  as expected  | ✅        |
+| Register with missing required field | Validation error displayed |  as expected  | ✅        |
+| Register with valid information      | Account is created         |  as expected  | ✅        |
+| Register with duplicate username     | Validation error displayed |  as expected  | ✅        |
+| Enter mismatched passwords           | Validation error displayed |  as expected  | ✅        |
 
 ## Login
-
-| Test                           | Expected Result   | Actual Result | Pass/Fail |
-| ------------------------------ | ----------------- | ------------- | --------- |
-| Login with correct credentials | User is logged in |               |           |
-| Login with incorrect password  | Error displayed   |               |           |
-| Login with invalid username    | Error displayed   |               |           |
-| Required username left blank   | Error displayed   |               |           |
-
+| Test | Expected Result | Actual Result | Pass/Fail |
+| --- | --- | --- | --- |
+| Register with valid information | Account is created and user can continue to the application | As expected | ✅ Pass |
+| Register with missing required information | Validation error is displayed and account is not created | As expected | ✅ Pass |
+| Register with mismatched passwords | Validation error is displayed and account is not created | As expected | ✅ Pass |
+| Login with correct credentials | User is logged in and redirected successfully | As expected | ✅ Pass |
+| Login with incorrect password | Error is displayed and user is not logged in | As expected | ✅ Pass |
+| Login with invalid username | Error is displayed and user is not logged in | As expected | ✅ Pass |
+| Required username left blank | Validation error is displayed and form is not submitted | As expected | ✅ Pass |
+| Logout | User is logged out and can no longer access protected pages | As expected | ✅ Pass |
 ## Logout
 
 | Test                              | Expected Result          | Actual Result | Pass/Fail |
 | --------------------------------- | ------------------------ | ------------- | --------- |
-| Logged-in user selects Logout     | Session ends             |               |           |
-| Visit protected page after logout | User redirected to login |               |           |
+| Logged-in user selects Logout     | Session ends             |   as expected | ✅        |
+| Visit protected page after logout | User redirected to login |   as expected | ✅        |
 
 ---
 
@@ -106,37 +88,37 @@ Testing focused particularly on:
 
 | Test                                  | Expected Result            | Actual Result | Pass/Fail |
 | ------------------------------------- | -------------------------- | ------------- | --------- |
-| Submit valid application              | Application created        |               |           |
-| Application belongs to logged-in user | Correct user stored        |               |           |
-| Required field missing                | Validation error displayed |               |           |
-| Successful creation                   | Success message displayed  |               |           |
+| Submit valid application              | Application created        |   as expected | ✅        |
+| Application belongs to logged-in user | Correct user stored        |   as expected | ✅        |
+| Required field missing                | Validation error displayed |   as expected | ✅        |
+| Successful creation                   | Success message displayed  |   as expected | ✅        |
 
 ## Read
 
 | Test                      | Expected Result               | Actual Result | Pass/Fail |
 | ------------------------- | ----------------------------- | ------------- | --------- |
-| Open application list     | User's applications displayed |               |           |
-| Open application detail   | Correct application displayed |               |           |
-| User with no applications | Empty state displayed         |               |           |
+| Open application list     | User's applications displayed |   as expected | ✅        |
+| Open application detail   | Correct application displayed |   as expected | ✅        |
+| User with no applications | Empty state displayed         |   as expected | ✅        |
 
 ## Update
 
 | Test                      | Expected Result            | Actual Result | Pass/Fail |
 | ------------------------- | -------------------------- | ------------- | --------- |
-| Edit application          | Existing data displayed    |               |           |
-| Save valid changes        | Database record updated    |               |           |
-| Change application status | New status displayed       |               |           |
-| Submit invalid data       | Validation error displayed |               |           |
-| Successful update         | Success message displayed  |               |           |
+| Edit application          | Existing data displayed    |   as expected | ✅        |
+| Save valid changes        | Database record updated    |   as expected | ✅        |
+| Change application status | New status displayed       |   as expected | ✅        |
+| Submit invalid data       | Validation error displayed |   as expected | ✅        |
+| Successful update         | Success message displayed  |   as expected | ✅        |
 
 ## Delete
 
 | Test                | Expected Result           | Actual Result | Pass/Fail |
 | ------------------- | ------------------------- | ------------- | --------- |
-| Select Delete       | Confirmation displayed    |               |           |
-| Cancel deletion     | Application remains       |               |           |
-| Confirm deletion    | Record removed            |               |           |
-| Successful deletion | Success message displayed |               |           |
+| Select Delete       | Confirmation displayed    |  as expected  | ✅        |
+| Cancel deletion     | Application remains       |   as expected | ✅        |
+| Confirm deletion    | Record removed            |   as expected | ✅        |
+| Successful deletion | Success message displayed |   as expected | ✅        |
 
 ---
 
@@ -148,12 +130,12 @@ Create at least two test accounts when manually testing this section.
 
 | Test                                             | Expected Result       | Actual Result | Pass/Fail |
 | ------------------------------------------------ | --------------------- | ------------- | --------- |
-| User A views own application                     | Application displayed |               |           |
-| User A attempts to view User B's application URL | Access denied / 404   |               |           |
-| User A attempts to edit User B's application     | Access denied         |               |           |
-| User A attempts to delete User B's application   | Access denied         |               |           |
-| Logged-out user accesses dashboard               | Redirected to login   |               |           |
-| Logged-out user accesses create page             | Redirected to login   |               |           |
+| User A views own application                     | Application displayed | as expected   | ✅        |
+| User A attempts to view User B's application URL | Access denied / 404   |   as expected | ✅        |
+| User A attempts to edit User B's application     | Access denied         |   as expected | ✅        |
+| User A attempts to delete User B's application   | Access denied         |   as expected | ✅        |
+| Logged-out user accesses dashboard               | Redirected to login   |   as expected | ✅        |
+| Logged-out user accesses create page             | Redirected to login   |   as expected | ✅        |
 
 ---
 
@@ -163,123 +145,83 @@ Create at least two test accounts when manually testing this section.
 
 | Field/Test              | Expected Result  | Actual Result | Pass/Fail |
 | ----------------------- | ---------------- | ------------- | --------- |
-| Job title missing       | Validation error |               |           |
-| Company missing         | Validation error |               |           |
-| Valid date              | Accepted         |               |           |
-| Invalid date            | Validation error |               |           |
-| Valid status            | Accepted         |               |           |
-| Invalid/modified status | Rejected         |               |           |
-| Optional notes empty    | Form accepted    |               |           |
+| Job title missing       | Validation error |   as expected | ✅        |
+| Company missing         | Validation error |   as expected | ✅        |
+| Valid date              | Accepted         |   as expected | ✅        |
+| Invalid date            | Validation error |   as expected | ✅        |
+| Valid status            | Accepted         |   as expected | ✅        |
+| Invalid/modified status | Rejected         |   as expected | ✅        |
+| Optional notes empty    | Form accepted    |   as expected | ✅        |
 
 Add tests for every custom validation rule implemented.
 
 ---
-
 # User Story Testing
 
-Use this section to demonstrate that completed functionality satisfies your planned user stories.
+The completed user stories were manually tested to confirm that the
+implemented functionality behaves as expected.
 
-| ID   | User Story          | Expected Behaviour                    | Result | Pass/Fail |
-| ---- | ------------------- | ------------------------------------- | ------ | --------- |
-| US01 | Register account    | User can successfully register        |        |           |
-| US02 | Login               | Registered user can log in            |        |           |
-| US03 | Logout              | User can securely log out             |        |           |
-| US04 | Create application  | Application can be created            |        |           |
-| US05 | View applications   | User can see own applications         |        |           |
-| US06 | View details        | Individual record can be viewed       |        |           |
-| US07 | Edit application    | Record can be updated                 |        |           |
-| US08 | Delete application  | Record can be deleted                 |        |           |
-| US09 | Update status       | Status can be changed                 |        |           |
-| US10 | Privacy             | Other users' records are inaccessible |        |           |
-| US11 | Dashboard           | Summary data is displayed correctly   |        |           |
-| US12 | Filter applications | Applications filter correctly         |        |           |
-
+| ID | User Story | Expected Behaviour | Result | Pass/Fail |
+| --- | --- | --- | --- | :---: |
+| US01 | Register account | User can successfully register | As expected | ✅ |
+| US02 | Login | Registered user can log in | As expected | ✅ |
+| US03 | Logout | User can securely log out | As expected | ✅ |
+| US04 | Create application | Application can be created | As expected | ✅ |
+| US05 | View applications | User can see own applications | As expected | ✅ |
+| US06 | View details | Individual application can be viewed | As expected | ✅ |
+| US07 | Edit application | Application can be updated | As expected | ✅ |
+| US08 | Delete application | Application can be deleted | As expected | ✅ |
+| US09 | Update status | Application status can be changed | As expected | ✅ |
+| US10 | Privacy | Other users' applications are inaccessible | As expected | ✅ |
+| US11 | Dashboard | Summary data is displayed correctly | As expected | ✅ |
+| US12 | Filter applications | Applications filter correctly | As expected | ✅ |
 ---
-
 # Automated Testing
 
-Django automated tests were used to test key application functionality.
+Django's built-in testing framework was used to test key functionality in
+the HireTrack application.
 
-Tests should cover areas such as:
+The automated tests are contained in:
 
-* Models
-* Forms
-* Views
-* Authentication
-* Permissions
-* CRUD functionality
-* Status filtering
+`applications/tests.py`
+
+The test suite includes tests covering models, forms, views, authentication,
+permissions and application functionality.
 
 ## Running Tests
+
+The automated tests can be run from the project root using:
 
 ```bash
 python manage.py test
 ```
 
-### Test Results
+During final testing, all 15 automated tests passed with no test failures or
+errors.
 
-```text
-Paste final test output here.
-```
+## Models, Forms and Views
 
-### Model Tests
+Automated tests were used to check key parts of the Django application,
+including:
 
-Describe model tests implemented.
+- Model behaviour and application data.
+- Form validation and valid/invalid submissions.
+- Views returning the expected responses.
+- Application functionality and CRUD operations.
+- Status-related functionality.
 
-### Form Tests
+Authentication and permission behaviour was also tested, including access
+to protected functionality and user-specific application data. These areas
+are additionally documented in the manual testing sections above.
 
-Describe form validation tests.
+## Automated Testing Evidence
 
-### View Tests
+The screenshot below shows the final Django automated test result, with all
+15 tests passing.
 
-Describe tests for pages and status codes.
-
-### Authentication Tests
-
-Describe login/authentication tests.
-
-### Permission Tests
-
-Describe tests that ensure users cannot access records belonging to another user.
-
-### CRUD Tests
-
-Describe create/read/update/delete automated tests.
-
-### GitHub Copilot
-
-Document how GitHub Copilot assisted with creating unit tests.
-
-Explain:
-
-* What tests Copilot suggested.
-* What you changed.
-* Why changes were necessary.
-* What each final test verifies.
-
+![Automated Testing](docs/automated-tests/automated-tests-validation.png)
 ---
 
-# Responsive Testing
-
-HireTrack was designed and tested across desktop, tablet, and mobile layouts.
-
-| Device / Width | Pages Tested | Result | Pass/Fail |
-| -------------- | ------------ | ------ | --------- |
-| Desktop        |              |        |           |
-| Tablet         |              |        |           |
-| Mobile         |              |        |           |
-
-Test:
-
-* Navigation
-* Dashboard cards
-* Application table/cards
-* Forms
-* Buttons
-* Status badges
-* Footer
-* Text wrapping
-* Horizontal overflow
 
 # Responsive Testing
 
@@ -288,9 +230,9 @@ sizes using Google Chrome DevTools and by resizing the browser window.
 
 | Screen Size | Width | Result |
 | --- | ---: | --- |
-| Desktop | 1440px | ✅ Pass |
-| Tablet | 768px | ✅ Pass |
-| Mobile | 375px | ✅ Pass |
+| Desktop | 1440px | ✅  |
+| Tablet | 768px | ✅  |
+| Mobile | 375px | ✅  |
 
 ### Pages Tested
 
@@ -375,10 +317,6 @@ removed or changed in the HireTrack application for this test.
 The responsive preview confirmed that the deployed application could be
 displayed across the desktop, laptop, tablet and mobile device previews.
 
-### Am I Responsive Evidence
-
-![HireTrack Am I Responsive testing](docs/images/responsive/ami-responsive.png)
-
 ### Responsive Testing Evidence
 
 ![Responsive testing evidence](docs/images/amiresponsive.png)
@@ -395,9 +333,8 @@ for:
 
 Lighthouse results are documented in the Lighthouse Testing section below.
 ### Lighthouse Responsive Testing
-
-
-
+![Lighthouse responsive testing desktop](docs/lighthouse/lighthouse-desktop-homepage2.png)
+![Lighthouse responsive testing mobile](docs/lighthouse/lighthouse-mobile-homepage.png)
 
 ---
 
@@ -405,10 +342,10 @@ Lighthouse results are documented in the Lighthouse Testing section below.
 
 | Browser | Device                     | Result | Pass/Fail |
 | ------- | -------------------------- | ------ | --------- |
-| Chrome  | Desktop                    |        |           |
-| Firefox | Desktop                    |        |           |
-| Edge    | Desktop                    |        |           |
-| Safari  | Mobile/tablet if available |        |           |
+| Chrome  | Desktop                    |   Pass |   ✅      |
+| Firefox | Desktop                    |   Pass |   ✅      |
+| Edge    | Desktop                    |   Pass |   ✅      |
+
 
 # Browser Testing Evidence
 
@@ -417,84 +354,6 @@ Lighthouse results are documented in the Lighthouse Testing section below.
 ![Edge Desktop](docs/browser-screenshots/edge-browser.png)
 
 ---
-
-# Accessibility Testing
-
-Document the accessibility tools and methods used.
-
-Possible checks include:
-
-* Colour contrast
-* Heading hierarchy
-* Form labels
-* Keyboard navigation
-* Focus visibility
-* Link/button descriptions
-* Image alternative text
-* Status labels
-* ARIA usage where necessary
-
-## Accessibility Results
-
-| Page               | Test/Tool | Result | Issues Fixed |
-| ------------------ | --------- | ------ | ------------ |
-| Homepage           |           |        |              |
-| Dashboard          |           |        |              |
-| Application Form   |           |        |              |
-| Application Detail |           |        |              |
-
-Add screenshots where useful.
-
-## Lighthouse Testing
-
-Google Lighthouse was used to assess the deployed HireTrack application
-for Performance, Accessibility, Best Practices and SEO.
-
-Testing was carried out on the deployed application using Google Chrome
-DevTools.
-
-| Page | Performance | Accessibility | Best Practices | SEO |
-| --- | ---: | ---: | ---: | ---: |
-| Home | XX | XX | XX | XX |
-| Login | XX | XX | XX | XX |
-| Registration | XX | XX | XX | XX |
-| Dashboard | XX | XX | XX | XX |
-| Statistics | XX | XX | XX | XX |
-
-### Lighthouse Testing Evidence
-
-#### Home Page
-
-![Home page Lighthouse results](images/lighthouse/home.png)
-
-#### Dashboard
-
-![Dashboard Lighthouse results](images/lighthouse/dashboard.png)
-
-#### Registration
-
-![Registration Lighthouse results](images/lighthouse/registration.png)
-
-
----
-
-# HTML Validation
-
-HTML was tested using [insert validator/tool].
-
-| Page                | Result | Errors | Resolution |
-| ------------------- | ------ | ------ | ---------- |
-| Homepage            |        |        |            |
-| Dashboard           |        |        |            |
-| Add Application     |        |        |            |
-| Application Details |        |        |            |
-| Edit Application    |        |        |            |
-
-If an error was discovered, explain how it was corrected.
-
-
-
-
 
 ## HTML Validation
 
@@ -545,7 +404,7 @@ CSS was validated using![W3C CSS Validator](https://jigsaw.w3.org/css-validator/
 
 | File      | Result | Errors | Resolution |
 | --------- | ------ | ------ | ---------- |
-| style.css |    Pass  None   |       |
+| style.css |    Pass  None   |      ✅   |
 
 ---
 ### CSS Validation Evidence
@@ -604,27 +463,12 @@ Each tool served a slightly different purpose during testing:
 Using these tools together helped improve the consistency, readability and maintainability of the Python code while allowing validation issues to be identified before deployment.
 ```
 
-or another tool used during the project.
-
-| File      | Result | Issues Corrected |
-| --------- | ------ | ---------------- |
-| models.py |  Pass  |                  |
-| views.py  |  Pass  |                  |
-| forms.py  |  Pass  |                  |
-| urls.py   |  Pass  |                  |
-| tests.py  |  Pass  |                  |
-| admin.py  |  Pass  |                  |
-| urls.py  |  Pass  |                  |
-
-The only issues found were related to line length, and indentation and were resolved using Black and Flake8.
-
 # Python Validation Evidence
-![](docs/python-check-screenshots/models-py.png)
-![](docs/python-check-screenshots/views-py.png)
-![](docs/python-check-screenshots/forms-py.png)
-![](docs/python-check-screenshots/urls-py.png)
-![](docs/python-check-screenshots/tests-py.png)
-![](docs/python-check-screenshots/admin-py.png)
+
+![Screenshot views.py](docs/python-check-screenshots/views-py.png)
+![Screenshot forms.py](docs/python-check-screenshots/forms-py.png)
+![Screenshot urls.py](docs/python-check-screenshots/applications-urls-py.png)
+![Screenshot admin.py](docs/python-check-screenshots/hiretrack-urls-py.png)
 
 ## Automated Testing
 
@@ -672,14 +516,7 @@ Example structure:
 
 ### Application permissions bug
 
-**Problem:**
-[Describe what happened.]
 
-**Cause:**
-[Explain the cause.]
-
-**Solution:**
-[Explain how it was fixed.]
 
 | Bug / Issue | Fix |
 | --- | --- |
@@ -701,8 +538,6 @@ Example structure:
 
 
 ---
-
-## Known Bugs
 
 ## Known Bugs
 
@@ -747,7 +582,7 @@ A unique widget ID was assigned to the current password field in the
 
 ```python
 "id": "id_delete_current_password"
-
+``` 
 The delete-account password field therefore renders with a unique ID,
 while the Change Password form retains the original id_current_password.
 The associated label uses Django's id_for_label, ensuring that it
@@ -780,4 +615,4 @@ At the completion of development:
 **Known critical issues:** [None / describe]
 
 For information about the application, design process, deployment, and development methodology, 
-see the main [README.md](README.md).
+see the main (README.md) file.

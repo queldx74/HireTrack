@@ -14,38 +14,6 @@ https://github.com/queldx74/HireTrack
 
 ---
 
-# Table of Contents
-- [Project Overview](#project-overview)
-- [Project Goals](#project-goals)
-- [User Experience](#user-experience)
-  - Target Audience  
-  - User Goals  
-  - User Stories  
-- [Design](#design)
-  - Wireframes  
-  - Mockups  
-  - Design Rationale  
-  - Responsive Design  
-  - Accessibility  
-- [Agile Development](#agile-development)
-- [Features](#features)
-- [Data Model](#data-model)
-- [CRUD Functionality](#crud-functionality)
-- [Authentication and Authorization](#authentication-and-authorization)
-- [Forms and Validation](#forms-and-validation)
-- [User Feedback and Notifications](#user-feedback-and-notifications)
-- [Business Logic](#business-logic)
-- [Technologies Used](#technologies-used)
-- [Testing Summary](#testing-summary)
-- [Security](#security)
-- [Deployment](#deployment)
-- [AI Usage](#ai-usage)
-- [Version Control](#version-control)
-- [Credits](#credits)
-- [Acknowledgements](#acknowledgements)
-
----
-
 # Project Overview
 
 HireTrack provides job seekers with a simple and organised way to manage their job applications.  
@@ -355,7 +323,7 @@ Project items were tracked through the following stages:
 - **To-do** - Work ready to be started.
 - **In Progress** - Functionality currently being developed.
 - **Done** - Completed functionality.
-- **Backlog** - Requirements or ideas not currently being worked on.
+- **Won't Have** - Future Features.
 
 ## MoSCoW Prioritisation
 
@@ -448,22 +416,13 @@ Account settings allow users to manage their account information, including upda
 ![Admin Dashboard](docs/feature-images/admin-dashboard.png)
 The HireTrack Admin Dashboard provides administrative users with an overview of all registered users and their job applications. Admin users can view, edit, and delete user accounts and applications, as well as manage user permissions. The admin dashboard includes summary cards for total users, total applications, and other relevant statistics. Access to the admin dashboard is restricted to users with administrative privileges.
 
-
-## User Feedback
-![User Feedback](docs/feature-images/feedback-message.png)  
-Django messages provide users with confirmation and feedback following
-important actions.
-
-### User Registration  
-### Login & Logout  
-### Dashboard  
-### Create Application  
-### View Applications  
-### Application Details  
-### Edit Application  
+  
+### Admin Delete Account
+![Admin Delete Account](docs/confirmation/confirmation-admin-delete.png)
+### Create Application 
+![Create Application](docs/confirmation/confirmation-application-added.png)
 ### Delete Application  
-### Status Filtering  
-### User Feedback (messages)
+![Delete Application](docs/confirmation/confirmation-application-deleted.png)
 
 ---
 
@@ -521,34 +480,6 @@ This is implemented using a Django `ForeignKey` with
 `on_delete=models.CASCADE`. If a user account is deleted, the job
 applications associated with that account are also deleted.
 
-# CRUD Functionality
-
-| Operation | HireTrack Functionality |
-|----------|--------------------------|
-| Create   | Add new job application |
-| Read     | View list + details |
-| Update   | Edit application |
-| Delete   | Delete with confirmation |
-
-Access controls ensure users can only modify their own records.
-
----
-
-# Authentication and Authorization
-
-HireTrack uses Django authentication.
-
-Documented features:
-
-- Registration  
-- Login  
-- Logout  
-- Login state reflection  
-- Protected pages  
-- User-specific data  
-- Admin access via custom-build database
-- Permission checks preventing cross-user access  
-
 ---
 ### Form Validation
 
@@ -560,7 +491,6 @@ HireTrack uses Django form and model validation to validate user input.
 - URL input is validated using Django's `URLField`.
 - Validation errors are displayed to the user when submitted data is invalid.
 ![Form Validation Errors](docs/images/validation-errors.png)
-
 
 ---
 
@@ -679,7 +609,7 @@ application:
 
 ```text
 web: gunicorn hiretrack.wsgi
-
+```
 This starts HireTrack using Gunicorn and the project's WSGI configuration.
 Heroku Application
 A Heroku application was created for HireTrack and connected directly to
@@ -1254,6 +1184,13 @@ Neon database credentials, are intentionally excluded from the repository.
 - Google Chrome DevTools - used for responsive design and browser testing.
 - Google Lighthouse - used to test performance, accessibility, best practices and SEO.
 
+# Testing
+
+HireTrack was tested through manual testing, automated Django tests,
+responsive testing, accessibility testing and code validation.
+Full testing documentation and evidence can be found in:
+[View TESTING.md](TESTING.md)
+
 ## Learning Resources
 
 - [Django Documentation](https://docs.djangoproject.com/) - consulted for Django models, forms, authentication, views, database functionality and deployment configuration.
@@ -1274,6 +1211,6 @@ I would like to thank:
 
 - **Code Institute** for the course material, project guidance and resources that supported the development of this project.
 - **Tutor Marko** for guidance, feedback and support throughout the development process.
-- **Mentor Timor** for providing valuable feedback, advice and encouragement during the project.
+- **Mentor Tim** for providing the masterclass sessions, advice and encouragement during the project.
 - **Sarah** for career advice.
 - The developers and maintainers of the open-source technologies and documentation used throughout HireTrack.
