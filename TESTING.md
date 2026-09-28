@@ -422,7 +422,6 @@ Python code quality was checked using a combination of **Flake8**, **Black**, an
 ### Flake8
 
 Flake8 was used locally during development to check the Python files for PEP8 style issues and common coding errors.
-
 Flake8 was installed inside the project's virtual environment using:
 
 ```bash
@@ -463,6 +462,10 @@ Each tool served a slightly different purpose during testing:
 Using these tools together helped improve the consistency, readability and maintainability of the Python code while allowing validation issues to be identified before deployment.
 ```
 
+Using these tools together helped improve the consistency, readability and
+maintainability of the Python code while allowing validation issues to be
+identified before deployment.
+
 # Python Validation Evidence
 
 ![Screenshot views.py](docs/python-check-screenshots/views-py.png)
@@ -494,9 +497,10 @@ The tests can be run from the project root using:
 ```bash
 python manage.py test
 ```
-# Automated Testing Evidence
-![Automated Tests](docs/automated-tests/automated-tests-validation.png)
 
+## Automated Testing Evidence
+
+![Automated Tests](docs/automated-tests/automated-tests-validation.png)
 
 ## JavaScript Validation
 

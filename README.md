@@ -1196,13 +1196,74 @@ Full testing documentation and evidence can be found in:
 - [Bootstrap Documentation](https://getbootstrap.com/docs/) - consulted for responsive layouts and Bootstrap components.
 - [MDN Web Docs](https://developer.mozilla.org/) - used as a reference for HTML and CSS development.
 
-## AI Assistance
+# AI Assistance
 
-AI tools were used during the development of HireTrack as a supporting resource for debugging, code review, documentation, testing guidance and explaining development concepts.
+AI tools were used throughout the development of HireTrack as supporting
+development tools. AI-generated suggestions were reviewed, adapted where
+necessary and tested before being included in the final project.
 
-AI-generated suggestions were reviewed and adapted before being incorporated into the project. The final implementation, testing and project decisions remained the responsibility of the developer.
+### ChatGPT
 
-Further details about the use of AI during the project are documented in the project's AI reflection/testing section.
+ChatGPT was used primarily for general development support and debugging.
+This included:
+
+- Discussing Django concepts and project structure.
+- Helping identify and troubleshoot errors.
+- Reviewing approaches to authentication, permissions and validation.
+- Suggesting testing approaches.
+- Supporting responsive and accessibility improvements.
+- Reviewing project documentation and Markdown formatting.
+
+Suggestions were checked against the actual project implementation and
+tested before being retained.
+
+### GitHub Copilot
+
+GitHub Copilot was used primarily to assist with project documentation,
+particularly `README.md` and `TESTING.md`.
+
+It was used to:
+
+- Help structure documentation sections.
+- Improve wording and formatting.
+- Assist with documenting testing procedures and results.
+- Suggest improvements to Markdown structure.
+
+The generated documentation was reviewed and edited to ensure that it
+accurately described the functionality and testing carried out in HireTrack.
+
+### Claude
+
+Claude was used primarily for coding and debugging support during
+development.
+
+It was used to:
+
+- Assist with Django implementation.
+- Suggest solutions to coding problems.
+- Help debug errors encountered during development.
+- Review and suggest changes to application logic.
+
+AI-generated code was not treated as automatically correct. Suggested
+changes were reviewed, integrated where appropriate and tested within the
+application.
+
+## AI Reflection
+
+Using AI tools helped speed up debugging, explain unfamiliar concepts and
+provide suggestions when development issues were encountered. Different
+tools were useful for different parts of the project, with ChatGPT used
+mainly for general guidance and debugging, GitHub Copilot for documentation,
+and Claude for coding and debugging.
+
+AI output still required review. Some suggestions needed to be changed or
+simplified to fit the existing project structure and requirements. Testing
+remained important after AI-assisted changes to confirm that the application
+continued to behave as expected.
+
+The final implementation, design decisions, testing and documentation were
+reviewed and adapted for the requirements of HireTrack rather than accepting
+AI-generated output without verification.
 
 # Acknowledgements
 
